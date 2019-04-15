@@ -7,7 +7,7 @@
 #include"GameHead.h"
 #include"ObjEnemy1.h"
 
-//使用するネームスペースwwwwww
+//使用するネームスペース沢尾wwww
 using namespace GameL;
 
 CObjEnemy1::CObjEnemy1(int map[19][100])
