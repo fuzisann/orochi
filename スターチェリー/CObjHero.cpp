@@ -13,6 +13,7 @@ using namespace GameL;
 
 float g_px = 64.0f;
 float g_py = 450.0f;
+float g_pe = 999.0f;
 
 //イニシャライズ
 void CObjHero::Init()
