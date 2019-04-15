@@ -14,6 +14,7 @@ CObjgoalblock::CObjgoalblock(float x, float y)
 {
 	m_px = x;
 	m_py = y;
+	m_pt = r;
 }
 
 //イニシャライズ
