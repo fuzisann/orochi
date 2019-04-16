@@ -10,6 +10,12 @@
 //使用するネームスペース
 using namespace GameL;
 
+/*CObjEnemy2::CObjEnemy2(int map[19][100])
+{
+	//マップデータコピー
+	memcpy(m_map, map, sizeof(int)*(19 * 100));
+}*/
+
 //イニシャライズ
 void CObjEnemy2::Init()
 {
@@ -36,7 +42,7 @@ void CObjEnemy2::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY_SECOND, 1);
 }
 
 //アクション

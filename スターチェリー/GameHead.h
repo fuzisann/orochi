@@ -17,6 +17,9 @@ enum OBJ_NAME
 	OBJ_TIME,
 	OBJ_GOAL_BLOCK,
 	OBJ_ENEMY,
+	OBJ_ENEMY_FIRST,
+	OBJ_ENEMY_SECOND,
+	OBJ_ENEMY_THIRD,
 };
 //------------------------------------------------
 

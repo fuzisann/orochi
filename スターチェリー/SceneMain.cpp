@@ -165,11 +165,11 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 
 	//敵オブジェクト作成
-	/*CObjEnemy1* obje1 = new CObjEnemy1(map);
-	Objs::InsertObj(obje1, OBJ_ENEMY, 10);*/
+	CObjEnemy1* obje1 = new CObjEnemy1(map);
+	Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 10);
 
 	CObjEnemy2* obje2 = new CObjEnemy2(map);
-	Objs::InsertObj(obje2, OBJ_ENEMY, 10);
+	Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 10);
 
 	CObjMain* objm = new CObjMain();
 	Objs::InsertObj(objm, OBJ_MAIN, 120);
