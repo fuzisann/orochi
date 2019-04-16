@@ -18,7 +18,7 @@ public:
 	int GetDMG() { return m_damage; }//攻撃力を取得
 
 private:
-	int map[19][100];//マップ情報
+	int m_map[19][100]; //マップ情報
 	float m_px;      //位置
 	float m_py;
 	float m_vx;      //移動ベクトル

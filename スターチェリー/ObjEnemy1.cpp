@@ -7,14 +7,14 @@
 #include"GameHead.h"
 #include"ObjEnemy1.h"
 
-//使用するネームスペース沢尾wwww
+//使用するネームスペース
 using namespace GameL;
 
-CObjEnemy1::CObjEnemy1(int map[19][100])
+/*CObjEnemy1::CObjEnemy1(int map[19][100])
 {
-	//マップデータコピー
+	//マップデータコピー/
 	memcpy(m_map, map, sizeof(int)*(19 * 100));
-}
+}*/
 
 //イニシャライズ
 void CObjEnemy1::Init()
@@ -42,7 +42,7 @@ void CObjEnemy1::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
 }
 
 //アクション
@@ -132,9 +132,9 @@ void CObjEnemy1::Action()
 
 			if (m_map[i][j] == 6)
 			{
-				CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
+				/*CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
 				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;
+				m_map[i][j] = 0;*/
 			}
 		}
 	}

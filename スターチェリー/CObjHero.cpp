@@ -142,14 +142,8 @@ void CObjHero::Action()
 		b->SetScroll(b->GetScroll());
 	}
 	//–€ŽC
-	if (g_map_chenge == 2 && block2 == 1)
-	{
-		m_vx += -(m_vx*0.040);
-	}
-	else
-	{
-		m_vx += -(m_vx*0.098);
-	}
+	m_vx += -(m_vx*0.098);
+
 	//Ž©—R—Ž‰º‰^“®
 	m_vy += 9.8 / (16.0f);
 

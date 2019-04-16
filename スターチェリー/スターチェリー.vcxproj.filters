@@ -13,6 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\GameClear">
+      <UniqueIdentifier>{25615bd1-bb91-4852-81f3-bb85ea19a68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameOver">
+      <UniqueIdentifier>{c2ca1a7e-29c7-4be6-b72d-1ba55cacfaf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Main">
+      <UniqueIdentifier>{c53af29a-42bf-43a1-9f9c-1df4aa84b877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Title">
+      <UniqueIdentifier>{fffab041-a722-4388-bcf3-b90ba432b51e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Main\Hero関係">
+      <UniqueIdentifier>{121d694e-d6be-48d3-a737-0c661d156479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Main\Enemy関係">
+      <UniqueIdentifier>{0867080f-0d19-4183-a4bf-e1a0182f524b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Main\Background関係">
+      <UniqueIdentifier>{21ba3369-d201-4f65-bdbb-3dbb0cc8c7f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Main\Block関係">
+      <UniqueIdentifier>{c03742d7-2f6a-4dc9-b083-867d379c04ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -58,46 +82,46 @@
       <Filter>リソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="CObjHero.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjBackground.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Background関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjBlock.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Block関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjClear.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Objgoalblock.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjOver.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjTitle.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneClear.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneOver.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTitle.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameClear</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy1.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjMain.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjEnemy2.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClCompile>
+    <ClCompile Include="Objgoalblock.cpp">
+      <Filter>ソース ファイル\Main\Block関係</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMain.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjOver.cpp">
+      <Filter>ソース ファイル\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjTitle.cpp">
+      <Filter>ソース ファイル\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>ソース ファイル\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneClear.cpp">
+      <Filter>ソース ファイル\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOver.cpp">
+      <Filter>ソース ファイル\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,46 +171,46 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CObjHero.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjBackground.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Background関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjBlock.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Block関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjClear.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Objgoalblock.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjOver.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjTitle.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneClear.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneOver.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTitle.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameClear</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy1.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjMain.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjEnemy2.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClInclude>
+    <ClInclude Include="Objgoalblock.h">
+      <Filter>ソース ファイル\Main\Block関係</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMain.h">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjOver.h">
+      <Filter>ソース ファイル\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjTitle.h">
+      <Filter>ソース ファイル\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ソース ファイル\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneClear.h">
+      <Filter>ソース ファイル\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOver.h">
+      <Filter>ソース ファイル\GameOver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -72,6 +72,26 @@ void CObjBlock::Action()
 				Objs::InsertObj(ends, OBJ_GOAL_BLOCK, 11);
 				m_map[i][j] = 0;
 			}
+
+			if (m_map[i][j] == 6)
+			{
+				//6Ç™Ç†ÇÍÇŒìGÇèoåª
+				if (g_map_chenge == 0) {
+					/*CObjEnemy1* obje1 = new CObjEnemy1(j*50, i*50);
+					Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);*/
+				}
+				/*else if (g_map_chenge == 1) {
+					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_SIZE, i*ALL_SIZE);
+					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
+				}
+				else if (g_map_chenge == 2) {
+					CObjEnemy3* obje3 = new CObjEnemy3(j*ALL_SIZE, i*ALL_SIZE);
+					Objs::InsertObj(obje3, OBJ_ENEMY_THIRD, 112);
+				}*/
+
+				//èoåªèÍèäÇÃílÇ0Ç…Ç∑ÇÈ
+				m_map[i][j] = 0;
+			}
 		}
 	}
 }
