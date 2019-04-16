@@ -11,7 +11,7 @@ using namespace GameL;
 //コンストラクタ
 CObjStick::CObjStick(float x, float y)
 {
-
+	m_x = x;
 }
 
 //イニシャライズ
