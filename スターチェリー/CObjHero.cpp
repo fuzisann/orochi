@@ -17,6 +17,7 @@ float g_py = 450.0f;
 //イニシャライズ
 void CObjHero::Init()
 {
+
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 1.0f; //右向き0.0f,左向き1,0f
