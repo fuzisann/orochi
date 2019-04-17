@@ -7,8 +7,9 @@ using namespace GameL;
 //オブジェクト : 敵
 class CObjEnemy1 : public CObj
 {
+	#define ALL_ENEMY_SIZE (32.0f)
 	public:
-		CObjEnemy1(int map[19][100]) {};
+		CObjEnemy1(float x, float y) ;
 		~CObjEnemy1() {};
 		void Init();   //イ二シャライズ
 		void Action();	//アクション
