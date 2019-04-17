@@ -134,6 +134,7 @@
     <ClCompile Include="ObjEnemy2.cpp" />
     <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
+    <ClCompile Include="CObjHeroSword.cpp" />
     <ClCompile Include="ObjMain.cpp" />
     <ClCompile Include="ObjOver.cpp" />
     <ClCompile Include="ObjTitle.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="ObjEnemy2.h" />
     <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
+    <ClInclude Include="CObjHeroSword.h" />
     <ClInclude Include="ObjMain.h" />
     <ClInclude Include="ObjOver.h" />
     <ClInclude Include="ObjTitle.h" />

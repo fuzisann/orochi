@@ -19,8 +19,6 @@ CObjEnemy2::CObjEnemy2(float x, float y)
 //イニシャライズ
 void CObjEnemy2::Init()
 {
-	/*m_px = 1050.0f;	//位置
-	m_py = 400.0f;*/
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f; //右向き0.0f,左向き1,0f
@@ -31,6 +29,7 @@ void CObjEnemy2::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
+	m_enemy_hp = 3;     //敵のヒットポイント(最大3)(仮)
 	m_damage = 1;
 
 	m_move = false;		//true=右 false=左
@@ -54,6 +53,9 @@ void CObjEnemy2::Action()
 
 	//自由落下運動
 	m_vy += 9.8 / (16.0f);
+
+	//自身のHitBoxを持ってくる
+	CHitBox* hit = Hits::GetHitBox(this);
 
 	//ダミー
 	int d;
@@ -118,11 +120,44 @@ void CObjEnemy2::Action()
 		m_ani_frame = 0;
 	}
 
+	//攻撃を受けたら体力を減らす
+	//主人公とATTACK系統との当たり判定
+	if (hit->CheckElementHit(ELEMENT_ATTACK) == true)
+	{
+		//ノックバック処理
+		if (m_posture == 0.0f)
+		{
+			m_vy = -10;
+			m_vx += 15;
+		}
+		if (m_posture == 1.0f)
+		{
+			m_vy = -10;
+			m_vx -= 15;
+		}
+		m_time_d = 30;	//敵の無敵時間をセット
+		m_enemy_hp -= 1;	//敵の体力を減らす
+	}
+
+	if (m_time_d > 0)
+	{
+		m_time_d--;
+		if (m_time_d <= 0)
+		{
+			m_time_d = 0;
+		}
+	}
+
+	if (m_enemy_hp <= 0)
+	{
+		this->SetStatus(false);		//画像の削除
+		Hits::DeleteHitBox(this);	//ヒットボックスの削除
+	}
+
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 }
 //ドロー

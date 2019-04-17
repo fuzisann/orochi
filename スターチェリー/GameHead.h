@@ -21,6 +21,7 @@ enum OBJ_NAME
 	OBJ_ENEMY_SECOND,
 	OBJ_ENEMY_THIRD,
 	OBJ_STICK,
+	OBJ_SWORD,
 };
 //------------------------------------------------
 
@@ -41,6 +42,7 @@ enum HIT_ELEMENTS
 	ELEMENT_BLUE,
 	ELEMENT_BLACK,
 	ELEMENT_WHITE,
+	ELEMENT_ATTACK,
 };
 //------------------------------------------------
 
@@ -76,6 +78,7 @@ extern int block2;
 #include "ObjEnemy2.h"
 #include "ObjMain.h"
 #include "CObjStick.h"
+#include "CObjHeroSword.h"
 
 //------------------------------------------------
 

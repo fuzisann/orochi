@@ -129,6 +129,9 @@
     <ClCompile Include="Objgear.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="CObjHeroSword.cpp">
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="Objgear.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjHeroSword.h">
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
