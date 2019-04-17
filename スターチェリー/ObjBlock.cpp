@@ -42,6 +42,7 @@ void CObjBlock::Action()
 
 	//敵の位置を取得
 	CObjEnemy1*enemy1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
+	CObjEnemy2*enemy2 = (CObjEnemy2*)Objs::GetObj(OBJ_ENEMY_SECOND);
 	/*float hx = hero->GetX();
 	float hy = hero->GetY();*/
 	////後方スクロールライン
@@ -75,13 +76,11 @@ void CObjBlock::Action()
 
 			if (m_map[i][j] == 6)
 			{
-				//6があれば敵を出現
+				//6があれば敵(アジ)を出現
 				if (g_map_chenge == 0) {
 					CObjEnemy1* obje1 = new CObjEnemy1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
 					Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);
 
-					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
 				}
 				/*else if (g_map_chenge == 1) {
 					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_SIZE, i*ALL_SIZE);
@@ -91,6 +90,18 @@ void CObjBlock::Action()
 					CObjEnemy3* obje3 = new CObjEnemy3(j*ALL_SIZE, i*ALL_SIZE);
 					Objs::InsertObj(obje3, OBJ_ENEMY_THIRD, 112);
 				}*/
+
+				//出現場所の値を0にする
+				m_map[i][j] = 0;
+			}
+
+			if (m_map[i][j] == 7)
+			{
+				//7があれば敵(イワシ)を出現
+				if (g_map_chenge == 0) {
+					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
+				}
 
 				//出現場所の値を0にする
 				m_map[i][j] = 0;

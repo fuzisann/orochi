@@ -17,6 +17,7 @@ public:
 private:
 	bool m_f = true;
 	bool m_x;
+	bool m_y;
 	int m_ani_time;
 	int m_ani_frame;
 
