@@ -7,45 +7,47 @@ using namespace GameL;
 //オブジェクト : 敵
 class CObjEnemy2 : public CObj
 {
-public:
-	CObjEnemy2(int map[19][100]) {};
-	~CObjEnemy2() {};
-	void Init();   //イ二シャライズ
-	void Action();	//アクション
-	void Draw();    //ドロー
+	#define ALL_ENEMY_SIZE (32.0f)
 
-	float GetVX() { return m_vx; }
-	int GetDMG() { return m_damage; }//攻撃力を取得
+	public:
+		CObjEnemy2(float x, float y) ;
+		~CObjEnemy2() {};
+		void Init();   //イ二シャライズ
+		void Action();	//アクション
+		void Draw();    //ドロー
 
-private:
-	int m_map[19][100]; //マップ情報
-	float m_px;      //位置
-	float m_py;
-	float m_vx;      //移動ベクトル
-	float m_vy;
-	float m_posture; //姿勢
+		float GetVX() { return m_vx; }
+		int GetDMG() { return m_damage; }//攻撃力を取得
 
-	int m_ani_time; //アニメーションフレーム動作間隔
-	int m_ani_frame;  //描画フレーム
+	private:
+		int m_map[19][100]; //マップ情報
+		float m_px;      //位置
+		float m_py;
+		float m_vx;      //移動ベクトル
+		float m_vy;
+		float m_posture; //姿勢
 
-	int m_damage;
+		int m_ani_time; //アニメーションフレーム動作間隔
+		int m_ani_frame;  //描画フレーム
 
-	float m_speed_power; //スピードパワー
-	float m_ani_max_time;//アニメーション動画間隔最大値
+		int m_damage;
 
-						 //blockとの衝突状態確認用
-	bool m_hit_up;
-	bool m_hit_down;
-	bool m_hit_left;
-	bool m_hit_right;
+		float m_speed_power; //スピードパワー
+		float m_ani_max_time;//アニメーション動画間隔最大値
 
-	//移動の向き制御用
-	bool m_move;
+							 //blockとの衝突状態確認用
+		bool m_hit_up;
+		bool m_hit_down;
+		bool m_hit_left;
+		bool m_hit_right;
 
-	//踏んでいるblockの種類を確認用
-	//int m_block_type;
-	int s;
-	int m_time;
-	int m_x;
-	int m_y;
+		//移動の向き制御用
+		bool m_move;
+
+		//踏んでいるblockの種類を確認用
+		//int m_block_type;
+		int s;
+		int m_time;
+		int m_x;
+		int m_y;
 };

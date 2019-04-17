@@ -41,7 +41,7 @@ void CObjBlock::Action()
 	float hy = hero->GetY();
 
 	//敵の位置を取得
-	CObjEnemy1*enemy1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY);
+	CObjEnemy1*enemy1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
 	/*float hx = hero->GetX();
 	float hy = hero->GetY();*/
 	////後方スクロールライン
@@ -77,8 +77,11 @@ void CObjBlock::Action()
 			{
 				//6があれば敵を出現
 				if (g_map_chenge == 0) {
-					/*CObjEnemy1* obje1 = new CObjEnemy1(j*50, i*50);
-					Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);*/
+					CObjEnemy1* obje1 = new CObjEnemy1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);
+
+					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
 				}
 				/*else if (g_map_chenge == 1) {
 					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_SIZE, i*ALL_SIZE);

@@ -10,17 +10,17 @@
 //使用するネームスペース
 using namespace GameL;
 
-/*CObjEnemy2::CObjEnemy2(int map[19][100])
+CObjEnemy2::CObjEnemy2(float x, float y)
 {
-	//マップデータコピー
-	memcpy(m_map, map, sizeof(int)*(19 * 100));
-}*/
+	m_px = x;
+	m_py = y;
+}
 
 //イニシャライズ
 void CObjEnemy2::Init()
 {
-	m_px = 1050.0f;	//位置
-	m_py = 400.0f;
+	/*m_px = 1050.0f;	//位置
+	m_py = 400.0f;*/
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f; //右向き0.0f,左向き1,0f

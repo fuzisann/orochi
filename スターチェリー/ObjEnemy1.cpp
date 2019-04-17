@@ -10,17 +10,15 @@
 //使用するネームスペース
 using namespace GameL;
 
-/*CObjEnemy1::CObjEnemy1(int map[19][100])
+CObjEnemy1::CObjEnemy1(float x, float y)
 {
-	//マップデータコピー/
-	memcpy(m_map, map, sizeof(int)*(19 * 100));
-}*/
+	m_px = x;
+	m_py = y;
+}
 
 //イニシャライズ
 void CObjEnemy1::Init()
 {
-	m_px = 1050.0f;	//位置
-	m_py = 400.0f;
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
 	m_posture = 0.0f; //右向き0.0f,左向き1,0f
@@ -125,19 +123,19 @@ void CObjEnemy1::Action()
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 
-	for (int i = 0; i < 19; i++)
+	/*for (int i = 0; i < 19; i++)
 	{
 		for (int j = 0; j < 100; j++)
 		{
 
 			if (m_map[i][j] == 6)
 			{
-				/*CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
+				CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
 				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;*/
+				m_map[i][j] = 0;
 			}
 		}
-	}
+	}*/
 }
 //ドロー
 void CObjEnemy1::Draw()
@@ -167,18 +165,20 @@ void CObjEnemy1::Draw()
 			//ブロック情報を持ってくる
 			CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-			if (m_map[i][j] == 6)
+			//表示位置の設定
+			dst.m_top = 0.0f + m_py;
+			dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
+			dst.m_right = (50 - 50.0f *m_posture) + m_px + pb->GetScroll();
+			dst.m_bottom = 50.0f + m_py;
+			
+			//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
+			Draw::Draw(8, &src, &dst, c, 0.0f);
+
+			/*if (m_map[i][j] == 6)
 			{
 
-				//表示位置の設定
-				dst.m_top = 0.0f + m_py;
-				dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
-				dst.m_right = (50 - 50.0f*m_posture) + m_px + pb->GetScroll();
-				dst.m_bottom = 50.0f + m_py;
-
-				//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-				Draw::Draw(8, &src, &dst, c, 0.0f);
-			}
+				
+			}*/
 		}
 	}
 }
