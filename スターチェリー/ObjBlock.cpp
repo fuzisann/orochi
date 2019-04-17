@@ -144,7 +144,7 @@ void CObjBlock::Draw()
 				Draw::Draw(2, &src, &dst, c, 0.0f);
 			}
 			//ブロック画像表示
-			if (m_map[i][j] == 4)
+			if (m_map[i][j] == 2)
 			{
 				//表示位置の設定
 				dst.m_top = i*ALL_BLOCK_SIZE;
@@ -221,6 +221,8 @@ void CObjBlock::BlockHit(
 					else
 						r = 360.0f - abs(r);
 
+					
+
 
 					//lenがある一定の長さのより短い場合判定に入る
 					if (len < 88.0f)
@@ -232,6 +234,11 @@ void CObjBlock::BlockHit(
 							*right = true;//オブジェクトの左の部分が衝突している
 							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
+
+							if (m_map[i][j] == 2)
+							{
+								*x = bx + 10.0f + (scroll);//ブロックの位置-主人公の幅
+							}
 
 						}
 						if (r > 45 && r < 135)
@@ -251,7 +258,7 @@ void CObjBlock::BlockHit(
 							if (m_map[i][j] == 2)
 							{
 								//Audio::Start(1);
-								Scene::SetScene(new CSceneOver());
+								//Scene::SetScene(new CSceneOver());
 							}
 						}
 						if (r > 135 && r < 225)
@@ -260,6 +267,11 @@ void CObjBlock::BlockHit(
 							*left = true;//主人公の右の部分が衝突している
 							*x = bx - 64.0f + (scroll);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
+
+							if (m_map[i][j] == 2)
+							{
+								*x = bx - 56.0f+5 + (scroll);//ブロックの位置-主人公の幅
+							}
 						}
 						if (r > 225 && r < 315)
 						{

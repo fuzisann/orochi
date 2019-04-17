@@ -246,6 +246,7 @@ void CObjHero::Action()
 				m_hero_hp -= m_damage;
 			}
 
+
 			//“G‚ÌUŒ‚‚É‚æ‚Á‚ÄHP‚ª0ˆÈ‰º‚É‚È‚Á‚½ê‡
 			if (m_hero_hp <= 0)
 				m_hero_hp = 0;	//HP‚ğ0‚É‚·‚é
