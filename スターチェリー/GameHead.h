@@ -20,6 +20,7 @@ enum OBJ_NAME
 	OBJ_ENEMY_FIRST,
 	OBJ_ENEMY_SECOND,
 	OBJ_ENEMY_THIRD,
+	OBJ_STICK,
 };
 //------------------------------------------------
 
