@@ -126,6 +126,9 @@
     <ClCompile Include="CObjStick.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Objgear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -216,6 +219,9 @@
       <Filter>ソース ファイル\GameOver</Filter>
     </ClInclude>
     <ClInclude Include="CObjStick.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Objgear.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
