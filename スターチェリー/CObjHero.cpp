@@ -200,12 +200,19 @@ void CObjHero::Action()
 			hit->SetInvincibility(true);	//–³“GƒIƒ“
 
 			//“G
-			if (hit->CheckObjNameHit(OBJ_ENEMY) != nullptr)
+			if (hit->CheckObjNameHit(OBJ_ENEMY_FIRST) != nullptr)
 			{
-				CObjEnemy1* ene1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY);
+				CObjEnemy1* ene1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
 				m_damage = ene1->GetDMG();
 				m_hero_hp -= m_damage;
 			}
+			if (hit->CheckObjNameHit(OBJ_ENEMY_SECOND) != nullptr)
+			{
+				CObjEnemy2* ene2 = (CObjEnemy2*)Objs::GetObj(OBJ_ENEMY_SECOND);
+				m_damage = ene2->GetDMG();
+				m_hero_hp -= m_damage;
+			}
+
 			//“G‚ÌUŒ‚‚É‚æ‚Á‚ÄHP‚ª0ˆÈ‰º‚É‚È‚Á‚½ê‡
 			if (m_hero_hp <= 0)
 				m_hero_hp = 0;	//HP‚ğ0‚É‚·‚é
