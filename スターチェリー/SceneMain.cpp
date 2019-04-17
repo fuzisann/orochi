@@ -96,6 +96,9 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
 		//針罠読み込み
 		//Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);
+
+		//剣読み込みテスト
+		Draw::LoadImageW(L"Sword.png", 16, TEX_SIZE_512);
 	}
 	else if (g_map_chenge == 1)
 	{

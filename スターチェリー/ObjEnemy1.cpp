@@ -29,6 +29,7 @@ void CObjEnemy1::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
+	m_enemy_hp = 3;     //敵のヒットポイント(最大3)(仮)
 	m_damage = 1;
 
 	m_move = false;		//true=右 false=左
@@ -53,6 +54,9 @@ void CObjEnemy1::Action()
 	//自由落下運動
 	m_vy += 9.8 / (16.0f);
 	
+	//自身のHitBoxを持ってくる
+	CHitBox* hit = Hits::GetHitBox(this);
+
 	//ダミー
 	int d;
 	//ブロックとの当たり判定実行
@@ -116,26 +120,46 @@ void CObjEnemy1::Action()
 		m_ani_frame = 0;
 	}
 
+	//攻撃を受けたら体力を減らす
+	//主人公とATTACK系統との当たり判定
+	if (hit->CheckElementHit(ELEMENT_ATTACK) == true)
+	{
+		//ノックバック処理
+		if (m_posture == 0.0f)
+		{
+			m_vy = -10;
+			m_vx += 15;
+		}
+		if (m_posture == 1.0f)
+		{
+			m_vy = -10;
+			m_vx -= 15;
+		}
+		m_time_d = 30;	//敵の無敵時間をセット
+		m_enemy_hp -= 1;	//敵の体力を減らす
+	}
+
+	if (m_time_d > 0)
+	{
+		m_time_d--;
+		if (m_time_d <= 0)
+		{
+			m_time_d = 0;
+		}
+	}
+
+	if (m_enemy_hp <= 0)
+	{
+		this->SetStatus(false);		//画像の削除
+		Hits::DeleteHitBox(this);	//ヒットボックスの削除
+	}
+
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 
-	/*for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
-
-			if (m_map[i][j] == 6)
-			{
-				CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
-				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;
-			}
-		}
-	}*/
 }
 //ドロー
 void CObjEnemy1::Draw()

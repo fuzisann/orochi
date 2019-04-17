@@ -25,6 +25,7 @@ public:
 	float GetY() { return g_py; }
 	float GetVY() { return m_vy; }
 	float GetVX() { return m_vx; }
+	float GetPOS() { return m_posture; }//主人公の向きを取得
 	int GetBT() { return m_block_type; }
 	int GetHP() { return m_hero_hp; }	//主人公のHPを取得
 
@@ -42,6 +43,8 @@ public:
 private:
 	int m_map[19][100]; //マップ情報
 	
+	float m_px;			//位置
+	float m_py;
 	float m_vx;      //移動ベクトル
 	float m_vy;
 	float m_posture; //姿勢
@@ -57,9 +60,11 @@ private:
 	float m_speed_power; //スピードパワー
 	float m_speed_pow;   //しゃがむ速度
 	float m_ani_max_time;//アニメーション動画間隔最大値
+	float m_swordwidth; //ソード幅
 
 	int m_time_d;	//ダメージ無敵時間用
-
+	int m_sword_delay;	//剣攻撃間隔用
+	
 	//blockとの衝突状態確認用
 	bool m_hit_up;
 	bool m_hit_down;

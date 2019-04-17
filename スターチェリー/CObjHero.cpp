@@ -39,6 +39,9 @@ void CObjHero::Init()
 
 	m_time = 31;
 
+	m_sword_delay = 0;
+	m_swordwidth = 0.0f; //ソード幅
+
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, g_px, g_py,64,64, ELEMENT_PLAYER, COBJ_HERO, 1);
 }
@@ -60,6 +63,36 @@ void CObjHero::Action()
 	}
 
 	m_speed_power = 0.5f;
+
+	//Zキーで近接(剣)攻撃
+	if (Input::GetVKey('Z') == true)
+	{
+		if (m_sword_delay == 0)
+		{
+			//主人公の向きによって攻撃する向きを設定
+			if (m_posture == 0.0f) {
+				m_swordwidth = 70.0f;
+			}
+			else if (m_posture == 1.0f) {
+				m_swordwidth = -30.0f;
+			}
+
+			//剣で攻撃
+			CObjHeroSword* objsb = new CObjHeroSword(m_px + m_swordwidth, m_py + 32.0f);//剣オブジェクト(戦闘)作成
+			Objs::InsertObj(objsb, OBJ_SWORD, 100);		//作った剣オブジェクトをオブジェクトマネージャーに登録
+
+			//斬撃音
+			//Audio::Start(0);
+
+			m_sword_delay = 20;
+		}
+	}
+	if (m_sword_delay > 0)
+	{
+		m_sword_delay--;
+		if (m_sword_delay <= 0)
+			m_sword_delay = 0;
+	}
 
 	//ジャンプ
 	if (Input::GetVKey(VK_UP) == true)
