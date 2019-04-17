@@ -94,8 +94,7 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		//針罠読み込み
-		//Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);
+		Draw::LoadImage(L"仮ブロック.png", 4, TEX_SIZE_512);
 	}
 	else if (g_map_chenge == 1)
 	{

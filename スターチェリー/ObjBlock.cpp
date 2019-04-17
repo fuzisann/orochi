@@ -144,7 +144,7 @@ void CObjBlock::Draw()
 				Draw::Draw(2, &src, &dst, c, 0.0f);
 			}
 			//ブロック画像表示
-			/*if (m_map[i][j] == 1)
+			if (m_map[i][j] == 4)
 			{
 				//表示位置の設定
 				dst.m_top = i*ALL_BLOCK_SIZE;
@@ -152,8 +152,8 @@ void CObjBlock::Draw()
 				dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
 				dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
 
-				Draw::Draw(1, &src, &dst, c, 0.0f);
-			}*/
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+			}
 		}
 	}
 }
