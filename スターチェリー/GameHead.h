@@ -74,7 +74,7 @@ extern int block2;
 #include "ObjEnemy1.h"
 #include "ObjEnemy2.h"
 #include "ObjMain.h"
-
+#include "CObjStick.h"
 
 //------------------------------------------------
 
