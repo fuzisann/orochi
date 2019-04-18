@@ -51,8 +51,6 @@ void CObjEnemy1::Action()
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
-	//自由落下運動
-	m_vy += 9.8 / (16.0f);
 	
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
@@ -70,11 +68,6 @@ void CObjEnemy1::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//落下
-	if (m_py > 1000.0f)
-	{
-		;
-	}
 
 	//通常速度
 	m_speed_power = 0.5f;
@@ -127,12 +120,12 @@ void CObjEnemy1::Action()
 		//ノックバック処理
 		if (m_posture == 0.0f)
 		{
-			m_vy = -10;
+			//m_vy = -10;
 			m_vx += 15;
 		}
 		if (m_posture == 1.0f)
 		{
-			m_vy = -10;
+			//m_vy = -10;
 			m_vx -= 15;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
@@ -175,34 +168,22 @@ void CObjEnemy1::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
+	//切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 50;
+	src.m_right = 50.0f + AniData[m_ani_frame] * 50;
+	src.m_bottom = 50.0f;
+	
+	//ブロック情報を持ってくる
+	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	
+	//表示位置の設定
+	dst.m_top = 0.0f + m_py;
+	dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
+	dst.m_right = (50 - 50.0f *m_posture) + m_px + pb->GetScroll();
+	dst.m_bottom = 50.0f + m_py;
+		
+	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
+	Draw::Draw(8, &src, &dst, c, 0.0f);
 
-			//切り取り位置の設定
-			src.m_top = 0.0f;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 50;
-			src.m_right = 50.0f + AniData[m_ani_frame] * 50;
-			src.m_bottom = 50.0f;
-
-			//ブロック情報を持ってくる
-			CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-			//表示位置の設定
-			dst.m_top = 0.0f + m_py;
-			dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
-			dst.m_right = (50 - 50.0f *m_posture) + m_px + pb->GetScroll();
-			dst.m_bottom = 50.0f + m_py;
-			
-			//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-			Draw::Draw(8, &src, &dst, c, 0.0f);
-
-			/*if (m_map[i][j] == 6)
-			{
-
-				
-			}*/
-		}
-	}
 }

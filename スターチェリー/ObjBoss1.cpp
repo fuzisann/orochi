@@ -5,19 +5,19 @@
 #include"GameL\HitBoxManager.h"
 
 #include"GameHead.h"
-#include"ObjEnemy2.h"
+#include"ObjBoss1.h"
 
 //使用するネームスペース
 using namespace GameL;
 
-CObjEnemy2::CObjEnemy2(float x, float y)
+CObjBoss1::CObjBoss1(float x, float y)
 {
 	m_px = x;
 	m_py = y;
 }
 
 //イニシャライズ
-void CObjEnemy2::Init()
+void CObjBoss1::Init()
 {
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
@@ -41,17 +41,18 @@ void CObjEnemy2::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY_SECOND, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_BOSS_FIRST, 1);
 }
 
 //アクション
-void CObjEnemy2::Action()
+void CObjBoss1::Action()
 {
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
-	
+	//自由落下運動
+	m_vy += 9.8 / (16.0f);
 
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
@@ -69,6 +70,11 @@ void CObjEnemy2::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
+	//落下
+	if (m_py > 1000.0f)
+	{
+		;
+	}
 
 	//通常速度
 	m_speed_power = 0.5f;
@@ -99,8 +105,8 @@ void CObjEnemy2::Action()
 	}
 	/*else
 	{
-	m_ani_frame = 1;  //静止フレーム
-	m_ani_time = 0;
+		m_ani_frame = 1;  //静止フレーム
+		m_ani_time = 0;
 	}*/
 
 	if (m_ani_time > m_ani_max_time)
@@ -121,12 +127,12 @@ void CObjEnemy2::Action()
 		//ノックバック処理
 		if (m_posture == 0.0f)
 		{
-			//m_vy = -10;
+			m_vy = -10;
 			m_vx += 15;
 		}
 		if (m_posture == 1.0f)
 		{
-			//m_vy = -10;
+			m_vy = -10;
 			m_vx -= 15;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
@@ -153,9 +159,10 @@ void CObjEnemy2::Action()
 
 	//HitBoxの位置の変更
 	hit->SetPos(m_px + block->GetScroll(), m_py);
+
 }
 //ドロー
-void CObjEnemy2::Draw()
+void CObjBoss1::Draw()
 {
 	int AniData[4] =
 	{
@@ -168,21 +175,34 @@ void CObjEnemy2::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 50;
-	src.m_right = 50.0f + AniData[m_ani_frame] * 50;
-	src.m_bottom = 50.0f;
+	for (int i = 0; i < 19; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
 
-	//ブロック情報を持ってくる
-	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+			//切り取り位置の設定
+			src.m_top = 0.0f;
+			src.m_left = 0.0f + AniData[m_ani_frame] * 50;
+			src.m_right = 50.0f + AniData[m_ani_frame] * 50;
+			src.m_bottom = 50.0f;
 
-	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
-	dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
-	dst.m_right = (50 - 50.0f*m_posture) + m_px + pb->GetScroll();
-	dst.m_bottom = 50.0f + m_py;
+			//ブロック情報を持ってくる
+			CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-	Draw::Draw(9, &src, &dst, c, 0.0f);
+			//表示位置の設定
+			dst.m_top = 0.0f + m_py;
+			dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
+			dst.m_right = (50 - 50.0f *m_posture) + m_px + pb->GetScroll();
+			dst.m_bottom = 50.0f + m_py;
+
+			//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
+			Draw::Draw(8, &src, &dst, c, 0.0f);
+
+			/*if (m_map[i][j] == 6)
+			{
+
+
+			}*/
+		}
+	}
 }

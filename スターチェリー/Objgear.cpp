@@ -10,8 +10,14 @@
 //使用するネームスペース
 using namespace GameL;
 
+CObjgear::CObjgear(float x, float y)
+{
+	m_px = x;
+	m_py = y;
+}
+
 //イニシャライズ
-void Objgear::Init()
+void CObjgear::Init()
 {
 	m_px = 1050.0f;	//位置
 	m_py = 400.0f;
@@ -32,11 +38,11 @@ void Objgear::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_GEAR, 1);
 }
 
 //アクション
-void Objgear::Action()
+void CObjgear::Action()
 {
 
 	//ダミー
@@ -59,23 +65,14 @@ void Objgear::Action()
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 
-	for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
-
-			if (m_map[i][j] == 6)
-			{
-				/*CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
-				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;*/
-			}
-		}
-	}
 }
 //ドロー
-void Objgear::Draw()
+void CObjgear::Draw()
 {
+	int AniData[5] =
+	{
+		0,1,2,3,4
+	};
 
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
@@ -83,7 +80,23 @@ void Objgear::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	for (int i = 0; i < 19; i++)
+	// 切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 32;
+	src.m_right = ALL_BLOCK_SIZE + AniData[m_ani_frame] * 32;
+	src.m_bottom = ALL_BLOCK_SIZE;
+
+	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//表示位置の設定
+	dst.m_top = 0.0f + m_py;
+	dst.m_left = 0.0f + m_px + block->GetScroll();
+	dst.m_right = ALL_BLOCK_SIZE + m_px + block->GetScroll();
+	dst.m_bottom = ALL_BLOCK_SIZE + m_py;
+
+	Draw::Draw(8, &src, &dst, c, 0.0f);
+
+
+	/*for (int i = 0; i < 19; i++)
 	{
 		for (int j = 0; j < 100; j++)
 		{
@@ -110,5 +123,5 @@ void Objgear::Draw()
 				Draw::Draw(8, &src, &dst, c, 0.0f);
 			}
 		}
-	}
+	}*/
 }

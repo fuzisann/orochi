@@ -32,7 +32,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 10;     //主人公のヒットポイント
+	m_hero_hp = 100;     //主人公のヒットポイント
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
