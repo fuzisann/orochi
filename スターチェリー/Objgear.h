@@ -8,7 +8,7 @@ using namespace GameL;
 class CObjgear : public CObj
 {
 public:
-	CObjgear(int map[19][100]) {};
+	CObjgear(float x, float y) ;
 	~CObjgear() {};
 	void Init();   //イ二シャライズ
 	void Action();	//アクション

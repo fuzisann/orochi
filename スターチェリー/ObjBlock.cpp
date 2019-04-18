@@ -70,19 +70,9 @@ void CObjBlock::Action()
 			if (m_map[i][j] == 3)
 			{
 				//3があれば敵(アジ)を出現
-				if (g_map_chenge == 0) {
-					CObjEnemy1* obje1 = new CObjEnemy1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);
-
-				}
-				/*else if (g_map_chenge == 1) {
-					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_SIZE, i*ALL_SIZE);
-					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
-				}
-				else if (g_map_chenge == 2) {
-					CObjEnemy3* obje3 = new CObjEnemy3(j*ALL_SIZE, i*ALL_SIZE);
-					Objs::InsertObj(obje3, OBJ_ENEMY_THIRD, 112);
-				}*/
+				
+				CObjEnemy1* obje1 = new CObjEnemy1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 112);
 
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
@@ -90,11 +80,9 @@ void CObjBlock::Action()
 			if (m_map[i][j] == 4)
 			{
 				//4があれば敵(イワシ)を出現
-				if (g_map_chenge == 0) {
-					CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
-				}
-
+				CObjEnemy2* obje2 = new CObjEnemy2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 112);
+	
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
 			}
@@ -110,9 +98,9 @@ void CObjBlock::Action()
 			//歯車出現
 			if (m_map[i][j] == 6)
 			{
-				/**CObjgear* gears = new CObjgear(j*ALL_BLOCK_SIZE, i*ALL_BLOCK_SIZE);
+				CObjgear* gears = new CObjgear(j*ALL_BLOCK_SIZE, i*ALL_BLOCK_SIZE);
 				Objs::InsertObj(gears, OBJ_GEAR, 11);
-				m_map[i][j] = 0;*/
+				m_map[i][j] = 0;
 			}
 
 			
@@ -121,8 +109,8 @@ void CObjBlock::Action()
 			{
 				//7があればボス(カメ)を出現
 				if (g_map_chenge == 0) {
-					CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);
+					/*CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);*/
 				}
 
 				//出現場所の値を0にする
@@ -132,8 +120,8 @@ void CObjBlock::Action()
 			{
 				//8があればボス(リュウグウノツカイ)を出現
 				if (g_map_chenge == 0) {
-					CObjBoss2* objb2 = new CObjBoss2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb2, OBJ_BOSS_SECOND, 112);
+					/*CObjBoss2* objb2 = new CObjBoss2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(objb2, OBJ_BOSS_SECOND, 112);*/
 				}
 
 				//出現場所の値を0にする
@@ -143,8 +131,8 @@ void CObjBlock::Action()
 			{
 				//9があればボス(サメ(乙姫))を出現
 				if (g_map_chenge == 0) {
-					CObjBoss3* objb3 = new CObjBoss3(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb3, OBJ_BOSS_THIRD, 112);
+					/*CObjBoss3* objb3 = new CObjBoss3(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(objb3, OBJ_BOSS_THIRD, 112);*/
 				}
 
 				//出現場所の値を0にする
@@ -429,7 +417,7 @@ void CObjBlock::BlockHitEne(
 							if (m_map[i][j] == 2)
 							{
 								//Audio::Start(1);
-								Scene::SetScene(new CSceneOver());
+								//Scene::SetScene(new CSceneOver());
 							}
 						}
 						if (r > 135 && r < 225)

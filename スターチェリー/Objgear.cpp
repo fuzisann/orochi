@@ -10,6 +10,12 @@
 //使用するネームスペース
 using namespace GameL;
 
+CObjgear::CObjgear(float x, float y)
+{
+	m_px = x;
+	m_py = y;
+}
+
 //イニシャライズ
 void CObjgear::Init()
 {
@@ -59,23 +65,14 @@ void CObjgear::Action()
 	CHitBox* hit = Hits::GetHitBox(this);
 	hit->SetPos(m_px + block->GetScroll(), m_py);
 
-	for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
-
-			if (m_map[i][j] == 6)
-			{
-				/*CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
-				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;*/
-			}
-		}
-	}
 }
 //ドロー
 void CObjgear::Draw()
 {
+	int AniData[5] =
+	{
+		0,1,2,3,4
+	};
 
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
@@ -83,7 +80,23 @@ void CObjgear::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	for (int i = 0; i < 19; i++)
+	// 切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 32;
+	src.m_right = ALL_BLOCK_SIZE + AniData[m_ani_frame] * 32;
+	src.m_bottom = ALL_BLOCK_SIZE;
+
+	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//表示位置の設定
+	dst.m_top = 0.0f + m_py;
+	dst.m_left = 0.0f + m_px + block->GetScroll();
+	dst.m_right = ALL_BLOCK_SIZE + m_px + block->GetScroll();
+	dst.m_bottom = ALL_BLOCK_SIZE + m_py;
+
+	Draw::Draw(8, &src, &dst, c, 0.0f);
+
+
+	/*for (int i = 0; i < 19; i++)
 	{
 		for (int j = 0; j < 100; j++)
 		{
@@ -110,5 +123,5 @@ void CObjgear::Draw()
 				Draw::Draw(8, &src, &dst, c, 0.0f);
 			}
 		}
-	}
+	}*/
 }
