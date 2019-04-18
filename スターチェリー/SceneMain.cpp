@@ -45,11 +45,11 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"stage1変更.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"マップ1.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"仮ステージ1-1.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"マップ1.csv", &size);//外部データ読み込み
 	}
 	/*else if (g_map_chenge == 2)
 	{
