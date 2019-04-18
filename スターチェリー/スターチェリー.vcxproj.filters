@@ -132,6 +132,15 @@
     <ClCompile Include="CObjHeroSword.cpp">
       <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClCompile>
+    <ClCompile Include="ObjBoss1.cpp">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBoss2.cpp">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBoss3.cpp">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -229,6 +238,15 @@
     </ClInclude>
     <ClInclude Include="CObjHeroSword.h">
       <Filter>ソース ファイル\Main\Hero関係</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss1.h">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss2.h">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoss3.h">
+      <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

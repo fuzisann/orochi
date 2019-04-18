@@ -16,12 +16,18 @@ enum OBJ_NAME
 	OBJ_OVER,
 	OBJ_TIME,
 	OBJ_GOAL_BLOCK,
+
 	OBJ_ENEMY,
 	OBJ_ENEMY_FIRST,
 	OBJ_ENEMY_SECOND,
-	OBJ_ENEMY_THIRD,
+
+	OBJ_BOSS_FIRST,
+	OBJ_BOSS_SECOND,
+	OBJ_BOSS_THIRD,
+
 	OBJ_STICK,
 	OBJ_SWORD,
+	OBJ_GEAR,
 };
 //------------------------------------------------
 
@@ -78,7 +84,11 @@ extern int block2;
 #include "ObjEnemy2.h"
 #include "ObjMain.h"
 #include "CObjStick.h"
+#include "Objgear.h"
 #include "CObjHeroSword.h"
+#include "ObjBoss1.h"
+#include "ObjBoss2.h"
+#include "ObjBoss3.h"
 
 //------------------------------------------------
 

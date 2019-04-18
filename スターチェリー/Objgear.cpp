@@ -11,7 +11,7 @@
 using namespace GameL;
 
 //イニシャライズ
-void Objgear::Init()
+void CObjgear::Init()
 {
 	m_px = 1050.0f;	//位置
 	m_py = 400.0f;
@@ -32,11 +32,11 @@ void Objgear::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_GEAR, 1);
 }
 
 //アクション
-void Objgear::Action()
+void CObjgear::Action()
 {
 
 	//ダミー
@@ -74,7 +74,7 @@ void Objgear::Action()
 	}
 }
 //ドロー
-void Objgear::Draw()
+void CObjgear::Draw()
 {
 
 	//描写カラー情報

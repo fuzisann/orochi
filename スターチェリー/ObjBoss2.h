@@ -4,12 +4,13 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト : 歯車
-class CObjgear : public CObj
+//オブジェクト : ボス
+class CObjBoss2 : public CObj
 {
+#define ALL_ENEMY_SIZE (32.0f)
 public:
-	CObjgear(int map[19][100]) {};
-	~CObjgear() {};
+	CObjBoss2(float x, float y);
+	~CObjBoss2() {};
 	void Init();   //イ二シャライズ
 	void Action();	//アクション
 	void Draw();    //ドロー
@@ -28,7 +29,10 @@ private:
 	int m_ani_time; //アニメーションフレーム動作間隔
 	int m_ani_frame;  //描画フレーム
 
+	int m_enemy_hp;		//敵の体力
 	int m_damage;
+
+	int m_time_d;	//ダメージ時のカラー変更用タイム
 
 	float m_speed_power; //スピードパワー
 	float m_ani_max_time;//アニメーション動画間隔最大値
@@ -49,3 +53,5 @@ private:
 	int m_x;
 	int m_y;
 };
+
+

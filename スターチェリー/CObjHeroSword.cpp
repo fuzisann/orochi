@@ -45,7 +45,7 @@ void CObjHeroSword::Init()
 	m_sword_time = 10;	//剣が消える時間
 
 	//当たり判定用HitBoxを作成
-	Hits::SetHitBox(this, m_x + 25, m_y, 35, 50, ELEMENT_ATTACK, OBJ_SWORD, 1);
+	Hits::SetHitBox(this, m_x + 25, m_y, 50, 50, ELEMENT_ATTACK, OBJ_SWORD, 1);
 }
 
 //アクション

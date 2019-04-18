@@ -127,11 +127,14 @@
     <ClCompile Include="GameL\WinInputs.cpp" />
     <ClCompile Include="ObjBackground.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
+    <ClCompile Include="ObjBoss2.cpp" />
+    <ClCompile Include="ObjBoss3.cpp" />
     <ClCompile Include="ObjClear.cpp" />
     <ClCompile Include="ObjEnemy1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ObjEnemy2.cpp" />
+    <ClCompile Include="ObjBoss1.cpp" />
     <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
     <ClCompile Include="CObjHeroSword.cpp" />
@@ -163,11 +166,14 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="ObjBackground.h" />
     <ClInclude Include="ObjBlock.h" />
+    <ClInclude Include="ObjBoss2.h" />
+    <ClInclude Include="ObjBoss3.h" />
     <ClInclude Include="ObjClear.h" />
     <ClInclude Include="ObjEnemy1.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ObjEnemy2.h" />
+    <ClInclude Include="ObjBoss1.h" />
     <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
     <ClInclude Include="CObjHeroSword.h" />
