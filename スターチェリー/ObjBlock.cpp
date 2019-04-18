@@ -167,14 +167,38 @@ void CObjBlock::Draw()
 			//ブロック画像表示
 			if (m_map[i][j] == 1)
 			{
-				//表示位置の設定
-				dst.m_top = i*ALL_BLOCK_SIZE;
-				dst.m_left = j*ALL_BLOCK_SIZE + m_scroll;
-				dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
-				dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
+				if (g_map_chenge == 0) {
 
-				Draw::Draw(2, &src, &dst, c, 0.0f);
+					//表示位置の設定
+					dst.m_top = i * ALL_BLOCK_SIZE;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
+					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
+
+					Draw::Draw(2, &src, &dst, c, 0.0f);
+				}
+				else if (g_map_chenge == 1) {
+
+					//表示位置の設定
+					dst.m_top = i * ALL_BLOCK_SIZE;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
+					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
+
+					Draw::Draw(2, &src, &dst, c, 0.0f);
+				}
+				else if (g_map_chenge == 2) {
+
+					//表示位置の設定
+					dst.m_top = i * ALL_BLOCK_SIZE;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
+					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
+
+					Draw::Draw(2, &src, &dst, c, 0.0f);
+				}
 			}
+
 			//ブロック画像表示
 			if (m_map[i][j] == 2)
 			{

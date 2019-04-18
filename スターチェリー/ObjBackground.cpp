@@ -46,15 +46,15 @@ void C0bjBackground::Draw()
 	{
 		src.m_top = 0.0f;
 		src.m_left = 0.0f;
-		src.m_right = 2500.0f;
-		src.m_bottom = 664.0f;
+		src.m_right = 2400.0f;
+		src.m_bottom = 600.0f;
 	}
 	else if (g_map_chenge == 2)
 	{
 		src.m_top = 0.0f;
 		src.m_left = 1000.0f;
 		src.m_right = 1600.0f;
-		src.m_bottom = 664.0f;
+		src.m_bottom = 600.0f;
 	}
 	else if (g_map_chenge == 3)
 	{
