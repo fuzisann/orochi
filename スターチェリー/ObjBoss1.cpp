@@ -41,7 +41,7 @@ void CObjBoss1::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_BOSS_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 100, 100, ELEMENT_ENEMY, OBJ_BOSS_FIRST, 1);
 }
 
 //アクション
@@ -158,7 +158,7 @@ void CObjBoss1::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScroll(), m_py);
+	hit->SetPos(m_px + block->GetScroll(), m_py - 50);
 
 }
 //ドロー
@@ -175,34 +175,23 @@ void CObjBoss1::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
 
-			//切り取り位置の設定
-			src.m_top = 0.0f;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 50;
-			src.m_right = 50.0f + AniData[m_ani_frame] * 50;
-			src.m_bottom = 50.0f;
+	//切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 100;
+	src.m_right = 100.0f + AniData[m_ani_frame] * 100;
+	src.m_bottom = 100.0f;
+			
+	//ブロック情報を持ってくる
+	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-			//ブロック情報を持ってくる
-			CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
-			//表示位置の設定
-			dst.m_top = 0.0f + m_py;
-			dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
-			dst.m_right = (50 - 50.0f *m_posture) + m_px + pb->GetScroll();
-			dst.m_bottom = 50.0f + m_py;
-
-			//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-			Draw::Draw(8, &src, &dst, c, 0.0f);
-
-			/*if (m_map[i][j] == 6)
-			{
-
-
-			}*/
-		}
-	}
+	//表示位置の設定
+	dst.m_top = 0.0f + m_py - 50;
+	dst.m_left = (100.0f * m_posture) + m_px + pb->GetScroll();
+	dst.m_right = (100 - 100.0f *m_posture) + m_px + pb->GetScroll();
+	dst.m_bottom = 100.0f + m_py - 50;
+					
+	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
+	Draw::Draw(12, &src, &dst, c, 0.0f);
+		
 }

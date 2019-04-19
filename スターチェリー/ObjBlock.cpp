@@ -109,8 +109,8 @@ void CObjBlock::Action()
 			{
 				//7があればボス(カメ)を出現
 				if (g_map_chenge == 0) {
-					/*CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);*/
+					CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+					Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);
 				}
 
 				//出現場所の値を0にする

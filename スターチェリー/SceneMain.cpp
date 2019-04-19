@@ -95,8 +95,12 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		//針罠読み込み
-		//Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);
+		Draw::LoadImage(L"カメ.png", 12, TEX_SIZE_512);
+
+		//歯車画像読み込みテスト
+		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
+
+		Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
@@ -169,11 +173,11 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero(map);   //主人公オブジェクト作成
-	Objs::InsertObj(obj, COBJ_HERO, 10);//作った主人公オブジェクトをオブジェクトマネージャーに登録
+	Objs::InsertObj(obj, COBJ_HERO, 30);//作った主人公オブジェクトをオブジェクトマネージャーに登録
 
 	//背景オブジェクト作成
 	C0bjBackground * back = new C0bjBackground();
-	Objs::InsertObj(back, OBJ_BACKGROUND, 8);
+	Objs::InsertObj(back, OBJ_BACKGROUND, 1);
 	
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock(map);
