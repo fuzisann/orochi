@@ -39,6 +39,13 @@ public:
 		float*vx, float*vy, int*bt
 	);
 
+	//ブロックの当たり判定(ボス1)
+	void BlockHitBoss1(
+		float*x, float*y, bool scroll_on,
+		bool*up, bool*down, bool*left, bool*right,
+		float*vx, float*vy, int*bt
+	);
+
 
 private:
 	void BlockDraw(float x, float y, RECT_F*dst, float c[]);

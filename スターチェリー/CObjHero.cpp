@@ -245,6 +245,12 @@ void CObjHero::Action()
 				m_damage = ene2->GetDMG();
 				m_hero_hp -= m_damage;
 			}
+			if (hit->CheckObjNameHit(OBJ_BOSS_FIRST) != nullptr)
+			{
+				CObjBoss1* boss1 = (CObjBoss1*)Objs::GetObj(OBJ_BOSS_FIRST);
+				m_damage = boss1->GetDMG();
+				m_hero_hp -= m_damage;
+			}
 
 
 			//“G‚ÌUŒ‚‚É‚æ‚Á‚ÄHP‚ª0ˆÈ‰º‚É‚È‚Á‚½ê‡

@@ -26,10 +26,10 @@ void CObjBoss1::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
-	m_speed_power = 0.5f;//通常速度
+	m_speed_power = 0.1f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_enemy_hp = 3;     //敵のヒットポイント(最大3)(仮)
+	m_enemy_hp = 500;     //敵のヒットポイント(最大5)
 	m_damage = 1;
 
 	m_move = false;		//true=右 false=左
@@ -41,7 +41,7 @@ void CObjBoss1::Init()
 	m_hit_right = false;
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 100, 100, ELEMENT_ENEMY, OBJ_BOSS_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 100, 55, ELEMENT_ENEMY, OBJ_BOSS_FIRST, 1);
 }
 
 //アクション
@@ -61,7 +61,7 @@ void CObjBoss1::Action()
 	int d;
 	//ブロックとの当たり判定実行
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	pb->BlockHitEne(&m_px, &m_py, false,
+	pb->BlockHitBoss1(&m_px, &m_py, false,
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 		&d
 	);
@@ -71,13 +71,13 @@ void CObjBoss1::Action()
 	m_py += m_vy;
 
 	//落下
-	if (m_py > 1000.0f)
+	/*if (m_py > 1000.0f)
 	{
 		;
-	}
+	}*/
 
 	//通常速度
-	m_speed_power = 0.5f;
+	m_speed_power = 0.1f;
 	m_ani_max_time = 4;
 
 	//ブロック衝突で向き変更
@@ -158,7 +158,7 @@ void CObjBoss1::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScroll(), m_py - 50);
+	hit->SetPos(m_px + block->GetScroll(), m_py - 6);
 
 }
 //ドロー
@@ -186,10 +186,10 @@ void CObjBoss1::Draw()
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py - 50;
+	dst.m_top = 0.0f + m_py - 32;
 	dst.m_left = (100.0f * m_posture) + m_px + pb->GetScroll();
 	dst.m_right = (100 - 100.0f *m_posture) + m_px + pb->GetScroll();
-	dst.m_bottom = 100.0f + m_py - 50;
+	dst.m_bottom = 100.0f + m_py - 32;
 					
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
 	Draw::Draw(12, &src, &dst, c, 0.0f);
