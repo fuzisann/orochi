@@ -27,6 +27,7 @@ void CObjMain::Action()
 //ドロー
 void CObjMain::Draw()
 {
+	
 	CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
 	hero_hp = hero->GetHP();	//主人公からHPの情報を取得
 
@@ -36,6 +37,7 @@ void CObjMain::Draw()
 	RECT_F dst;	//描画先表示位置
 
 	wchar_t HP[128];
+
 
 	//画面上部のメニュー画面
 

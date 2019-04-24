@@ -14,6 +14,9 @@ using namespace GameL;
 float g_px = 64.0f;
 float g_py = 450.0f;
 
+
+
+
 //イニシャライズ
 void CObjHero::Init()
 {
@@ -32,7 +35,11 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 100;     //主人公のヒットポイント
+	m_hero_hp = 10;     //主人公のヒットポイント
+	m_max_hp = m_hero_hp;     //現在残りのHP
+	Width =302;     //画像の幅最大値
+	m_hero_hp = m_hero_hp / m_max_hp*Width; //HPの比率計算
+
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅

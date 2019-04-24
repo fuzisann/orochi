@@ -141,6 +141,9 @@
     <ClCompile Include="ObjBoss3.cpp">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
+    <ClCompile Include="CObjHeroGauge.cpp">
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -247,6 +250,9 @@
     </ClInclude>
     <ClInclude Include="ObjBoss3.h">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjHeroGauge.h">
+      <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E45AEB37-A8DD-4272-9606-30DA3FA4A409}</ProjectGuid>
     <RootNamespace>スターチェリー</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -138,6 +138,7 @@
     <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
     <ClCompile Include="CObjHeroSword.cpp" />
+    <ClCompile Include="CObjHeroGauge.cpp" />
     <ClCompile Include="ObjMain.cpp" />
     <ClCompile Include="ObjOver.cpp" />
     <ClCompile Include="ObjTitle.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
     <ClInclude Include="CObjHeroSword.h" />
+    <ClInclude Include="CObjHeroGauge.h" />
     <ClInclude Include="ObjMain.h" />
     <ClInclude Include="ObjOver.h" />
     <ClInclude Include="ObjTitle.h" />

@@ -28,6 +28,7 @@ enum OBJ_NAME
 	OBJ_STICK,
 	OBJ_SWORD,
 	OBJ_GEAR,
+	
 };
 //------------------------------------------------
 
@@ -89,7 +90,7 @@ extern int block2;
 #include "ObjBoss1.h"
 #include "ObjBoss2.h"
 #include "ObjBoss3.h"
-
+#include"CObjHeroGauge.h"
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------
