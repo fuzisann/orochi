@@ -18,6 +18,19 @@ CObjBlock::CObjBlock(int map[19][100])
 	memcpy(m_map, map, sizeof(int)*(19 * 100));
 }
 
+void CObjBlock::Setwall(bool type)
+{
+	if(type == true)
+		for (int i = 0; i < 19; i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				if (m_map[i][j] == 13)
+					m_map[i][j] = 0;
+			}
+		}
+}
+
 //イニシャライズ
 void CObjBlock::Init()
 {
@@ -112,10 +125,10 @@ void CObjBlock::Action()
 			if (m_map[i][j] == 7)
 			{
 				//7があればボス(カメ)を出現
-				if (g_map_chenge == 0) {
-					CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);
-				}
+				
+				CObjBoss1* objb1 = new CObjBoss1(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 112);
+			
 
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
@@ -145,34 +158,34 @@ void CObjBlock::Action()
 
 			if (m_map[i][j] == 10)
 			{
-				if (g_map_chenge == 0) {
-					//10があればChangeSwitchを出現
-					CObjChangeSwitch* objds = new CObjChangeSwitch(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
-					Objs::InsertObj(objds, OBJ_CHANGESWITCH, 11);
-				}
+				//10があればChangeSwitchを出現
+				CObjChangeSwitch* objds = new CObjChangeSwitch(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
+				Objs::InsertObj(objds, OBJ_CHANGESWITCH, 11);
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
+
 			}
 			if (m_map[i][j] == 11)
 			{
-				if (g_map_chenge == 0) {
-					//11があればChangeGate1を出現
-					CObjChangeGate1* objds = new CObjChangeGate1(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
-					Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);
-				}
+				
+				//11があればChangeGate1を出現
+				CObjChangeGate1* objds = new CObjChangeGate1(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
+				Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);
+				
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
 			}
-			if (m_map[i][j] == 12)
+			/*if (m_map[i][j] == 12)
 			{
-				if (g_map_chenge == 0) {
-					//12があればChangeGate2を出現
-					CObjChangeGate2* objds = new CObjChangeGate2(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
-					Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);
-				}
+				
+				//12があればChangeGate2を出現
+				CObjChangeGate2* objds = new CObjChangeGate2(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
+				Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);
+				
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
-			}
+			}*/
+			
 		}
 	}
 }
@@ -200,7 +213,7 @@ void CObjBlock::Draw()
 			src.m_bottom = ALL_BLOCK_SIZE;
 
 			//ブロック画像表示
-			if (m_map[i][j] == 1)
+			if (m_map[i][j] == 1 || m_map[i][j] == 13)
 			{
 				if (g_map_chenge == 0) {
 
@@ -311,9 +324,6 @@ void CObjBlock::BlockHit(
 						r = abs(r);
 					else
 						r = 360.0f - abs(r);
-
-					
-
 
 					//lenがある一定の長さのより短い場合判定に入る
 					if (len < 88.0f)

@@ -29,7 +29,7 @@ void CObjBoss1::Init()
 	m_speed_power = 0.1f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_enemy_hp = 500;     //敵のヒットポイント(最大5)
+	m_enemy_hp = 5;     //敵のヒットポイント(最大5)
 	m_damage = 1;
 
 	m_move = false;		//true=右 false=左
@@ -103,6 +103,14 @@ void CObjBoss1::Action()
 		m_posture = 0.0f;
 		m_ani_time += 1;
 	}
+
+	if (m_change == false) {
+		
+	}
+	else {
+		
+	}
+	
 	/*else
 	{
 		m_ani_frame = 1;  //静止フレーム
@@ -150,6 +158,8 @@ void CObjBoss1::Action()
 
 	if (m_enemy_hp <= 0)
 	{
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+		block->Setwall(true);
 		this->SetStatus(false);		//画像の削除
 		Hits::DeleteHitBox(this);	//ヒットボックスの削除
 	}

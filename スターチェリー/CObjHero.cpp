@@ -258,6 +258,7 @@ void CObjHero::Action()
 				m_hero_hp -= m_damage;
 			}
 
+			
 
 			//敵の攻撃によってHPが0以下になった場合
 			if (m_hero_hp <= 0)
@@ -315,6 +316,33 @@ void CObjHero::Action()
 			}*/
 		}
 
+	}
+
+	if (hit->CheckElementHit(ELEMENT_MYSTERY) == true)
+	{
+		//主人公がブロックとどの角度で当たっているのかを確認
+		HIT_DATA** hit_date;							//当たった時の細かな情報を入れるための構造体
+		hit_date = hit->SearchElementHit(ELEMENT_MYSTERY);	//hit_dateに主人公と当たっている他全てのHitBoxとの情報を入れる
+		for (int i = 0; i < hit->GetCount(); i++)
+		{
+			float r = hit_date[i]->r;
+			if ((r < 45 && r >= 0) || r > 315)
+			{
+				m_vx = 0.0f; //右
+			}
+			if (r > 45 && r < 135)
+			{
+				m_vy = 0.0f;//上
+			}
+			if (r > 135 && r < 225)
+			{
+				m_vx = 0.0f;//左
+			}
+			if (r > 225 && r < 315)
+			{
+				m_vy = 0.0f; //下
+			}
+		}
 	}
 
 	if (m_time_d > 0)

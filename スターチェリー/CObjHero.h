@@ -78,5 +78,6 @@ private:
 	int m_x;
 	int m_y;
 	bool m_key_flag; //キーフラグ
+	bool m_gate_on;		//ゲートオンオフ切り替え用
 
 };

@@ -51,5 +51,7 @@ class CObjBoss1 : public CObj
 		int m_time;
 		int m_x;
 		int m_y;
+
+		bool m_change;	//スイッチのオンオフ
 };
 
