@@ -10,72 +10,55 @@
 //使用するネームスペース
 using namespace GameL;
 
-//イニシャライズ
-void Objgear::Init()
+CObjgear::CObjgear(float x, float y)
 {
-	m_px = 1050.0f;	//位置
-	m_py = 400.0f;
-	m_vy = 0.0f;
+	m_px = x;
+	m_py = y;
+}
 
+//イニシャライズ
+void CObjgear::Init()
+{
 	m_ani_time = 0;
-	m_ani_frame = 1;  //静止フレームを初期化する
-
-
-	m_damage = 1;
-
-	m_move = false;		//true=右 false=左
-
-	//blockとの追突状態確認用
-	m_hit_up = false;
-	m_hit_down = false;
-	m_hit_left = false;
-	m_hit_right = false;
+	m_ani_frame = 0;  //静止フレームを初期化する
+	m_ani_max_time = 15;  //アニメーション間隔幅
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 64, 64, ELEMENT_GEAR, OBJ_GEAR, 1);
 }
 
 //アクション
-void Objgear::Action()
+void CObjgear::Action()
 {
 
-	//ダミー
-	int d;
-	//ブロックとの当たり判定実行
-	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	pb->BlockHitEne(&m_px, &m_py, false,
-		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-		&d
-	);
+	m_ani_time += 1;
+	if (m_ani_time > m_ani_max_time)
+	{
+		m_ani_frame += 1;
+		m_ani_time = 0;
+	}
+	if (m_ani_frame == 4)
+	{
+		m_ani_frame = 0;
+	}
 
-	//位置の更新
-	m_px += m_vx;
-	m_py += m_vy;
+	//自身のHitBoxを持ってくる
+	CHitBox* hit = Hits::GetHitBox(this);
 
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	CHitBox* hit = Hits::GetHitBox(this);
-	hit->SetPos(m_px + block->GetScroll(), m_py);
+	hit->SetPos(m_px + block->GetScroll(), m_py - 32);
 
-	for (int i = 0; i < 19; i++)
-	{
-		for (int j = 0; j < 100; j++)
-		{
-
-			if (m_map[i][j] == 6)
-			{
-				/*CObjEnemy1* ene1 = new CObjEnemy1(j*50, i*50);
-				Objs::InsertObj(ene1, OBJ_ENEMY, 10);
-				m_map[i][j] = 0;*/
-			}
-		}
-	}
 }
 //ドロー
-void Objgear::Draw()
+void CObjgear::Draw()
 {
+	int AniData[5] =
+	{
+		0,1,2,3,4
+	};
 
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
@@ -83,7 +66,23 @@ void Objgear::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 
-	for (int i = 0; i < 19; i++)
+	// 切り取り位置の設定
+	src.m_top = 0.0f;
+	src.m_left = 0.0f + AniData[m_ani_frame] * 128;
+	src.m_right = 128.0f + AniData[m_ani_frame] * 128;
+	src.m_bottom = 128.0f;
+
+	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//表示位置の設定
+	dst.m_top = 0.0f + m_py-32;
+	dst.m_left = 0.0f + m_px + block->GetScroll();
+	dst.m_right = 64.0f + m_px + block->GetScroll();
+	dst.m_bottom = 64.0f + m_py-32;
+
+	Draw::Draw(10, &src, &dst, c, 0.0f);
+
+
+	/*for (int i = 0; i < 19; i++)
 	{
 		for (int j = 0; j < 100; j++)
 		{
@@ -110,5 +109,5 @@ void Objgear::Draw()
 				Draw::Draw(8, &src, &dst, c, 0.0f);
 			}
 		}
-	}
+	}*/
 }

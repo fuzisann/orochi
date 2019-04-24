@@ -45,17 +45,17 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"stage1変更.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"ステージ1完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"仮ステージ1-1.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"ステージ2完成.csv", &size);//外部データ読み込み
 	}
-	/*else if (g_map_chenge == 2)
+	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"map7-6.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"マップ3.csv", &size);//外部データ読み込み
 	}
-	else if (g_map_chenge == 3)
+	/*else if (g_map_chenge == 3)
 	{
 		p = Save::ExternalDataOpen(L"map9-6.csv", &size);//外部データ読み込み
 	}
@@ -74,8 +74,10 @@ void CSceneMain::InitScene()
 			swscanf_s(&p.get()[count], L"%d", &w);
 
 			map[i][j] = w;
-
-			count += 2;
+			if(w>=10)
+				count += 3;
+			else
+				count += 2;
 		}
 	}
 
@@ -91,21 +93,38 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"１ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
 		Draw::LoadImage(L"ブロック1.png", 2, TEX_SIZE_512);
+		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
+
+		//チェンジスイッチ＆ゲート画像読み込みテスト
+		Draw::LoadImage(L"雲ブロック.png", 6, TEX_SIZE_512);
+		Draw::LoadImage(L"氷ブロック.png", 7, TEX_SIZE_512);
+
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		//針罠読み込み
-		//Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);
+		Draw::LoadImage(L"カメ.png", 12, TEX_SIZE_512);
+
+		//歯車画像読み込みテスト
+		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
+
+		Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
+
+		//剣画像読み込み
+		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 	}
 	else if (g_map_chenge == 1)
 	{
-		/*テスト*/
 		//背景画像読み込み
-		Draw::LoadImage(L"１ステージ背景.png", 3, TEX_SIZE_1024);
+		//Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
-		Draw::LoadImage(L"ブロック1.png", 2, TEX_SIZE_512);
-		//テスト 敵画像読み込み
+		Draw::LoadImage(L"ステージ2ブロック.png", 2, TEX_SIZE_512);
+		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
+		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
+		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
+		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
+		//剣画像読み込み
+		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 		/*//背景画像読み込み
 		Draw::LoadImage(L"map.jpg", 3, TEX_SIZE_1024);
 		//マップ2　ブロック画像読み込み
@@ -113,18 +132,29 @@ void CSceneMain::InitScene()
 		//針罠読み込み
 		Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);*/
 	}
-	/*else if (g_map_chenge == 2)
+	else if (g_map_chenge == 2)
 	{
 		//背景画像読み込み
+		Draw::LoadImage(L"３ステージ背景.png", 3, TEX_SIZE_1024);
+		//ブロック画像読み込み
+		Draw::LoadImage(L"ステージ3ブロック.png", 2, TEX_SIZE_512);
+		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
+		//敵画像読み込み
+		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
+		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
+		Draw::LoadImage(L"乙姫.png", 12, TEX_SIZE_512);
+		//剣画像読み込み
+		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
+		/*//背景画像読み込み
 		Draw::LoadImage(L"氷の洞窟2.jpg", 3, TEX_SIZE_1024);
 		//マップ7　ブロック画像読み込み
 		Draw::LoadImage(L"氷ブロック.png", 1, TEX_SIZE_512);
 		//マップ7　ブロック画像読み込み
 		Draw::LoadImage(L"氷ブロック2.png", 6, TEX_SIZE_512);
 		//氷柱罠読み込み
-		Draw::LoadImage(L"氷柱ブロック.png",7, TEX_SIZE_512);
+		Draw::LoadImage(L"氷柱ブロック.png",7, TEX_SIZE_512);*/
 	}
-	else if (g_map_chenge == 3) 
+	/*else if (g_map_chenge == 3) 
 	{
 		//背景画像読み込み
 		Draw::LoadImage(L"雲の上ステージ.jpg", 3, TEX_SIZE_1024);
@@ -154,11 +184,11 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero(map);   //主人公オブジェクト作成
-	Objs::InsertObj(obj, COBJ_HERO, 10);//作った主人公オブジェクトをオブジェクトマネージャーに登録
+	Objs::InsertObj(obj, COBJ_HERO, 30);//作った主人公オブジェクトをオブジェクトマネージャーに登録
 
 	//背景オブジェクト作成
 	C0bjBackground * back = new C0bjBackground();
-	Objs::InsertObj(back, OBJ_BACKGROUND, 8);
+	Objs::InsertObj(back, OBJ_BACKGROUND, 1);
 	
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock(map);

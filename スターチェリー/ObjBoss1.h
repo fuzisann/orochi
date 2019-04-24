@@ -4,14 +4,12 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト : 敵
-class CObjEnemy2 : public CObj
+//オブジェクト : ボス
+class CObjBoss1 : public CObj
 {
-	#define ALL_ENEMY_SIZE (32.0f)
-
 	public:
-		CObjEnemy2(float x, float y) ;
-		~CObjEnemy2() {};
+		CObjBoss1(float x, float y);
+		~CObjBoss1() {};
 		void Init();   //イ二シャライズ
 		void Action();	//アクション
 		void Draw();    //ドロー
@@ -38,7 +36,7 @@ class CObjEnemy2 : public CObj
 		float m_speed_power; //スピードパワー
 		float m_ani_max_time;//アニメーション動画間隔最大値
 
-							 //blockとの衝突状態確認用
+		//blockとの衝突状態確認用
 		bool m_hit_up;
 		bool m_hit_down;
 		bool m_hit_left;
@@ -54,3 +52,4 @@ class CObjEnemy2 : public CObj
 		int m_x;
 		int m_y;
 };
+
