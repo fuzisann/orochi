@@ -70,6 +70,27 @@ void CObjBoss1::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
+
+	//“Ëis“®
+	if (m_do_f == true)
+	{
+		m_dotime++;
+		if (m_dotime > 40)
+		{
+			m_vx *= 5;
+			m_vy *= 5;
+			if (m_dotime == 100)
+			{
+				m_do_f = false;
+				m_dotime = 0;
+			}
+		}
+		else
+		{
+			m_vx = 0;
+			m_vy = 0;
+		}
+	}
 	//—Ž‰º
 	/*if (m_py > 1000.0f)
 	{

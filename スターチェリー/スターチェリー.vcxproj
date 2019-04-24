@@ -141,6 +141,7 @@
     <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
     <ClCompile Include="CObjHeroSword.cpp" />
+    <ClCompile Include="CObjHeroGauge.cpp" />
     <ClCompile Include="ObjMain.cpp" />
     <ClCompile Include="ObjOver.cpp" />
     <ClCompile Include="ObjSwitch.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
     <ClInclude Include="CObjHeroSword.h" />
+    <ClInclude Include="CObjHeroGauge.h" />
     <ClInclude Include="ObjMain.h" />
     <ClInclude Include="ObjOver.h" />
     <ClInclude Include="ObjSwitch.h" />

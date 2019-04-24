@@ -34,6 +34,8 @@ void CObjBoss3::Init()
 
 	m_move = false;		//true=右 false=左
 
+	m_do_f = false;//突進フラグ
+
 	//blockとの追突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -65,7 +67,6 @@ void CObjBoss3::Action()
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 		&d
 	);
-
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
@@ -119,6 +120,29 @@ void CObjBoss3::Action()
 	{
 		m_ani_frame = 0;
 	}
+
+	//突進行動
+	if (m_do_f == true)
+	{
+		m_dotime++;
+		if (m_dotime > 40)
+		{
+			m_vx *= 5;
+			m_vy *= 5;
+			if (m_dotime == 100)
+			{
+				m_do_f = false;
+				m_dotime = 0;
+			}
+		}
+		else
+		{
+			m_vx = 0;
+			m_vy = 0;
+		}
+	}
+
+
 
 	//攻撃を受けたら体力を減らす
 	//主人公とATTACK系統との当たり判定
