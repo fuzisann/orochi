@@ -13,6 +13,7 @@ CObjStick::CObjStick(float x, float y)
 {
 	m_x = x;
 	m_y = y;
+	m_v = v;
 }
 
 //イニシャライズ
