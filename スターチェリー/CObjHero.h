@@ -48,12 +48,14 @@ private:
 	float m_vx;      //移動ベクトル
 	float m_vy;
 	float m_posture; //姿勢
+	float Gethp() { return m_hero_hp; }
 
 	int m_ani_time; //アニメーションフレーム動作間隔
 	int m_ani_frame;  //描画フレーム
 
 	int m_hero_hp;	//体力(戦闘)
 	int m_max_hp;	//HPの最大値
+	int Width;      //画像の幅最大値
 
 	int m_damage;	//主人公が受けるダメージ用
 
