@@ -141,8 +141,17 @@
     <ClCompile Include="ObjBoss3.cpp">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
-    <ClCompile Include="CObjHeroGauge.cpp">
-      <Filter>ソース ファイル\Main\Hero関係</Filter>
+    <ClCompile Include="ObjChangeSwitch.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjChangeGate1.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjChangeGate2.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSwitch.cpp">
+      <Filter>ソース ファイル\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -251,8 +260,17 @@
     <ClInclude Include="ObjBoss3.h">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
-    <ClInclude Include="CObjHeroGauge.h">
-      <Filter>ソース ファイル\Main\Hero関係</Filter>
+    <ClInclude Include="ObjChangeSwitch.h">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjChangeGate1.h">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjChangeGate2.h">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjSwitch.h">
+      <Filter>ソース ファイル\Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

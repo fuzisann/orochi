@@ -28,7 +28,9 @@ enum OBJ_NAME
 	OBJ_STICK,
 	OBJ_SWORD,
 	OBJ_GEAR,
-	
+	OBJ_SWITCH,
+	OBJ_CHANGESWITCH,
+	OBJ_CHANGEGATE,
 };
 //------------------------------------------------
 
@@ -50,6 +52,8 @@ enum HIT_ELEMENTS
 	ELEMENT_BLACK,
 	ELEMENT_WHITE,
 	ELEMENT_ATTACK,
+	ELEMENT_GEAR,
+	ELEMENT_MYSTERY,
 };
 //------------------------------------------------
 
@@ -90,7 +94,11 @@ extern int block2;
 #include "ObjBoss1.h"
 #include "ObjBoss2.h"
 #include "ObjBoss3.h"
-#include"CObjHeroGauge.h"
+#include "ObjSwitch.h"
+#include "ObjChangeSwitch.h"
+#include "ObjChangeGate1.h"
+#include "ObjChangeGate2.h"
+
 //------------------------------------------------
 
 //ゲームシーンクラスヘッダ------------------------

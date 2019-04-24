@@ -7,7 +7,6 @@ using namespace GameL;
 //オブジェクト : ボス
 class CObjBoss1 : public CObj
 {
-	#define ALL_ENEMY_SIZE (32.0f)
 	public:
 		CObjBoss1(float x, float y);
 		~CObjBoss1() {};
