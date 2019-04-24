@@ -11,13 +11,19 @@ using namespace GameL;
 //コンストラクタ
 CObjStick::CObjStick(float x, float y)
 {
-	m_x = x;
-	m_y = y;
+	m_x=x;
+	m_y=y;
 }
 
 //イニシャライズ
 void CObjStick::Init()
 {
+	m_vx = 0.0f;
+	m_vy = 0.0f;
+
+	m_hero_x = 0.0f;
+	m_hero_y = 0.0f;
+
 	m_ani_time = 0;
 	m_ani_frame = 0;
 
@@ -27,7 +33,12 @@ void CObjStick::Init()
 //アクション
 void CObjStick::Action()
 {
+	//主人公の情報を取得
+	CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
+		m_hero_x = hero->GetX();
+		m_hero_y = hero->GetY();
 	
+
 }
 //ドロー
 void CObjStick::Draw()

@@ -36,9 +36,7 @@ void CObjHero::Init()
 	m_block_type = 0;	//踏んでいるブロックの種類
 
 	m_hero_hp = 10;     //主人公のヒットポイント
-	m_max_hp = m_hero_hp;     //現在残りのHP
-	Width =302;     //画像の幅最大値
-	m_hero_hp = m_hero_hp / m_max_hp*Width; //HPの比率計算
+	
 
 
 	m_speed_power = 0.5f;//通常速度
@@ -351,10 +349,26 @@ void CObjHero::Draw()
 	RECT_F dst;//描写先表示位置
 	
     //切り取り位置の設定
+	
+	if(Input::GetVKey('Y') == true) //上る壁に主人公が当たった時
+	{
+		//剣を持っていない時の主人公が描かれている所を切り取る
+	src.m_top =   70.0f;
+	src.m_left =  66.0f+ AniData[m_ani_frame] * 64;
+	src.m_right =  121.0f+ AniData[m_ani_frame] * 64;
+	src.m_bottom = 123.0f;
+
+	}
+	else //それ以外の時
+	{
+		//剣を持っている時の主人公が描かれている所を切り取る
 	src.m_top = 0.0f;
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = 64.0f;
+
+	}
+
 
 	//表示位置の設定
 	dst.m_top = 0.0f + g_py;

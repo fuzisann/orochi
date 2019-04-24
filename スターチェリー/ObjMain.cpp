@@ -36,9 +36,10 @@ void CObjMain::Draw()
 	RECT_F src;	//描画元切り取り位置
 	RECT_F dst;	//描画先表示位置
 
+
 	wchar_t HP[128];
 
-
+	
 	//画面上部のメニュー画面
 
 	swprintf_s(HP, L"HP %d", hero_hp);

@@ -16,8 +16,13 @@ public:
 
 private:
 	bool m_f = true;
-	bool m_x;
-	bool m_y;
+	float m_x;		//X方向の位置用変数
+	float m_y;		//Y方向の位置用変数
+	float m_vx;		//X方向の速度用変数
+	float m_vy;		//Y方向の速度用変数
+	
+	float m_hero_x;
+	float m_hero_y;
 	int m_ani_time;
 	int m_ani_frame;
 
