@@ -34,6 +34,8 @@ void CObjBoss1::Init()
 
 	m_move = false;		//true=右 false=左
 
+	m_change = true;
+
 	//blockとの追突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -101,6 +103,15 @@ void CObjBoss1::Action()
 	m_speed_power = 0.1f;
 	m_ani_max_time = 4;
 
+	if (m_change == false) {
+		m_vx = 0;
+		m_vy = 0;
+	}
+	/*else {
+		m_vx = 0;
+		m_vy = 0;
+	}*/
+	
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
 	{
@@ -123,13 +134,6 @@ void CObjBoss1::Action()
 		m_vx -= m_speed_power;
 		m_posture = 0.0f;
 		m_ani_time += 1;
-	}
-
-	if (m_change == false) {
-		
-	}
-	else {
-		
 	}
 	
 	/*else
