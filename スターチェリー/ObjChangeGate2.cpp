@@ -12,6 +12,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+//extern bool m_change;
+
 
 CObjChangeGate2::CObjChangeGate2(float x, float y)
 {
@@ -35,8 +37,8 @@ void CObjChangeGate2::Action()
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
 	//チェンジスイッチの情報を取得
-	CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
-	m_change = change->GetCHANGE();
+	//CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
+	//m_change = change->GetCHANGE();
 
 	//チェンジフラグがオンの場合
 	if (m_change == true) {

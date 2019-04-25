@@ -98,6 +98,7 @@ extern int block2;
 #include "ObjChangeSwitch.h"
 #include "ObjChangeGate1.h"
 #include "ObjChangeGate2.h"
+#include "CObjHeroGauge.h"
 
 //------------------------------------------------
 

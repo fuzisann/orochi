@@ -15,6 +15,8 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 
+	//bool GetCHANGE() { return m_change; }
+
 private:
 	float m_px;			//位置
 	float m_py;
@@ -22,7 +24,6 @@ private:
 	float m_vy;
 
 	int m_time;	//メッセージ時間管理
-	bool m_change;	//スイッチのオンオフ
 	bool m_gate_on;		//ゲートオンオフ切り替え用
 };
 
