@@ -76,7 +76,7 @@ void CObjBoss1::Action()
 
 
 	//突進行動
-	if (m_do_f == true)
+	/*if (m_do_f == true)
 	{
 		m_dotime++;
 		if (m_dotime > 40)
@@ -94,7 +94,7 @@ void CObjBoss1::Action()
 			m_vx = 0;
 			m_vy = 0;
 		}
-	}
+	}*/
 	//落下
 	/*if (m_py > 1000.0f)
 	{
@@ -109,7 +109,7 @@ void CObjBoss1::Action()
 	if (m_start_boss == false)
 	{
 		m_speed_power = 2.5f;
-		m_ani_time += 1;
+		//m_ani_time = 4;
 	}
 
 	//通常速度
@@ -179,13 +179,13 @@ void CObjBoss1::Action()
 		//ノックバック処理
 		if (m_posture == 0.0f)
 		{
-			m_vy = -10;
-			m_vx += 15;
+			m_vy = -20;
+			m_vx += 30;
 		}
 		if (m_posture == 1.0f)
 		{
-			m_vy = -10;
-			m_vx -= 15;
+			m_vy = -20;
+			m_vx -= 30;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
 		m_enemy_hp -= 1;	//敵の体力を減らす

@@ -45,15 +45,15 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"ステージ1完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage1 完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"ステージ2完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage2 完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"マップ3.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage3 完成.csv", &size);//外部データ読み込み
 	}
 	/*else if (g_map_chenge == 3)
 	{
@@ -120,7 +120,7 @@ void CSceneMain::InitScene()
 	else if (g_map_chenge == 1)
 	{
 		//背景画像読み込み
-		//Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
+		Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
 		Draw::LoadImage(L"ステージ2ブロック.png", 2, TEX_SIZE_512);
 		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
@@ -128,6 +128,11 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
 		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
+
+		//歯車画像読み込みテスト
+		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
+
+		Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 		/*//背景画像読み込み

@@ -150,10 +150,9 @@ void CObjBlock::Action()
 			if (m_map[i][j] == 8)
 			{
 				//8があればボス(リュウグウノツカイ)を出現
-				if (g_map_chenge == 1) {
-					CObjBoss2* objb2 = new CObjBoss2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb2, OBJ_BOSS_SECOND, 112);
-				}
+				
+				CObjBoss2* objb2 = new CObjBoss2(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(objb2, OBJ_BOSS_SECOND, 112);
 
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
@@ -161,10 +160,9 @@ void CObjBlock::Action()
 			if (m_map[i][j] == 9)
 			{
 				//9があればボス(サメ(乙姫))を出現
-				if (g_map_chenge == 2) {
-					CObjBoss3* objb3 = new CObjBoss3(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
-					Objs::InsertObj(objb3, OBJ_BOSS_THIRD, 112);
-				}
+				
+				CObjBoss3* objb3 = new CObjBoss3(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(objb3, OBJ_BOSS_THIRD, 112);
 
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
@@ -181,7 +179,6 @@ void CObjBlock::Action()
 			}
 			if (m_map[i][j] == 11)
 			{
-				
 				//11があればChangeGate1を出現
 				CObjChangeGate1* objds = new CObjChangeGate1(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
 				Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);

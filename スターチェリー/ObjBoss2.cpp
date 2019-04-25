@@ -185,10 +185,10 @@ void CObjBoss2::Draw()
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py -32;
+	dst.m_top = 0.0f + m_py - 32;
 	dst.m_left = (150.0f * m_posture) + m_px + pb->GetScroll();
 	dst.m_right = (150 - 150.0f *m_posture) + m_px + pb->GetScroll();
-	dst.m_bottom = 100.0f + m_py -32;
+	dst.m_bottom = 100.0f + m_py - 32;
 			
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
 	Draw::Draw(12, &src, &dst, c, 0.0f);

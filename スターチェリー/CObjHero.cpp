@@ -104,7 +104,7 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true && m_time == 0)
 		{
-			m_vy = -30;	//初期値：-13
+			m_vy = -13;	//初期値：-13
 			g_py += m_vy;
 
 			//Audio::Start(1);
@@ -260,6 +260,12 @@ void CObjHero::Action()
 			{
 				CObjBoss2* boss2 = (CObjBoss2*)Objs::GetObj(OBJ_BOSS_SECOND);
 				m_damage = boss2->GetDMG();
+				m_hero_hp -= m_damage;
+			}
+			if (hit->CheckObjNameHit(OBJ_BOSS_THIRD) != nullptr)
+			{
+				CObjBoss3* boss3 = (CObjBoss3*)Objs::GetObj(OBJ_BOSS_THIRD);
+				m_damage = boss3->GetDMG();
 				m_hero_hp -= m_damage;
 			}
 
