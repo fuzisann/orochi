@@ -10,6 +10,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern bool m_start_boss;
+
 CObjBoss1::CObjBoss1(float x, float y)
 {
 	m_px = x;
@@ -26,13 +28,15 @@ void CObjBoss1::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
-	m_speed_power = 0.1f;//通常速度
+	m_speed_power = 2.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
 	m_enemy_hp = 5;     //敵のヒットポイント(最大5)
 	m_damage = 1;
 
-	m_move = false;		//true=右 false=左
+	m_move = true;		//true=右 false=左
+
+	m_change = true;
 
 	//blockとの追突状態確認用
 	m_hit_up = false;
@@ -97,9 +101,35 @@ void CObjBoss1::Action()
 		;
 	}*/
 
+	m_speed_power = 0.0f;		//スピードを０にする
+	m_vx = 0.0f;
+	m_vy = 0.0f;
+	m_ani_time = 0;
+
+	if (m_start_boss == false)
+	{
+		m_speed_power = 2.5f;
+		m_ani_time += 1;
+	}
+
 	//通常速度
-	m_speed_power = 0.1f;
-	m_ani_max_time = 4;
+	
+
+	/*if (m_change == true) {
+		m_change = false;
+	}
+	else {
+		m_change = true;
+	}
+
+	if (m_change == false) {
+		
+	}
+	else {
+		m_vx = 0;
+		m_vy = 0;
+	}*/
+	
 
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
@@ -123,13 +153,6 @@ void CObjBoss1::Action()
 		m_vx -= m_speed_power;
 		m_posture = 0.0f;
 		m_ani_time += 1;
-	}
-
-	if (m_change == false) {
-		
-	}
-	else {
-		
 	}
 	
 	/*else

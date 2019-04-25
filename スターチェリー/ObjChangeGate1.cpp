@@ -12,6 +12,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern bool m_change;
+
 CObjChangeGate1::CObjChangeGate1(float x, float y)
 {
 	m_px = x;		//位置
@@ -38,10 +40,14 @@ void CObjChangeGate1::Action()
 
 	//チェンジスイッチの情報を取得
 	CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
-	m_change = change->GetCHANGE();
+	//m_change = change->GetCHANGE();
+
+	/*CObjChangeGate1* change = (CObjChangeGate1*)Objs::GetObj(OBJ_CHANGEGATE);
+	m_change = change->GetCHANGE();*/
 
 	//チェンジフラグがオンの場合
 	if (m_change == false) {
+		
 		hit->SetInvincibility(false);	//無敵オフ
 	}
 	else {
@@ -62,10 +68,6 @@ void CObjChangeGate1::Action()
 //ドロー
 void CObjChangeGate1::Draw()
 {
-	/*if (g_battle_flag == true)
-	{
-		return;
-	}*/
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float g[4] = { 0.0f,1.0f,1.0f,1.0f };

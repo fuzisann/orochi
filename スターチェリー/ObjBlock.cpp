@@ -11,6 +11,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+bool Hit_wall = false;
 
 CObjBlock::CObjBlock(int map[19][100])
 {
@@ -30,6 +31,19 @@ void CObjBlock::Setwall(bool type)
 			}
 		}
 }
+
+/*void CObjBlock::Setswitch(bool type)
+{
+	if (type == true)
+		for (int i = 0; i < 19; i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				if (m_map[i][j] == 10)
+					m_map[i][j] = 0;
+			}
+		}
+}*/
 
 //イニシャライズ
 void CObjBlock::Init()
@@ -290,6 +304,9 @@ void CObjBlock::BlockHit(
 	//踏んでいるblockの種類の初期化
 	*bt = 0;
 
+	//上る壁に触れた時の描画変更初期化
+	Hit_wall = false;
+
 	//m_mapの全要素にアクセス
 	for (int i = 0; i < 19; i++)
 	{
@@ -372,6 +389,7 @@ void CObjBlock::BlockHit(
 							if (m_map[i][j] == 2)
 							{
 								*x = bx - 62.0f + (scroll);//ブロックの位置-主人公の幅
+								Hit_wall = true;
 							}
 						}
 						if (r > 225 && r < 315)

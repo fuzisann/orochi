@@ -3,6 +3,9 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include "GameL\DrawTexture.h"
+#include "GameL\DrawFont.h"
+
 
 #include"GameHead.h"
 #include"CObjHero.h"
@@ -13,7 +16,7 @@ using namespace GameL;
 
 float g_px = 64.0f;
 float g_py = 450.0f;
-
+extern bool Hit_wall;
 
 
 
@@ -36,6 +39,7 @@ void CObjHero::Init()
 	m_block_type = 0;	//踏んでいるブロックの種類
 
 	m_hero_hp = 10;     //主人公の最大HP
+
 
 
 	m_speed_power = 0.5f;//通常速度
@@ -363,6 +367,7 @@ void CObjHero::Action()
 //ドロー
 void CObjHero::Draw()
 {
+
 	int AniData[5] =
 	{
 		0,1,2,3,0,
@@ -376,11 +381,30 @@ void CObjHero::Draw()
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 	
+	swprintf_s(str, L"%d", m_hero_hp);
+	Font::StrDraw(str, 150, 100, 30, c);
+	
     //切り取り位置の設定
+	
+	if(Hit_wall == true) //上る壁に主人公が当たった時
+	{
+		//剣を持っていない時の主人公が描かれている所を切り取る
+	src.m_top =   70.0f;
+	src.m_left =  66.0f;
+	src.m_right =  121.0f;
+	src.m_bottom = 123.0f;
+
+	}
+	else //それ以外の時
+	{
+		//剣を持っている時の主人公が描かれている所を切り取る
 	src.m_top = 0.0f;
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = 64.0f;
+
+	}
+
 
 	//表示位置の設定
 	dst.m_top = 0.0f + g_py;

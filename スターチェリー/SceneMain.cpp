@@ -111,8 +111,9 @@ void CSceneMain::InitScene()
 
 		//体力の読み込み
 		Draw::LoadImage(L"体力ゲージフル.png", 17, TEX_SIZE_512);
-		Draw::LoadImage(L"体力ゲージフル.png", 18, TEX_SIZE_512);
-		Draw::LoadImage(L"体力ゲージフル.png", 19, TEX_SIZE_512);
+		
+		
+		
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
