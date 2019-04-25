@@ -147,6 +147,8 @@ void CObjBoss2::Action()
 
 	if (m_enemy_hp <= 0)
 	{
+		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+		block->Setwall(true);
 		this->SetStatus(false);		//画像の削除
 		Hits::DeleteHitBox(this);	//ヒットボックスの削除
 	}

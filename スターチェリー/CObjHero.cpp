@@ -3,6 +3,9 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include "GameL\DrawTexture.h"
+#include "GameL\DrawFont.h"
+
 
 #include"GameHead.h"
 #include"CObjHero.h"
@@ -13,6 +16,9 @@ using namespace GameL;
 
 float g_px = 64.0f;
 float g_py = 450.0f;
+extern bool Hit_wall;
+
+
 
 //イニシャライズ
 void CObjHero::Init()
@@ -32,7 +38,9 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 100;     //主人公のヒットポイント
+	m_hero_hp = 10;     //主人公の最大HP
+
+
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -258,6 +266,7 @@ void CObjHero::Action()
 				m_hero_hp -= m_damage;
 			}
 
+			
 
 			//敵の攻撃によってHPが0以下になった場合
 			if (m_hero_hp <= 0)
@@ -317,6 +326,33 @@ void CObjHero::Action()
 
 	}
 
+	if (hit->CheckElementHit(ELEMENT_MYSTERY) == true)
+	{
+		//主人公がブロックとどの角度で当たっているのかを確認
+		HIT_DATA** hit_date;							//当たった時の細かな情報を入れるための構造体
+		hit_date = hit->SearchElementHit(ELEMENT_MYSTERY);	//hit_dateに主人公と当たっている他全てのHitBoxとの情報を入れる
+		for (int i = 0; i < hit->GetCount(); i++)
+		{
+			float r = hit_date[i]->r;
+			if ((r < 45 && r >= 0) || r > 315)
+			{
+				m_vx = 0.0f; //右
+			}
+			if (r > 45 && r < 135)
+			{
+				m_vy = 0.0f;//上
+			}
+			if (r > 135 && r < 225)
+			{
+				m_vx = 0.0f;//左
+			}
+			if (r > 225 && r < 315)
+			{
+				m_vy = 0.0f; //下
+			}
+		}
+	}
+
 	if (m_time_d > 0)
 	{
 		m_time_d--;
@@ -331,6 +367,7 @@ void CObjHero::Action()
 //ドロー
 void CObjHero::Draw()
 {
+
 	int AniData[5] =
 	{
 		0,1,2,3,0,
@@ -339,15 +376,35 @@ void CObjHero::Draw()
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
 	float a[4] = { 10.0f,0.6f,0.6f,0.7f };
+	
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
 	
+	swprintf_s(str, L"%d", m_hero_hp);
+	Font::StrDraw(str, 150, 100, 30, c);
+	
     //切り取り位置の設定
+	
+	if(Hit_wall == true) //上る壁に主人公が当たった時
+	{
+		//剣を持っていない時の主人公が描かれている所を切り取る
+	src.m_top =   70.0f;
+	src.m_left =  66.0f;
+	src.m_right =  121.0f;
+	src.m_bottom = 123.0f;
+
+	}
+	else //それ以外の時
+	{
+		//剣を持っている時の主人公が描かれている所を切り取る
 	src.m_top = 0.0f;
 	src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 	src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 	src.m_bottom = 64.0f;
+
+	}
+
 
 	//表示位置の設定
 	dst.m_top = 0.0f + g_py;

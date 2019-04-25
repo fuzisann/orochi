@@ -109,6 +109,12 @@ void CSceneMain::InitScene()
 
 		Draw::LoadImage(L"•Ô4.png", 11, TEX_SIZE_512);
 
+		//‘Ì—Í‚Ì“Ç‚İ‚İ
+		Draw::LoadImage(L"‘Ì—ÍƒQ[ƒWƒtƒ‹.png", 17, TEX_SIZE_512);
+		
+		
+		
+
 		//Œ•‰æ‘œ“Ç‚İ‚İ
 		Draw::LoadImageW(L"Œ•.png", 16, TEX_SIZE_512);
 	}

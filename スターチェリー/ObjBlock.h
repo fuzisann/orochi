@@ -25,6 +25,9 @@ public:
 	/*float GetScrollX() { return m_scroll; }
 	float GetScrollY() { return m_scroll; }*/
 
+	void Setwall(bool type = true);//隠し通路セット関数
+	//void Setswitch(bool type = true);
+
 	//ブロックの当たり判定
 	void BlockHit(
 		float*x, float*y, bool scroll_on,
