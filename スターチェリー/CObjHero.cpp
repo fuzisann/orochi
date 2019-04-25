@@ -13,7 +13,7 @@ using namespace GameL;
 
 float g_px = 64.0f;
 float g_py = 450.0f;
-
+extern bool Hit_wall;
 
 
 
@@ -350,12 +350,12 @@ void CObjHero::Draw()
 	
     //切り取り位置の設定
 	
-	if(Input::GetVKey('Y') == true) //上る壁に主人公が当たった時
+	if(Hit_wall == true) //上る壁に主人公が当たった時
 	{
 		//剣を持っていない時の主人公が描かれている所を切り取る
 	src.m_top =   70.0f;
-	src.m_left =  66.0f+ AniData[m_ani_frame] * 64;
-	src.m_right =  121.0f+ AniData[m_ani_frame] * 64;
+	src.m_left =  66.0f;
+	src.m_right =  121.0f;
 	src.m_bottom = 123.0f;
 
 	}
