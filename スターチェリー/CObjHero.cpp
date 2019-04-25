@@ -3,6 +3,9 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include "GameL\DrawTexture.h"
+#include "GameL\DrawFont.h"
+
 
 #include"GameHead.h"
 #include"CObjHero.h"
@@ -364,6 +367,7 @@ void CObjHero::Action()
 //ドロー
 void CObjHero::Draw()
 {
+
 	int AniData[5] =
 	{
 		0,1,2,3,0,
@@ -375,6 +379,9 @@ void CObjHero::Draw()
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
+	
+	swprintf_s(str, L"%d", m_hero_hp);
+	Font::StrDraw(str, 150, 100, 30, c);
 	
     //切り取り位置の設定
 	
