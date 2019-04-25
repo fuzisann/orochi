@@ -32,6 +32,19 @@ void CObjBlock::Setwall(bool type)
 		}
 }
 
+/*void CObjBlock::Setswitch(bool type)
+{
+	if (type == true)
+		for (int i = 0; i < 19; i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				if (m_map[i][j] == 10)
+					m_map[i][j] = 0;
+			}
+		}
+}*/
+
 //イニシャライズ
 void CObjBlock::Init()
 {
