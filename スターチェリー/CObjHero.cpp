@@ -35,10 +35,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 10;     //主人公のヒットポイント
-	m_max_hp = m_hero_hp;     //現在残りのHP
-	Width =302;     //画像の幅最大値
-	m_hero_hp = m_hero_hp / m_max_hp*Width; //HPの比率計算
+	m_hero_hp = 10;     //主人公の最大HP
 
 
 	m_speed_power = 0.5f;//通常速度
@@ -374,6 +371,7 @@ void CObjHero::Draw()
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
 	float a[4] = { 10.0f,0.6f,0.6f,0.7f };
+	
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
