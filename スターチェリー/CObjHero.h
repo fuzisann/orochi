@@ -82,4 +82,5 @@ private:
 	bool m_key_flag; //キーフラグ
 	bool m_gate_on;		//ゲートオンオフ切り替え用
 
+	wchar_t str[256];
 };

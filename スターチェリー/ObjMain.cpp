@@ -42,7 +42,9 @@ void CObjMain::Draw()
 	
 	//画面上部のメニュー画面
 
-	swprintf_s(HP, L"HP %d", hero_hp);
-	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, GAME_HP_FONT_SIZE, c);//HPを表示
+	Draw::Draw(17, &src, &dst, c, 0.0f);
+	
+	/*swprintf_s(HP, L"HP %d", hero_hp);
+	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, GAME_HP_FONT_SIZE, c);//HPを表示*/
 
 }
