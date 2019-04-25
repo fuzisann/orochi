@@ -23,7 +23,7 @@ CObjChangeSwitch::CObjChangeSwitch(float x, float y)
 //イニシャライズ
 void CObjChangeSwitch::Init()
 {
-	m_change = false;	//画像切り替え
+	m_change = true;	//画像切り替え
 	m_time = 0;
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_FIELD, OBJ_CHANGESWITCH, 1);
@@ -106,12 +106,12 @@ void CObjChangeSwitch::Draw()
 	dst.m_bottom = 32.0f + m_py;
 
 	//描画
-	if (m_change == false) {
+	/*if (m_change == false) {
 		Draw::Draw(6, &src, &dst, g, 0.0f);
 	}
 	else if (m_change == true) {
 		Draw::Draw(6, &src, &dst, y, 0.0f);
-	}
+	}*/
 }
 
 

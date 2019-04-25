@@ -27,6 +27,7 @@ class CObjBoss1 : public CObj
 
 		int m_ani_time; //アニメーションフレーム動作間隔
 		int m_ani_frame;  //描画フレーム
+		int m_dotime;
 
 		int m_enemy_hp;		//敵の体力
 		int m_damage;
@@ -51,5 +52,8 @@ class CObjBoss1 : public CObj
 		int m_time;
 		int m_x;
 		int m_y;
+		bool m_do_f;//突進フラグ
+
+		bool m_change;	//スイッチのオンオフ
 };
 

@@ -16,6 +16,9 @@ CObjChangeGate1::CObjChangeGate1(float x, float y)
 {
 	m_px = x;		//位置
 	m_py = y;
+
+	//当たり判定用のHitBoxを作成
+	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_MYSTERY, OBJ_CHANGEGATE, 1);
 }
 
 //イニシャライズ
@@ -23,9 +26,6 @@ void CObjChangeGate1::Init()
 {
 	m_vx = 0.0f;		//移動ベクトル
 	m_vy = 0.0f;
-
-	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_MYSTERY, OBJ_CHANGEGATE, 1);
 }
 
 //アクション
@@ -33,16 +33,19 @@ void CObjChangeGate1::Action()
 {
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
+
+	CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
+
 	//チェンジスイッチの情報を取得
 	CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
 	m_change = change->GetCHANGE();
 
 	//チェンジフラグがオンの場合
-	if (m_change == true) {
-		hit->SetInvincibility(true);	//無敵オン
+	if (m_change == false) {
+		hit->SetInvincibility(false);	//無敵オフ
 	}
 	else {
-		hit->SetInvincibility(false);	//無敵オフ
+		hit->SetInvincibility(true);	//無敵オン
 	}
 
 	//位置の更新
@@ -51,9 +54,9 @@ void CObjChangeGate1::Action()
 
 	//ブロック情報を持ってくる
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-
 	//HitBoxの位置の変更
 	hit->SetPos(m_px + block->GetScroll(), m_py);
+
 }
 
 //ドロー
@@ -64,6 +67,7 @@ void CObjChangeGate1::Draw()
 		return;
 	}*/
 	//描画カラー情報
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float g[4] = { 0.0f,1.0f,1.0f,1.0f };
 	float a[4] = { 0.0f,0.0f,0.0f,0.0f };
 
@@ -84,12 +88,16 @@ void CObjChangeGate1::Draw()
 	dst.m_bottom = 32.0f + m_py;
 
 	//描画
-	if (m_change == true) {
-		Draw::Draw(7, &src, &dst, a, 0.0f);
+	if (m_change == false) {
+		Draw::Draw(2, &src, &dst, c, 0.0f);
+	}
+
+	/*if (m_change == true) {
+		Draw::Draw(2, &src, &dst, a, 0.0f);
 	}
 	else {
-		Draw::Draw(7, &src, &dst, g, 0.0f);
-	}
+		Draw::Draw(2, &src, &dst, g, 0.0f);
+	}*/
 }
 
 

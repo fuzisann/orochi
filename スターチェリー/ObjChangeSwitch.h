@@ -22,6 +22,7 @@ private:
 	float m_py;
 	bool m_change;		//画像切り替え用
 	int m_time;		//無敵時間用
+	bool m_gate_on;		//ゲートオンオフ切り替え用
 };
 
 
