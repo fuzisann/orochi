@@ -90,7 +90,7 @@ void CObjHero::Action()
 			Objs::InsertObj(objsb, OBJ_SWORD, 100);		//作った剣オブジェクトをオブジェクトマネージャーに登録
 
 			//斬撃音
-			//Audio::Start(0);
+			Audio::Start(1);
 
 			m_sword_delay = 20;
 		}
@@ -110,7 +110,7 @@ void CObjHero::Action()
 			m_vy = -13;	//初期値：-13
 			g_py += m_vy;
 
-			//Audio::Start(1);
+			Audio::Start(2);
 
 		}
 
@@ -237,6 +237,8 @@ void CObjHero::Action()
 				m_vy = -5;		//左
 				m_vx -= 10;
 			}
+
+			Audio::Start(3);	//ダメージ音
 			m_time_d = 80;		//無敵時間をセット
 			hit->SetInvincibility(true);	//無敵オン
 

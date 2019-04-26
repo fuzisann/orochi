@@ -28,7 +28,7 @@ void CObjBoss1::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
-	m_speed_power = 2.5f;//通常速度
+	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
 	m_enemy_hp = 5;     //敵のヒットポイント(最大5)
@@ -102,14 +102,13 @@ void CObjBoss1::Action()
 	}*/
 
 	m_speed_power = 0.0f;		//スピードを０にする
-	m_vx = 0.0f;
-	m_vy = 0.0f;
-	m_ani_time = 0;
+	//m_vx = 0.0f;
+	//m_vy = 0.0f;
 
 	if (m_start_boss == false)
 	{
-		m_speed_power = 2.5f;
-		//m_ani_time = 4;
+		m_speed_power = 0.5f;
+		m_ani_time = 4;
 	}
 
 	//通常速度
@@ -179,13 +178,13 @@ void CObjBoss1::Action()
 		//ノックバック処理
 		if (m_posture == 0.0f)
 		{
-			m_vy = -20;
-			m_vx += 30;
+			m_vy = -10;
+			m_vx += 15;
 		}
 		if (m_posture == 1.0f)
 		{
-			m_vy = -20;
-			m_vx -= 30;
+			m_vy = -10;
+			m_vx -= 15;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
 		m_enemy_hp -= 1;	//敵の体力を減らす

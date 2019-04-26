@@ -44,11 +44,13 @@ void CObjTitle::Action()
 	if (Input::GetVKey(VK_UP) == true && choose > 0 && m_time == 0)
 	{
 		--choose;
+		Audio::Start(0);
 		m_time = 10;
 	}
 	if (Input::GetVKey(VK_DOWN) == true && choose < 1 && m_time == 0)
 	{
 		++choose;
+		Audio::Start(0);
 		m_time = 10;
 	}
 

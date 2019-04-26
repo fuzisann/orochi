@@ -215,21 +215,22 @@ void CSceneMain::InitScene()
 	CObjMain* objm = new CObjMain();
 	Objs::InsertObj(objm, OBJ_MAIN, 120);
 
-	/*if (g_map_chenge == 0)
+	//オーディオ読み込み
+	if (g_map_chenge == 0)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"moristage.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(1.5);
+		float f = Audio::VolumeMaster(0.1);
 	}
 	else if (g_map_chenge == 1)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"洞窟.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
+		float f = Audio::VolumeMaster(-0.5);
 	}
-	else if (g_map_chenge == 2)
+	/*else if (g_map_chenge == 2)
 	{
 		//音楽読み込み
 		Audio::LoadAudio(0, L"map7.wav", BACK_MUSIC);
@@ -252,11 +253,15 @@ void CSceneMain::InitScene()
 	}
 	Audio::LoadAudio(1, L"jump01.wav", EFFECT);
 	//ボリューム1.5
-	float v = Audio::VolumeMaster(1.0);
+	float v = Audio::VolumeMaster(1.0);*/
+
+	Audio::LoadAudio(1, L"剣攻撃音.wav", EFFECT);
+	Audio::LoadAudio(2, L"ジャンプ音.wav", EFFECT);
+	Audio::LoadAudio(3, L"ダメージ音(主人公).wav", EFFECT);
 
 	//音楽スタート
 	Audio::Start(0);
-	*/
+
 
 }
 
