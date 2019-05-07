@@ -24,7 +24,7 @@ void CObjgoalblock::Init()
 	m_ani_max_time =15;  //アニメーション間隔幅
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_ENEMY, OBJ_GOAL_BLOCK, 1);
+	Hits::SetHitBox(this, m_px, m_py, 32, 32, ELEMENT_FIELD, OBJ_GOAL_BLOCK, 1);
 
 }
 

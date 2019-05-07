@@ -53,4 +53,5 @@ private:
 	bool m_key_flag;//キーフラグ
 	int choose;
 	int m_time;
+	int m_time_s;
 };

@@ -39,13 +39,13 @@ void CSceneClear::InitScene()
 	Objs::InsertObj(nk, OBJ_CLEAR, 4);
 
 	//音楽読み込み
-	/*Audio::LoadAudio(0, L"BGMClear.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"ゲームクリアBGM候補.wav", BACK_MUSIC);
 
 	//ボリュームを1.0に戻す
-	float v = Audio::VolumeMaster(1.5);
+	float v = Audio::VolumeMaster(-0.1);
 
 	//音楽スタート
-	Audio::Start(0);*/
+	Audio::Start(0);
 }
 //実行中メソッド
 void CSceneClear::Scene()

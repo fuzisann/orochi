@@ -70,6 +70,7 @@ void CObjTitle::Action()
 				g_px = 64.0f;
 				g_py = 450.0f;
 				m_time = 20;
+				Audio::Start(1);
 
 			}
 		}

@@ -221,23 +221,23 @@ void CSceneMain::InitScene()
 		//音楽読み込み
 		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(0.1);
+		float f = Audio::VolumeMaster(-0.1);
 	}
 	else if (g_map_chenge == 1)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ2BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(-0.5);
+		float f = Audio::VolumeMaster(-0.2);
 	}
-	/*else if (g_map_chenge == 2)
+	else if (g_map_chenge == 2)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"map7.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ3BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
+		float v = Audio::VolumeMaster(-0.2);
 	}
-	else if (g_map_chenge == 3)
+	/*else if (g_map_chenge == 3)
 	{
 		//音楽読み込み
 		Audio::LoadAudio(0, L"map9BGM.wav", BACK_MUSIC);

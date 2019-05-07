@@ -7,6 +7,8 @@
 #include "GameHead.h"
 #include "ObjOver.h"
 
+#include"GameL\Audio.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -18,18 +20,30 @@ extern float g_py;
 void CObjOver::Init()
 {
 	choose = 0;
+	m_time = 10;
 }
 
 //アクション
 void CObjOver::Action() 
 {
-	if (Input::GetVKey(VK_UP) == true)
+	if (Input::GetVKey(VK_UP) == true && choose > 0 && m_time == 0)
 	{
-		choose = 0;
+		--choose;
+		Audio::Start(0);
+		m_time = 10;
 	}
-	if (Input::GetVKey(VK_DOWN) == true)
+	if (Input::GetVKey(VK_DOWN) == true && choose < 1 && m_time == 0)
 	{
-		choose = 1;
+		++choose;
+		Audio::Start(0);
+		m_time = 10;
+	}
+
+	if (m_time > 0) {
+		m_time--;
+		if (m_time <= 0) {
+			m_time = 0;
+		}
 	}
 
 	if (choose == 0)
@@ -43,7 +57,9 @@ void CObjOver::Action()
 				g_py = 500.0f;
 
 				Scene::SetScene(new CSceneMain());
+
 				m_key_flag = false;
+				Audio::Start(1);
 			}
 		}
 		else
