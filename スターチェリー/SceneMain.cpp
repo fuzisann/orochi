@@ -23,7 +23,7 @@ using namespace GameL;
 //コンストラクタ
 CSceneMain::CSceneMain()
 {
-
+	//ooo//
 }
 
 //テストラクタ
