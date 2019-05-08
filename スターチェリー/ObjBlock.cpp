@@ -337,15 +337,16 @@ void CObjBlock::BlockHit(
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
 				//要素番号を座標に変更
-				float bx = j*32.0f;
-				float by = i*32.0f;
+				float bx = j*64.0f;
+				float by = i*64.0f;
 
 				//スクロールの影響
 				float scrollx = scroll_on ? m_scrollx : 0;
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 64.0f) 
+					&& (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 64.0f))
 				{
 					//上下左右判定
 
@@ -373,12 +374,12 @@ void CObjBlock::BlockHit(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
+							*x = bx + 64.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 							if (m_map[i][j] == 2)
 							{
-								*x = bx + 30.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x = bx + 60.0f + (scrollx);//ブロックの位置-主人公の幅
 							}
 
 						}
@@ -388,19 +389,7 @@ void CObjBlock::BlockHit(
 							*down = true;//主人公の下の部分が衝突している
 							*y = by - 64.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
-							/*if (m_map[i][j] == 6)
-							{
-								block2 = 1;
-							}
-							else
-							{
-								block2 = 0;
-							}*/
-							if (m_map[i][j] == 2)
-							{
-								//Audio::Start(1);
-								//Scene::SetScene(new CSceneOver());
-							}
+							
 						}
 						if (r > 135 && r < 225)
 						{
@@ -411,7 +400,7 @@ void CObjBlock::BlockHit(
 
 							if (m_map[i][j] == 2)
 							{
-								*x = bx - 62.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x = bx - 60.0f + (scrollx);//ブロックの位置-主人公の幅
 								Hit_wall = true;
 							}
 						}
@@ -419,7 +408,7 @@ void CObjBlock::BlockHit(
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
+							*y = by + 64.0f + (scrolly);//ブロックの位置+主人公の幅
 	
 							if (*vy < 0)
 							{
@@ -470,15 +459,15 @@ void CObjBlock::BlockHitEne(
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
 				//要素番号を座標に変更
-				float bx = j*32.0f;
-				float by = i*32.0f;
+				float bx = j*64.0f;
+				float by = i*64.0f;
 
 				//スクロールの影響
 				float scrollx = scroll_on ? m_scrollx : 0;
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 64.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 64.0f))
 				{
 					//上下左右判定
 
@@ -507,7 +496,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
+							*x = bx + 64.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 						}
@@ -515,7 +504,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
+							*y = by - 64.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 							if (m_map[i][j] == 6)
 							{
@@ -542,7 +531,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
+							*y = by + 64.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							if (*vy < 0)
 							{

@@ -11,7 +11,7 @@ extern float g_py;
 //オブジェクト : ゴールブロック
 class CObjgoalblock : public CObj
 {
-#define ALL_BLOCK_SIZE (32.0f)
+#define ALL_BLOCK_SIZE (64.0f)
 public:
 	CObjgoalblock(float x,float y);
 	~CObjgoalblock() {};

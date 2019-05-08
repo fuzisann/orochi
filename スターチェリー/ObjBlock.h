@@ -8,7 +8,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-#define ALL_BLOCK_SIZE (32.0f)
+//#define ALL_BLOCK_SIZE (64.0f)
 
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj

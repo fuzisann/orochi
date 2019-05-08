@@ -103,7 +103,7 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true && m_time == 0)
 		{
-			m_vy = -23;	//初期値：-13
+			m_vy = -30;	//初期値：-13
 			g_py += m_vy;
 
 			Audio::Start(2);
