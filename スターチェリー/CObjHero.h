@@ -12,7 +12,7 @@ extern float g_py;
 class CObjHero : public CObj
 {
 public:
-	CObjHero(int map[19][100]) {};
+	CObjHero(int map[50][150]) {};
 	~CObjHero() {};
 	void Init();   //イ二シャライズ
 	void Action();	//アクション
@@ -41,7 +41,7 @@ public:
 	void SetRight(bool b) { m_hit_right = b; }
 
 private:
-	int m_map[19][100]; //マップ情報
+	int m_map[50][150]; //マップ情報
 	
 	float m_px;			//位置
 	float m_py;

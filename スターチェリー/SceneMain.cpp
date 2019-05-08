@@ -45,7 +45,7 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"stage1 完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"新ステージ1.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
@@ -64,11 +64,11 @@ void CSceneMain::InitScene()
 		p = Save::ExternalDataOpen(L"map10-4.csv", &size);//外部データ読み込み
 	}*/
 
-	int map[19][100];
+	int map[50][150];
 	int count = 1;
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			int w = 0;
 			swscanf_s(&p.get()[count], L"%d", &w);

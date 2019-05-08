@@ -18,7 +18,7 @@ public:
 	void Init();   //イ二シャライズ
 	void Action();	//アクション
 	void Draw();    //ドロー
-	int m_map[19][100]; //マップ情報
+	int m_map[50][150]; //マップ情報
 
 private:
 	int m_ani_time; //アニメーションフレーム動作間隔

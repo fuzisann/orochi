@@ -23,6 +23,8 @@ void CObjTitle::Init()
 	m_key_flag = false;
 	choose = 0;
 	m_time = 10;
+	m_and = 1.0f;
+	m_andf = false;
 
 	//ゲーム実行して一回のみ
 	static bool init_point = false;
@@ -66,11 +68,11 @@ void CObjTitle::Action()
 		{
 			if (m_key_flag == true)
 			{
-				Scene::SetScene(new CSceneMain());
+				m_andf = true;
 				g_px = 64.0f;
 				g_py = 450.0f;
-				m_time = 20;
 				Audio::Start(1);
+				m_key_flag = false;
 
 			}
 		}
@@ -87,6 +89,18 @@ void CObjTitle::Action()
 			exit(1);
 		}
 	}
+
+	if (m_andf == true)
+	{
+		m_and -= 0.03f;
+		if (m_and <= 0.0f)
+		{
+			m_and = 0.0f;
+			m_andf = false;
+			Scene::SetScene(new CSceneMain());
+		}
+	}
+
 }
 
 //ドロー

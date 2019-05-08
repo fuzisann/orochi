@@ -53,7 +53,7 @@ void CObjgoalblock::Action()
 
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//HitBoxの位置を変更	
-	hit->SetPos(m_px+block->GetScroll(),m_py);
+	hit->SetPos(m_px+block->GetScrollX(),m_py + block->GetScrollY());
 }
 //ドロー
 void CObjgoalblock::Draw()
@@ -77,10 +77,10 @@ void CObjgoalblock::Draw()
 	
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//表示位置の設定
-	dst.m_top  = 0.0f  + m_py;
-	dst.m_left = 0.0f  + m_px + block->GetScroll();
-	dst.m_right =ALL_BLOCK_SIZE  + m_px + block->GetScroll();
-	dst.m_bottom =ALL_BLOCK_SIZE + m_py;
+	dst.m_top  = 0.0f  + m_py + block->GetScrollY();
+	dst.m_left = 0.0f  + m_px + block->GetScrollX();
+	dst.m_right =ALL_BLOCK_SIZE  + m_px + block->GetScrollX();
+	dst.m_bottom =ALL_BLOCK_SIZE + m_py + block->GetScrollY();
 
 	Draw::Draw(5, &src, &dst, c, 0.0f);
 

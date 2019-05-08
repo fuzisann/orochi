@@ -184,7 +184,7 @@ void CObjBoss3::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScroll(), m_py - 50);
+	hit->SetPos(m_px + block->GetScrollX(), m_py - 50 + block->GetScrollY());
 
 }
 //ドロー
@@ -212,10 +212,10 @@ void CObjBoss3::Draw()
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py - 50;
-	dst.m_left = (200.0f * m_posture) + m_px + pb->GetScroll();
-	dst.m_right = (200 - 200.0f *m_posture) + m_px + pb->GetScroll();
-	dst.m_bottom = 100.0f + m_py - 50;
+	dst.m_top = 0.0f + m_py - 50 + pb->GetScrollY();
+	dst.m_left = (200.0f * m_posture) + m_px + pb->GetScrollX();
+	dst.m_right = (200 - 200.0f *m_posture) + m_px + pb->GetScrollX();
+	dst.m_bottom = 100.0f + m_py - 50 + pb->GetScrollY();
 
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
 	Draw::Draw(12, &src, &dst, c, 0.0f);

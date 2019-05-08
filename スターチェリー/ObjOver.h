@@ -54,4 +54,7 @@ private:
 	int choose;
 	int m_time;
 	int m_time_s;
+	float m_and;		//透明度処理用
+	bool m_andf;		//透明度処理用フラグ
+	bool m_andf2;		//透明度処理用フラグ
 };

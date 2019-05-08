@@ -13,18 +13,18 @@ using namespace GameL;
 
 bool Hit_wall = false;
 
-CObjBlock::CObjBlock(int map[19][100])
+CObjBlock::CObjBlock(int map[50][150])
 {
 	//マップデータコピー
-	memcpy(m_map, map, sizeof(int)*(19 * 100));
+	memcpy(m_map, map, sizeof(int)*(50 * 150));
 }
 
 void CObjBlock::Setwall(bool type)
 {
 	if(type == true)
-		for (int i = 0; i < 19; i++)
+		for (int i = 0; i < 50; i++)
 		{
-			for (int j = 0; j < 100; j++)
+			for (int j = 0; j < 150; j++)
 			{
 				if (m_map[i][j] == 13)
 					m_map[i][j] = 0;
@@ -52,6 +52,9 @@ void CObjBlock::Init()
 	m_scroll_map = 0.0f;
 	float m_x1 = 0.0f;
 
+	m_scrollx = 0.0f;
+	m_scrolly = 0.0f;
+
 	m_ani_time = 0;
 	m_ani_frame = 0;
 
@@ -77,7 +80,7 @@ void CObjBlock::Action()
 	/*float hx = hero->GetX();
 	float hy = hero->GetY();*/
 	////後方スクロールライン
-	if (hx < 80)
+	/*if (hx < 80)
 	{
 		hero->SetX(80);           //主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX(); //主人公が本来動くべき分の値をm_scrollに加える
@@ -90,12 +93,33 @@ void CObjBlock::Action()
 		hero->SetX(300);           //主人公はラインを超えないようにする
 		m_scroll -= hero->GetVX(); //主人公が本来動くべき分の値をm_scrollに加える
 
+	}*/
+
+	//左のスクロールライン
+	{
+		hero->SetX(80);				//主人公はラインを超えないようにする
+		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
+	}
+	//右のスクロールライン
+	{
+		hero->SetX(250);			//主人公はラインを超えないようにする
+		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
+	}
+	//上のスクロールライン
+	{
+		hero->SetY(80);				//主人公はラインを超えないようにする
+		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
+	}
+	//下のスクロールライン
+	{
+		hero->SetY(382);			//主人公はラインを超えないようにする
+		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
 
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			//敵(雑魚)出現
 			if (m_map[i][j] == 3)
@@ -213,9 +237,9 @@ void CObjBlock::Draw()
 	RECT_F dst;//描写先表示位置
 
 
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 
 			//切り取り位置の設定
@@ -230,8 +254,8 @@ void CObjBlock::Draw()
 				if (g_map_chenge == 0) {
 
 					//表示位置の設定
-					dst.m_top = i * ALL_BLOCK_SIZE;
-					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_top = i * ALL_BLOCK_SIZE + m_scrolly;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scrollx;
 					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
 					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
 
@@ -240,8 +264,8 @@ void CObjBlock::Draw()
 				else if (g_map_chenge == 1) {
 
 					//表示位置の設定
-					dst.m_top = i * ALL_BLOCK_SIZE;
-					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_top = i * ALL_BLOCK_SIZE + m_scrolly;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scrollx;
 					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
 					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
 
@@ -250,8 +274,8 @@ void CObjBlock::Draw()
 				else if (g_map_chenge == 2) {
 
 					//表示位置の設定
-					dst.m_top = i * ALL_BLOCK_SIZE;
-					dst.m_left = j * ALL_BLOCK_SIZE + m_scroll;
+					dst.m_top = i * ALL_BLOCK_SIZE + m_scrolly;
+					dst.m_left = j * ALL_BLOCK_SIZE + m_scrollx;
 					dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
 					dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
 
@@ -263,8 +287,8 @@ void CObjBlock::Draw()
 			if (m_map[i][j] == 2)
 			{
 				//表示位置の設定
-				dst.m_top = i*ALL_BLOCK_SIZE;
-				dst.m_left = j*ALL_BLOCK_SIZE + m_scroll;
+				dst.m_top = i*ALL_BLOCK_SIZE + m_scrolly;
+				dst.m_left = j*ALL_BLOCK_SIZE + m_scrollx;
 				dst.m_right = dst.m_left + ALL_BLOCK_SIZE;
 				dst.m_bottom = dst.m_top + ALL_BLOCK_SIZE;
 
@@ -306,9 +330,9 @@ void CObjBlock::BlockHit(
 	Hit_wall = false;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
@@ -317,16 +341,17 @@ void CObjBlock::BlockHit(
 				float by = i*32.0f;
 
 				//スクロールの影響
-				float scroll = scroll_on ? m_scroll : 0;
+				float scrollx = scroll_on ? m_scrollx : 0;
+				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scroll) + 64.0f > bx) && (*x + (-scroll) < bx + 32.0f) && (*y + 64.0f > by) && (*y < by + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = (*x + (-scrollx)) - bx;
+					float rvy = (*y + (-scrolly)) - by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy*rvy);
@@ -348,12 +373,12 @@ void CObjBlock::BlockHit(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
+							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 							if (m_map[i][j] == 2)
 							{
-								*x = bx + 30.0f + (scroll);//ブロックの位置-主人公の幅
+								*x = bx + 30.0f + (scrollx);//ブロックの位置-主人公の幅
 							}
 
 						}
@@ -361,7 +386,7 @@ void CObjBlock::BlockHit(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 64.0f;//ブロックの位置-主人公の幅
+							*y = by - 64.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 							/*if (m_map[i][j] == 6)
 							{
@@ -381,12 +406,12 @@ void CObjBlock::BlockHit(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 64.0f + (scroll);//ブロックの位置-主人公の幅
+							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 
 							if (m_map[i][j] == 2)
 							{
-								*x = bx - 62.0f + (scroll);//ブロックの位置-主人公の幅
+								*x = bx - 62.0f + (scrollx);//ブロックの位置-主人公の幅
 								Hit_wall = true;
 							}
 						}
@@ -394,7 +419,7 @@ void CObjBlock::BlockHit(
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f;//ブロックの位置+主人公の幅
+							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 	
 							if (*vy < 0)
 							{
@@ -438,9 +463,9 @@ void CObjBlock::BlockHitEne(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
@@ -449,16 +474,17 @@ void CObjBlock::BlockHitEne(
 				float by = i*32.0f;
 
 				//スクロールの影響
-				float scroll = scroll_on ? m_scroll : 0;
+				float scrollx = scroll_on ? m_scrollx : 0;
+				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scroll) + 50.0f > bx) && (*x + (-scroll) < bx + 32.0f) && (*y + 64.0f > by) && (*y < by + 32.0f))
+				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = (*x + (-scrollx)) - bx;
+					float rvy = (*y + (-scrolly)) - by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy*rvy);
@@ -481,7 +507,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
+							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 						}
@@ -489,7 +515,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f;//ブロックの位置-主人公の幅
+							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 							if (m_map[i][j] == 6)
 							{
@@ -509,14 +535,14 @@ void CObjBlock::BlockHitEne(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 64.0f + (scroll);//ブロックの位置-主人公の幅
+							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f;//ブロックの位置+主人公の幅
+							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							if (*vy < 0)
 							{
@@ -561,9 +587,9 @@ void CObjBlock::BlockHitBoss1(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
@@ -572,16 +598,17 @@ void CObjBlock::BlockHitBoss1(
 				float by = i * 32.0f;
 
 				//スクロールの影響
-				float scroll = scroll_on ? m_scroll : 0;
+				float scrollx = scroll_on ? m_scrollx : 0;
+				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scroll) + 100.0f > bx) && (*x + (-scroll) < bx + 32.0f) && (*y + 50.0f > by) && (*y < by + 32.0f))
+				if ((*x + (-scrollx) + 100.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y +(scrolly)+ 50.0f > by) && (*y < by + (scrolly) + 32.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = (*x + (-scrollx)) - bx;
+					float rvy = (*y + (-scrolly)) - by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy * rvy);
@@ -604,7 +631,7 @@ void CObjBlock::BlockHitBoss1(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
+							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 						}
@@ -612,7 +639,7 @@ void CObjBlock::BlockHitBoss1(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f;//ブロックの位置-主人公の幅
+							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 							
 						}
@@ -620,14 +647,14 @@ void CObjBlock::BlockHitBoss1(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 100.0f + (scroll);//ブロックの位置-主人公の幅
+							*x = bx - 100.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f;//ブロックの位置+主人公の幅
+							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							/*if (*vy < 0)
 							{
@@ -671,9 +698,9 @@ void CObjBlock::BlockHitBoss2(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
@@ -682,16 +709,17 @@ void CObjBlock::BlockHitBoss2(
 				float by = i * 32.0f;
 
 				//スクロールの影響
-				float scroll = scroll_on ? m_scroll : 0;
+				float scrollx = scroll_on ? m_scrollx : 0;
+				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scroll) + 150.0f > bx) && (*x + (-scroll) < bx + 32.0f) && (*y + 50.0f > by) && (*y < by + 32.0f))
+				if ((*x + (-scrollx) + 150.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (scrolly)+ 50.0f > by) && (*y < by + (scrolly)+ 32.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = (*x + (-scrollx)) - bx;
+					float rvy = (*y + (-scrolly)) - by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy * rvy);
@@ -714,7 +742,7 @@ void CObjBlock::BlockHitBoss2(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
+							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 						}
@@ -722,7 +750,7 @@ void CObjBlock::BlockHitBoss2(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f;//ブロックの位置-主人公の幅
+							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 
 						}
@@ -730,14 +758,14 @@ void CObjBlock::BlockHitBoss2(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 150.0f + (scroll);//ブロックの位置-主人公の幅
+							*x = bx - 150.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f;//ブロックの位置+主人公の幅
+							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							/*if (*vy < 0)
 							{
@@ -781,9 +809,9 @@ void CObjBlock::BlockHitBoss3(
 	*bt = 0;
 
 	//m_mapの全要素にアクセス
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			if (m_map[i][j] > 0 && m_map[i][j] != 4)
 			{
@@ -792,16 +820,17 @@ void CObjBlock::BlockHitBoss3(
 				float by = i * 32.0f;
 
 				//スクロールの影響
-				float scroll = scroll_on ? m_scroll : 0;
+				float scrollx = scroll_on ? m_scrollx : 0;
+				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scroll) + 200.0f > bx) && (*x + (-scroll) < bx + 32.0f) && (*y + 50.0f > by) && (*y < by + 32.0f))
+				if ((*x + (-scrollx) + 200.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (scrolly)+ 50.0f > by) && (*y < by + (scrolly)+ 32.0f))
 				{
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scroll)) - bx;
-					float rvy = *y - by;
+					float rvx = (*x + (-scrollx)) - bx;
+					float rvy = (*y + (-scrolly)) - by;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy * rvy);
@@ -824,7 +853,7 @@ void CObjBlock::BlockHitBoss3(
 						{
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
-							*x = bx + 32.0f + (scroll);//ブロックの位置+主人公の幅
+							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.0f;//-VX*反発係数
 
 						}
@@ -832,7 +861,7 @@ void CObjBlock::BlockHitBoss3(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f;//ブロックの位置-主人公の幅
+							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 
 						}
@@ -840,14 +869,14 @@ void CObjBlock::BlockHitBoss3(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 200.0f + (scroll);//ブロックの位置-主人公の幅
+							*x = bx - 200.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f;//ブロックの位置+主人公の幅
+							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							/*if (*vy < 0)
 							{
