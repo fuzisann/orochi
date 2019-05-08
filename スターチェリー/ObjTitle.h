@@ -49,6 +49,8 @@ private:
 	bool m_mou_r;   //マウスの右ボタン
 	bool m_mou_l;   //マウスの左ボタン
 	bool  m_f;     //弾丸発射制御用
+	float m_and;		//透明度処理用
+	bool m_andf;		//透明度処理用フラグ
 	int choose;
 	int m_time;
 };

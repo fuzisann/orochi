@@ -79,7 +79,7 @@ void CObjChangeSwitch::Action()
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBox�̈ʒu�̕ύX
-	hit->SetPos(m_px + block->GetScroll(), m_py);
+	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
 
 }
 

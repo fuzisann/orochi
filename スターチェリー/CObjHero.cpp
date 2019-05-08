@@ -14,11 +14,9 @@
 //使用するネームスペース
 using namespace GameL;
 
-float g_px = 64.0f;
-float g_py = 450.0f;
+float g_px= 64.0f;
+float g_py= 450.0f;
 extern bool Hit_wall;
-
-
 
 //イニシャライズ
 void CObjHero::Init()
@@ -39,8 +37,6 @@ void CObjHero::Init()
 	m_block_type = 0;	//踏んでいるブロックの種類
 
 	m_hero_hp = 10;     //主人公の最大HP
-
-
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -64,11 +60,11 @@ void CObjHero::Action()
 	}
 
 	//落下によるゲームオーバー＆リスタート
-	if (g_py > 1000.0f)
+	/*if (g_py > 1000.0f)
 	{
 		//場外に出たらリスタート
 		Scene::SetScene(new CSceneOver());
-	}
+	}*/
 
 	m_speed_power = 0.5f;
 
@@ -90,7 +86,7 @@ void CObjHero::Action()
 			Objs::InsertObj(objsb, OBJ_SWORD, 100);		//作った剣オブジェクトをオブジェクトマネージャーに登録
 
 			//斬撃音
-			//Audio::Start(0);
+			Audio::Start(1);
 
 			m_sword_delay = 20;
 		}
@@ -107,10 +103,10 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true && m_time == 0)
 		{
-			m_vy = -30;	//初期値：-13
+			m_vy = -23;	//初期値：-13
 			g_py += m_vy;
 
-			//Audio::Start(1);
+			Audio::Start(2);
 
 		}
 
@@ -163,28 +159,39 @@ void CObjHero::Action()
 	}
 
 	//主人公機が領域外行かない処理
-	if (g_px + 64.0f > 800.0f)
+	/*if (g_px + 64.0f > 800.0f)
 	{
 		g_px = 800.0f - 64.0f;
 
-	}
+	}*/
 
-	CObjBlock*b = (CObjBlock*)Objs::GetObj(COBJ_HERO);
-	//後方スクロールライン
-	if (g_px < 80)
+	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//左のスクロールライン
 	{
 		g_px = 80;
-		b->SetScroll(b->GetScroll());
+		b->SetScrollX(b->GetScrollX());
 	}
 
-	//前方スクロールライン
-	if (g_px > 350)
+	//右のスクロールライン
 	{
-		g_px = 350;
-		b->SetScroll(b->GetScroll());
+		g_px = 250;
+		b->SetScrollX(b->GetScrollX());
 	}
+	//上のスクロールライン
+	{
+		g_py = 80;
+		b->SetScrollY(b->GetScrollY());
+	}
+
+	//下のスクロールライン
+	{
+		g_py = 382;
+		b->SetScrollY(b->GetScrollY());
+	}
+
 	//摩擦
 	m_vx += -(m_vx*0.098);
+	m_vy += -(m_vy * 0.098);
 
 	//自由落下運動
 	m_vy += 9.8 / (16.0f);
@@ -237,6 +244,8 @@ void CObjHero::Action()
 				m_vy = -5;		//左
 				m_vx -= 10;
 			}
+
+			Audio::Start(3);	//ダメージ音
 			m_time_d = 80;		//無敵時間をセット
 			hit->SetInvincibility(true);	//無敵オン
 
@@ -263,6 +272,12 @@ void CObjHero::Action()
 			{
 				CObjBoss2* boss2 = (CObjBoss2*)Objs::GetObj(OBJ_BOSS_SECOND);
 				m_damage = boss2->GetDMG();
+				m_hero_hp -= m_damage;
+			}
+			if (hit->CheckObjNameHit(OBJ_BOSS_THIRD) != nullptr)
+			{
+				CObjBoss3* boss3 = (CObjBoss3*)Objs::GetObj(OBJ_BOSS_THIRD);
+				m_damage = boss3->GetDMG();
 				m_hero_hp -= m_damage;
 			}
 
