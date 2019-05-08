@@ -14,8 +14,8 @@
 //使用するネームスペース
 using namespace GameL;
 
-float g_px= 64.0f;
-float g_py= 450.0f;
+float g_px;//= 64.0f;
+float g_py;//= 450.0f;
 extern bool Hit_wall;
 
 //イニシャライズ
@@ -103,7 +103,7 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true && m_time == 0)
 		{
-			m_vy = -30;	//初期値：-13
+			m_vy = -100;	//初期値：-13
 			g_py += m_vy;
 
 			Audio::Start(2);
@@ -159,38 +159,38 @@ void CObjHero::Action()
 	}
 
 	//主人公機が領域外行かない処理
-	/*if (g_px + 64.0f > 800.0f)
+	if (g_px + 64.0f > 800.0f)
 	{
 		g_px = 800.0f - 64.0f;
 
-	}*/
+	}
 
 	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//左のスクロールライン
 	{
-		g_px = 80;
+		g_px = 0;
 		b->SetScrollX(b->GetScrollX());
 	}
 
 	//右のスクロールライン
 	{
-		g_px = 250;
+		g_px = 300;
 		b->SetScrollX(b->GetScrollX());
 	}
 	//上のスクロールライン
 	{
-		g_py = 80;
+		g_py = 0;
 		b->SetScrollY(b->GetScrollY());
 	}
 
 	//下のスクロールライン
 	{
-		g_py = 382;
+		g_py = 400;
 		b->SetScrollY(b->GetScrollY());
 	}
 
 	//摩擦
-	m_vx += -(m_vx*0.098);
+	m_vx += -(m_vx * 0.098);
 	m_vy += -(m_vy * 0.098);
 
 	//自由落下運動
@@ -236,13 +236,13 @@ void CObjHero::Action()
 			//if ((r < 45 && r >= 0) || r > 315)
 			if (r > 90 && r < 270)
 			{
-				m_vy = -5;		//右
-				m_vx += 10;
+				m_vy = -3;		//右
+				m_vx += 7;
 			}
 			else
 			{
-				m_vy = -5;		//左
-				m_vx -= 10;
+				m_vy = -3;		//左
+				m_vx -= 7;
 			}
 
 			Audio::Start(3);	//ダメージ音
