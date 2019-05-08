@@ -211,7 +211,7 @@ void CObjBoss1::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScrollX(), m_py - 6 + block->GetScrollY());
+	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
 
 }
 //ドロー

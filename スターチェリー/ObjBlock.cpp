@@ -67,8 +67,8 @@ void CObjBlock::Action()
 {
 	//主人公の位置を取得
 	CObjHero*hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
-	float hx = hero->GetX();
-	float hy = hero->GetY();
+	//float hx = hero->GetX();
+	//float hy = hero->GetY();
 
 	//敵の位置を取得
 	CObjEnemy1*enemy1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
@@ -97,22 +97,22 @@ void CObjBlock::Action()
 
 	//左のスクロールライン
 	{
-		hero->SetX(80);				//主人公はラインを超えないようにする
+		hero->SetX(0);				//主人公はラインを超えないようにする
 		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 	//右のスクロールライン
 	{
-		hero->SetX(250);			//主人公はラインを超えないようにする
+		hero->SetX(300);			//主人公はラインを超えないようにする
 		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 	//上のスクロールライン
 	{
-		hero->SetY(80);				//主人公はラインを超えないようにする
+		hero->SetY(0);				//主人公はラインを超えないようにする
 		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 	//下のスクロールライン
 	{
-		hero->SetY(382);			//主人公はラインを超えないようにする
+		hero->SetY(400);			//主人公はラインを超えないようにする
 		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
 	}
 
@@ -397,11 +397,6 @@ void CObjBlock::BlockHit(
 							{
 								block2 = 0;
 							}*/
-							if (m_map[i][j] == 2)
-							{
-								//Audio::Start(1);
-								//Scene::SetScene(new CSceneOver());
-							}
 						}
 						if (r > 135 && r < 225)
 						{
@@ -423,10 +418,10 @@ void CObjBlock::BlockHit(
 							*up = true;//主人公の上の部分が衝突している
 							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 	
-							if (*vy < 0)
+							/*if (*vy < 0)
 							{
 								*vy = 0.0f;
-							}
+							}*/
 						}
 					}
 				}

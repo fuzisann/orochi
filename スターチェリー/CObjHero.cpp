@@ -14,8 +14,8 @@
 //使用するネームスペース
 using namespace GameL;
 
-float g_px= 64.0f;
-float g_py= 450.0f;
+float g_px;//= 64.0f;
+float g_py;//= 450.0f;
 extern bool Hit_wall;
 
 //イニシャライズ
@@ -159,11 +159,11 @@ void CObjHero::Action()
 	}
 
 	//主人公機が領域外行かない処理
-	/*if (g_px + 64.0f > 800.0f)
+	if (g_px + 64.0f > 800.0f)
 	{
 		g_px = 800.0f - 64.0f;
 
-	}*/
+	}
 
 	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//左のスクロールライン
@@ -174,7 +174,7 @@ void CObjHero::Action()
 
 	//右のスクロールライン
 	{
-		g_px = 250;
+		g_px = 300;
 		b->SetScrollX(b->GetScrollX());
 	}
 	//上のスクロールライン
@@ -190,7 +190,7 @@ void CObjHero::Action()
 	}
 
 	//摩擦
-	m_vx += -(m_vx*0.098);
+	m_vx += -(m_vx * 0.098);
 	m_vy += -(m_vy * 0.098);
 
 	//自由落下運動
@@ -236,8 +236,8 @@ void CObjHero::Action()
 			//if ((r < 45 && r >= 0) || r > 315)
 			if (r > 90 && r < 270)
 			{
-				m_vy = -5;		//右
-				m_vx += 10;
+				m_vy = -3;		//右
+				m_vx += 7;
 			}
 			else
 			{
