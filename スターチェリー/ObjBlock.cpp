@@ -345,7 +345,7 @@ void CObjBlock::BlockHit(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y + (-scrolly) < by  + 32.0f))
 				{
 					//上下左右判定
 
@@ -374,11 +374,12 @@ void CObjBlock::BlockHit(
 							//右
 							*right = true;//オブジェクトの左の部分が衝突している
 							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
-							*vx = 0.0f;//-VX*反発係数
+							*vx = 0.5f;//反発
 
 							if (m_map[i][j] == 2)
 							{
-								*x = bx + 30.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x = bx + 32.0f + (scrollx);//ブロックの位置-主人公の幅
+								*vx = 0.0f;//くっつくため反発なし
 							}
 
 						}
@@ -407,11 +408,12 @@ void CObjBlock::BlockHit(
 							//左
 							*left = true;//主人公の右の部分が衝突している
 							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
-							*vx = -(*vx)*0.0f;//-VX*反発係数
+							*vx = -0.5f;//反発
 
 							if (m_map[i][j] == 2)
 							{
 								*x = bx - 62.0f + (scrollx);//ブロックの位置-主人公の幅
+								*vx = 0.0f;//くっつくため反発なし
 								Hit_wall = true;
 							}
 						}

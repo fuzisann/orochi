@@ -103,7 +103,7 @@ void CObjHero::Action()
 	{
 		if (m_hit_down == true && m_time == 0)
 		{
-			m_vy = -23;	//初期値：-13
+			m_vy = -30;	//初期値：-13
 			g_py += m_vy;
 
 			Audio::Start(2);
@@ -168,7 +168,7 @@ void CObjHero::Action()
 	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//左のスクロールライン
 	{
-		g_px = 80;
+		g_px = 0;
 		b->SetScrollX(b->GetScrollX());
 	}
 
@@ -179,13 +179,13 @@ void CObjHero::Action()
 	}
 	//上のスクロールライン
 	{
-		g_py = 80;
+		g_py = 0;
 		b->SetScrollY(b->GetScrollY());
 	}
 
 	//下のスクロールライン
 	{
-		g_py = 382;
+		g_py = 380;
 		b->SetScrollY(b->GetScrollY());
 	}
 
@@ -242,7 +242,7 @@ void CObjHero::Action()
 			else
 			{
 				m_vy = -5;		//左
-				m_vx -= 10;
+				m_vx -=  10;
 			}
 
 			Audio::Start(3);	//ダメージ音
