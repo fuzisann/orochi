@@ -29,10 +29,11 @@ class CObjBoss1 : public CObj
 		int m_ani_frame;  //描画フレーム
 		int m_dotime;
 
-		int m_enemy_hp;		//敵の体力
+		int m_boss_hp;		//敵の体力
 		int m_damage;
 
 		int m_time_d;	//ダメージ時のカラー変更用タイム
+		int m_time_die;	//死亡時用タイム
 
 		float m_speed_power; //スピードパワー
 		float m_ani_max_time;//アニメーション動画間隔最大値
@@ -45,6 +46,12 @@ class CObjBoss1 : public CObj
 
 		//移動の向き制御用
 		bool m_move;
+
+		bool m_del;			//削除チェック
+		bool m_eff_flag;	//エフェクト用フラグ
+
+		int m_time_dead;	//死亡用
+		bool  m_inputf;	//動き制御用
 
 		//踏んでいるblockの種類を確認用
 		//int m_block_type;

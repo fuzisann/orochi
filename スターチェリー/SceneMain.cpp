@@ -45,11 +45,11 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"新ステージ1.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"新ステージ1仮.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"stage2 完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"新ステージ2.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 2)
 	{
@@ -85,7 +85,7 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
-	Draw::LoadImage(L"主人公１.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公２.png", 0, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
 	{
@@ -103,6 +103,9 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
 		Draw::LoadImage(L"カメ.png", 12, TEX_SIZE_512);
+		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
+		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
+		Draw::LoadImage(L"カメ(死亡用).png", 15, TEX_SIZE_512);
 
 		//歯車画像読み込みテスト
 		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
@@ -128,7 +131,7 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
+		Draw::LoadImage(L"リュウグウノツカイ.png", 12, TEX_SIZE_512);
 
 		//歯車画像読み込みテスト
 		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
@@ -258,6 +261,7 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(1, L"剣攻撃音.wav", EFFECT);
 	Audio::LoadAudio(2, L"ジャンプ音.wav", EFFECT);
 	Audio::LoadAudio(3, L"ダメージ音(主人公).wav", EFFECT);
+	Audio::LoadAudio(4, L"ダメージ音(敵).wav", EFFECT);
 
 	//音楽スタート
 	Audio::Start(0);
