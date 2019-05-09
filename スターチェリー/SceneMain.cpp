@@ -23,7 +23,7 @@ using namespace GameL;
 //コンストラクタ
 CSceneMain::CSceneMain()
 {
-
+	//ooo//
 }
 
 //テストラクタ
@@ -45,15 +45,15 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"ステージ1完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"新ステージ1.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"ステージ2完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage2 完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"マップ3.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage3 完成.csv", &size);//外部データ読み込み
 	}
 	/*else if (g_map_chenge == 3)
 	{
@@ -64,11 +64,11 @@ void CSceneMain::InitScene()
 		p = Save::ExternalDataOpen(L"map10-4.csv", &size);//外部データ読み込み
 	}*/
 
-	int map[19][100];
+	int map[50][150];
 	int count = 1;
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		for (int j = 0; j < 150; j++)
 		{
 			int w = 0;
 			swscanf_s(&p.get()[count], L"%d", &w);
@@ -121,7 +121,7 @@ void CSceneMain::InitScene()
 	else if (g_map_chenge == 1)
 	{
 		//背景画像読み込み
-		//Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
+		Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
 		Draw::LoadImage(L"ステージ2ブロック.png", 2, TEX_SIZE_512);
 		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
@@ -129,6 +129,11 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
 		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
+
+		//歯車画像読み込みテスト
+		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
+
+		Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 		/*//背景画像読み込み
@@ -210,28 +215,29 @@ void CSceneMain::InitScene()
 	CObjMain* objm = new CObjMain();
 	Objs::InsertObj(objm, OBJ_MAIN, 120);
 
-	/*if (g_map_chenge == 0)
+	//オーディオ読み込み
+	if (g_map_chenge == 0)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"moristage.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(1.5);
+		float f = Audio::VolumeMaster(-0.1);
 	}
 	else if (g_map_chenge == 1)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"洞窟.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ2BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
+		float f = Audio::VolumeMaster(-0.2);
 	}
 	else if (g_map_chenge == 2)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"map7.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ3BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
+		float v = Audio::VolumeMaster(-0.2);
 	}
-	else if (g_map_chenge == 3)
+	/*else if (g_map_chenge == 3)
 	{
 		//音楽読み込み
 		Audio::LoadAudio(0, L"map9BGM.wav", BACK_MUSIC);
@@ -247,11 +253,15 @@ void CSceneMain::InitScene()
 	}
 	Audio::LoadAudio(1, L"jump01.wav", EFFECT);
 	//ボリューム1.5
-	float v = Audio::VolumeMaster(1.0);
+	float v = Audio::VolumeMaster(1.0);*/
+
+	Audio::LoadAudio(1, L"剣攻撃音.wav", EFFECT);
+	Audio::LoadAudio(2, L"ジャンプ音.wav", EFFECT);
+	Audio::LoadAudio(3, L"ダメージ音(主人公).wav", EFFECT);
 
 	//音楽スタート
 	Audio::Start(0);
-	*/
+
 
 }
 

@@ -49,7 +49,7 @@ void CObjgear::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScroll(), m_py - 32);
+	hit->SetPos(m_px + block->GetScrollX(), m_py - 32 + block->GetScrollY());
 
 }
 //ドロー
@@ -74,10 +74,10 @@ void CObjgear::Draw()
 
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py-32;
-	dst.m_left = 0.0f + m_px + block->GetScroll();
-	dst.m_right = 64.0f + m_px + block->GetScroll();
-	dst.m_bottom = 64.0f + m_py-32;
+	dst.m_top = 0.0f + m_py-32 + block->GetScrollY();
+	dst.m_left = 0.0f + m_px + block->GetScrollX();
+	dst.m_right = 64.0f + m_px + block->GetScrollX();
+	dst.m_bottom = 64.0f + m_py-32 + block->GetScrollY();
 
 	Draw::Draw(10, &src, &dst, c, 0.0f);
 

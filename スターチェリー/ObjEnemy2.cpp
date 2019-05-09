@@ -152,7 +152,7 @@ void CObjEnemy2::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScroll(), m_py);
+	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
 }
 //ドロー
 void CObjEnemy2::Draw()
@@ -178,10 +178,10 @@ void CObjEnemy2::Draw()
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
-	dst.m_left = (50.0f * m_posture) + m_px + pb->GetScroll();
-	dst.m_right = (50 - 50.0f*m_posture) + m_px + pb->GetScroll();
-	dst.m_bottom = 50.0f + m_py;
+	dst.m_top = 0.0f + m_py + pb->GetScrollY();
+	dst.m_left = (50.0f * m_posture) + m_px + pb->GetScrollX();
+	dst.m_right = (50 - 50.0f*m_posture) + m_px + pb->GetScrollX();
+	dst.m_bottom = 50.0f + m_py + pb->GetScrollY();
 
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
 	Draw::Draw(9, &src, &dst, c, 0.0f);

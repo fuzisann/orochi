@@ -7,6 +7,8 @@
 #include "GameHead.h"
 #include "ObjOver.h"
 
+#include"GameL\Audio.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -18,18 +20,33 @@ extern float g_py;
 void CObjOver::Init()
 {
 	choose = 0;
+	m_time = 10;
+	m_and = 1.0f;
+	m_andf = false;
+	m_andf2 = false;
 }
 
 //アクション
 void CObjOver::Action() 
 {
-	if (Input::GetVKey(VK_UP) == true)
+	if (Input::GetVKey(VK_UP) == true && choose > 0 && m_time == 0)
 	{
-		choose = 0;
+		--choose;
+		Audio::Start(0);
+		m_time = 10;
 	}
-	if (Input::GetVKey(VK_DOWN) == true)
+	if (Input::GetVKey(VK_DOWN) == true && choose < 1 && m_time == 0)
 	{
-		choose = 1;
+		++choose;
+		Audio::Start(0);
+		m_time = 10;
+	}
+
+	if (m_time > 0) {
+		m_time--;
+		if (m_time <= 0) {
+			m_time = 0;
+		}
 	}
 
 	if (choose == 0)
@@ -39,11 +56,11 @@ void CObjOver::Action()
 
 			if (m_key_flag == true)
 			{
+				m_andf = true;
 				g_px = 64.0f;
 				g_py = 500.0f;
-
-				Scene::SetScene(new CSceneMain());
 				m_key_flag = false;
+				Audio::Start(1);
 			}
 		}
 		else
@@ -55,9 +72,39 @@ void CObjOver::Action()
 	{
 		if (Input::GetVKey(VK_RETURN) == true)
 		{
-			g_map_chenge = 0;//マップ変更
+			if (m_key_flag == true)
+			{
+				m_andf2 = true;
+				g_map_chenge = 0;//マップ変更
+				Audio::Start(1);
+				m_key_flag = false;
+			}
+		}
+		else
+		{
+			m_key_flag = true;
+		}
+	}
+
+	if (m_andf == true)
+	{
+		m_and -= 0.03f;
+		if (m_and <= 0.0f)
+		{
+			m_and = 0.0f;
+			m_andf = false;
+			Scene::SetScene(new CSceneMain());
+		}
+	}
+
+	if (m_andf2 == true)
+	{
+		m_and -= 0.03f;
+		if (m_and <= 0.0f)
+		{
+			m_and = 0.0f;
+			m_andf2 = false;
 			Scene::SetScene(new CSceneTitle());
-			m_key_flag = false;
 		}
 	}
 }

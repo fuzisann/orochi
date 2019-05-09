@@ -43,10 +43,12 @@ void CSceneOver::InitScene()
 	Objs::InsertObj(go1, OBJ_OVER, 4);
 
 	//音楽読み込み
-	/*Audio::LoadAudio(0, L"GameOver.wav", BACK_MUSIC);
+	Audio::LoadAudio(0, L"選択音.wav", EFFECT);
+	Audio::LoadAudio(1, L"決定音.wav", EFFECT);
+	Audio::LoadAudio(2, L"ゲームオーバーBGM候補.wav", BACK_MUSIC);
 	//ボリュームを1.0に戻す
-	float v = Audio::VolumeMaster(1.5);
+	float v = Audio::VolumeMaster(0.1);
 
 	//音楽スタート
-	Audio::Start(0);*/
+	Audio::Start(2);
 }

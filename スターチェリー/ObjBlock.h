@@ -8,22 +8,23 @@
 //使用するネームスペース
 using namespace GameL;
 
-#define ALL_BLOCK_SIZE (32.0f)
+//#define ALL_BLOCK_SIZE (64.0f)
 
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {
 public:
-	CObjBlock(int map[19][100]);
+	CObjBlock(int map[50][150]);
 	~CObjBlock() {};
 	void Init();   //イ二シャライズ
 	void Action();	//アクション
 	void Draw();    //ドロー
 
-	void SetScroll(float s) { m_scroll = s; }
-	float GetScroll() { return m_scroll; }
-	/*float GetScrollX() { return m_scroll; }
-	float GetScrollY() { return m_scroll; }*/
+	void SetScrollX(float sx) { m_scrollx = sx; }
+	void SetScrollY(float sy) { m_scrolly = sy; }
+	//float GetScroll() { return m_scroll; }
+	float GetScrollX() { return m_scrollx; }
+	float GetScrollY() { return m_scrolly; }
 
 	void Setwall(bool type = true);//隠し通路セット関数
 	//void Setswitch(bool type = true);
@@ -66,11 +67,14 @@ public:
 
 private:
 	void BlockDraw(float x, float y, RECT_F*dst, float c[]);
-	int m_map[19][100]; //マップ情報
+	int m_map[50][150]; //マップ情報
 
 	float m_scroll;     //左右スクロール用
 	float m_scroll_map;
 	float x, y;
+
+	float m_scrollx;		//左右スクロール用
+	float m_scrolly;
 
 	int m_ani_time;
 	int m_ani_frame;
