@@ -85,7 +85,7 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
-	Draw::LoadImage(L"主人公１.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公1.png", 0, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
 	{

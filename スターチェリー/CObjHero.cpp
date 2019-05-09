@@ -384,14 +384,35 @@ void CObjHero::Draw()
 	Font::StrDraw(str, 150, 100, 30, c);
 	
     //切り取り位置の設定
+
+	if (Hit_wall == true) //上る壁に主人公が当たった時
+	{
+		//剣を持っていない時の主人公が描かれている所を切り取る
+		src.m_top = 70.0f;
+		src.m_left = 66.0f;
+		src.m_right = 121.0f;
+		src.m_bottom = 123.0f;
+
+	}
+	else //それ以外の時
+	{
+		//剣を持っている時の主人公が描かれている所を切り取る
+		src.m_top = 0.0f;
+		src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+		src.m_right = 64.0f + AniData[m_ani_frame] * 64;
+		src.m_bottom = 64.0f;
+
+	}
+
+
 	
 	if(Hit_wall == true) //上る壁に主人公が当たった時
 	{
 		//剣を持っていない時の主人公が描かれている所を切り取る
-	src.m_top =   70.0f;
-	src.m_left =  66.0f;
-	src.m_right =  121.0f;
-	src.m_bottom = 123.0f;
+	src.m_top =   77.0f;
+	src.m_left =  138.0f;
+	src.m_right =  176.0f;
+	src.m_bottom = 158.0f;
 
 	}
 	else //それ以外の時
