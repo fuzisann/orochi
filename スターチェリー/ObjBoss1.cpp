@@ -187,12 +187,12 @@ void CObjBoss1::Action()
 		//ノックバック処理
 		if (m_posture == 0.0f)
 		{
-			m_vy = -10;
+			m_vy = -7;
 			m_vx += 15;
 		}
 		if (m_posture == 1.0f)
 		{
-			m_vy = -10;
+			m_vy = -7;
 			m_vx -= 15;
 		}
 		Audio::Start(4);	//ダメージ音
@@ -208,7 +208,6 @@ void CObjBoss1::Action()
 			m_time_d = 0;
 		}
 	}
-
 
 	//HPが0以下の時に消滅処理に移行する
 	if (m_del == false && m_boss_hp <= 0)
@@ -243,7 +242,6 @@ void CObjBoss1::Action()
 		hit->SetInvincibility(true);	//無敵にする
 		m_eff_flag = true;			//画像切り替え用フラグ
 		m_speed_power = 0.0f;			//動きを止める
-
 	}
 
 	if (m_time_dead > 0)
@@ -254,6 +252,7 @@ void CObjBoss1::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
+			m_start_boss = true;
 		}
 	}
 

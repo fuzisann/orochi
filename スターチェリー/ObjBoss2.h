@@ -47,12 +47,21 @@ private:
 	//移動の向き制御用
 	bool m_move;
 
+	bool m_del;			//削除チェック
+	bool m_eff_flag;	//エフェクト用フラグ
+
+	int m_time_dead;	//死亡用
+	bool  m_inputf;	//動き制御用
+
 	//踏んでいるblockの種類を確認用
 	//int m_block_type;
 	int s;
 	int m_time;
 	int m_x;
 	int m_y;
+
+	bool m_change;	//スイッチのオンオフ
+	bool m_delete;
 };
 
 

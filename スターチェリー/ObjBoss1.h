@@ -62,5 +62,6 @@ class CObjBoss1 : public CObj
 		bool m_do_f;//突進フラグ
 
 		bool m_change;	//スイッチのオンオフ
+		bool m_delete;
 };
 
