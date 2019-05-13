@@ -85,7 +85,7 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
-	Draw::LoadImage(L"主人公1.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公.png", 0, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
 	{
@@ -96,8 +96,8 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
 
 		//チェンジスイッチ＆ゲート画像読み込みテスト
-		Draw::LoadImage(L"雲ブロック.png", 6, TEX_SIZE_512);
-		Draw::LoadImage(L"氷ブロック.png", 7, TEX_SIZE_512);
+		//Draw::LoadImage(L"雲ブロック.png", 6, TEX_SIZE_512);
+		//Draw::LoadImage(L"氷ブロック.png", 7, TEX_SIZE_512);
 
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
@@ -105,16 +105,13 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"カメ.png", 12, TEX_SIZE_512);
 
 		//歯車画像読み込みテスト
-		Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
+		//Draw::LoadImage(L"歯車1.5.png", 10, TEX_SIZE_512);
 
-		Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
+		//Draw::LoadImage(L"歯車4.png", 11, TEX_SIZE_512);
 
 		//体力の読み込み
 		Draw::LoadImage(L"体力ゲージフル.png", 17, TEX_SIZE_512);
 		
-		
-		
-
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 	}
