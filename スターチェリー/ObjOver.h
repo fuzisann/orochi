@@ -11,11 +11,11 @@ using namespace GameL;
 #define GAME_OVER_FONT_SIZE (58)
 
 #define GAME_YES_X (500)
-#define GAME_YES_Y (350)
+#define GAME_YES_Y (150)
 #define GAME_YES_FONT_SIZE (50)
 
 #define GAME_NO_X (430)
-#define GAME_NO_Y (460)
+#define GAME_NO_Y (260)
 #define GAME_NO_FONT_SIZE (50)
 
 #define RANKING_POS_X (600)

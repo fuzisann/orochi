@@ -20,6 +20,7 @@ enum OBJ_NAME
 	OBJ_ENEMY,
 	OBJ_ENEMY_FIRST,
 	OBJ_ENEMY_SECOND,
+	OBJ_ENEMY_THIRD,
 
 	OBJ_BOSS_FIRST,
 	OBJ_BOSS_SECOND,
@@ -87,6 +88,7 @@ extern int block2;
 #include "ObjTitle.h"
 #include "ObjEnemy1.h"
 #include "ObjEnemy2.h"
+#include "ObjEnemy3.h"
 #include "ObjMain.h"
 #include "CObjStick.h"
 #include "Objgear.h"

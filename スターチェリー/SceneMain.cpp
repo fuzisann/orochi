@@ -102,6 +102,7 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
+		Draw::LoadImage(L"あんこう.png", 10, TEX_SIZE_512);//テスト用
 		Draw::LoadImage(L"カメ.png", 12, TEX_SIZE_512);
 		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
@@ -123,10 +124,12 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
+		Draw::LoadImage(L"あんこう.png", 10, TEX_SIZE_512);
 		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
 		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
 		Draw::LoadImage(L"リュウグウノツカイ(死亡用).png", 15, TEX_SIZE_512);
+		//Draw::LoadImage(L"あんこう(死亡用).png", 16, TEX_SIZE_512);
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
@@ -147,9 +150,11 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
+		//Draw::LoadImage(L"あんこう.png", 10, TEX_SIZE_512);
 		Draw::LoadImage(L"乙姫.png", 12, TEX_SIZE_512);
 		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
+		//Draw::LoadImage(L"あんこう(死亡用).png", 16, TEX_SIZE_512);
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 		/*//背景画像読み込み
@@ -217,7 +222,7 @@ void CSceneMain::InitScene()
 		//音楽読み込み
 		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(-0.1);
+		float f = Audio::VolumeMaster(-0.3);
 	}
 	else if (g_map_chenge == 1)
 	{

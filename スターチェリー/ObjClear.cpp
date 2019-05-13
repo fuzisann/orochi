@@ -97,11 +97,11 @@ void CObjClear::Draw()
 	//Font::StrDraw(L"ステージクリア", GAME_CLEAR_X, GAME_CLEAR_Y, GAME_CLEAR_FONT_SIZE, p);
 
 	if (choose == 0)
-		Font::StrDraw(L"◇次のステージ", NEXT_STAGE_YES_X -40, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, p);
+		Font::StrDraw(L"◆次のステージ", NEXT_STAGE_YES_X -40, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, p);
 	else
 		Font::StrDraw(L"次のステージ", NEXT_STAGE_YES_X, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, p);
 	if (choose == 1)
-		Font::StrDraw(L"◇タイトルへ", NEXT_STAGE_NO_X - 40, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);
+		Font::StrDraw(L"◆タイトルへ", NEXT_STAGE_NO_X - 40, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);
 	else
 		Font::StrDraw(L"タイトルへ", NEXT_STAGE_NO_X, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);
 }

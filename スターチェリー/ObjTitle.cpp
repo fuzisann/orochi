@@ -133,12 +133,12 @@ void CObjTitle::Draw()
 	Font::StrDraw(L"スターチェリー", 30, 125, 60, b);
 
 		if(choose==0)
-			Font::StrDraw(L"◇はじめる", GAME_START_POS_X - 55, GAME_START_POS_Y, GAME_START_FONT_SIZE, b);
+			Font::StrDraw(L"◆はじめる", GAME_START_POS_X - 55, GAME_START_POS_Y, GAME_START_FONT_SIZE, b);
 		else
 			Font::StrDraw(L"はじめる", GAME_START_POS_X, GAME_START_POS_Y, GAME_START_FONT_SIZE, b);
 
 		if(choose==1)
-			Font::StrDraw(L"◇おわる", GAME_EXIT_POS_X - 55, GAME_EXIT_POS_Y, GAME_EXIT_FONT_SIZE, b);
+			Font::StrDraw(L"◆おわる", GAME_EXIT_POS_X - 55, GAME_EXIT_POS_Y, GAME_EXIT_FONT_SIZE, b);
 		else
 			Font::StrDraw(L"おわる", GAME_EXIT_POS_X, GAME_EXIT_POS_Y, GAME_EXIT_FONT_SIZE, b);
 }

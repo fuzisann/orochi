@@ -126,8 +126,8 @@ void CObjOver::Draw()
     //切り取り位置の設定
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 800.0f;
-	src.m_bottom = 600.0f;
+	src.m_right = 702.0f;
+	src.m_bottom = 599.0f;
 
 	//表示位置の設定
 	dst.m_top = 0.0f;
@@ -143,13 +143,13 @@ void CObjOver::Draw()
 	//Font::StrDraw(L"ゲームオーバー", GAME_OVER_X, GAME_OVER_Y, GAME_OVER_FONT_SIZE, p);
 
 	if (choose == 0)
-	Font::StrDraw(L"◇やり直す", GAME_YES_X -40	, GAME_YES_Y, GAME_YES_FONT_SIZE, b);
+	Font::StrDraw(L"◆やり直す", GAME_YES_X -40	, GAME_YES_Y, GAME_YES_FONT_SIZE, r);
 	else
-	Font::StrDraw(L"やり直す", GAME_YES_X, GAME_YES_Y, GAME_YES_FONT_SIZE, b);
+	Font::StrDraw(L"やり直す", GAME_YES_X, GAME_YES_Y, GAME_YES_FONT_SIZE, r);
 
 	if (choose == 1)
-	Font::StrDraw(L"◇タイトルに戻る", GAME_NO_X -40, GAME_NO_Y, GAME_NO_FONT_SIZE, b);
+	Font::StrDraw(L"◆タイトルに戻る", GAME_NO_X -40, GAME_NO_Y, GAME_NO_FONT_SIZE, r);
 	else
-	Font::StrDraw(L"タイトルに戻る", GAME_NO_X, GAME_NO_Y, GAME_NO_FONT_SIZE, b);
+	Font::StrDraw(L"タイトルに戻る", GAME_NO_X, GAME_NO_Y, GAME_NO_FONT_SIZE, r);
 
 }

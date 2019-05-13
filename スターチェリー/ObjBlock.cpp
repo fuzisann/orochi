@@ -214,6 +214,15 @@ void CObjBlock::Action()
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
 			}
+			if (m_map[i][j] == 15)
+			{
+				//15があれば敵(あんこう)を出現
+				CObjEnemy3* obje3 = new CObjEnemy3(j*ALL_ENEMY_SIZE, i*ALL_ENEMY_SIZE);
+				Objs::InsertObj(obje3, OBJ_ENEMY_THIRD, 112);
+
+				//出現場所の値を0にする
+				m_map[i][j] = 0;
+			}
 			/*if (m_map[i][j] == 12)
 			{
 				
@@ -560,19 +569,6 @@ void CObjBlock::BlockHitEne(
 							*down = true;//主人公の下の部分が衝突している
 							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
-							if (m_map[i][j] == 6)
-							{
-								block2 = 1;
-							}
-							else
-							{
-								block2 = 0;
-							}
-							if (m_map[i][j] == 2)
-							{
-								//Audio::Start(1);
-								//Scene::SetScene(new CSceneOver());
-							}
 						}
 						if (r > 135 && r < 225)
 						{

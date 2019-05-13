@@ -38,7 +38,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 100;     //主人公の最大HP(最大10)
+	m_hero_hp = 1;     //主人公の最大HP(最大10)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -172,11 +172,11 @@ void CObjHero::Action()
 		}
 
 	//主人公機が領域外行かない処理
-	if (g_px + 64.0f > 800.0f)
+	/*if (g_px + 64.0f > 800.0f)
 	{
 		g_px = 800.0f - 64.0f;
 
-	}
+	}*/
 	/*
 	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//左のスクロールライン
@@ -262,7 +262,7 @@ void CObjHero::Action()
 			m_time_d = 80;		//無敵時間をセット
 			hit->SetInvincibility(true);	//無敵オン
 
-			//敵
+			//敵に当たるとHPを減らす
 			if (hit->CheckObjNameHit(OBJ_ENEMY_FIRST) != nullptr)
 			{
 				CObjEnemy1* ene1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
@@ -273,6 +273,12 @@ void CObjHero::Action()
 			{
 				CObjEnemy2* ene2 = (CObjEnemy2*)Objs::GetObj(OBJ_ENEMY_SECOND);
 				m_damage = ene2->GetDMG();
+				m_hero_hp -= m_damage;
+			}
+			if (hit->CheckObjNameHit(OBJ_ENEMY_THIRD) != nullptr)
+			{
+				CObjEnemy3* ene3 = (CObjEnemy3*)Objs::GetObj(OBJ_ENEMY_THIRD);
+				m_damage = ene3->GetDMG();
 				m_hero_hp -= m_damage;
 			}
 			if (hit->CheckObjNameHit(OBJ_BOSS_FIRST) != nullptr)
@@ -364,19 +370,19 @@ void CObjHero::Action()
 			float r = hit_date[i]->r;
 			if ((r < 45 && r >= 0) || r > 315)
 			{
-				m_vx = 0.0f; //右
+				m_vx = -0.15f; //右
 			}
 			if (r > 45 && r < 135)
 			{
-				m_vy = 0.0f;//上
+				m_vy = 0.15f;//上
 			}
 			if (r > 135 && r < 225)
 			{
-				m_vx = 0.0f;//左
+				m_vx = 0.15f;//左
 			}
 			if (r > 225 && r < 315)
 			{
-				m_vy = 0.0f; //下
+				m_vy = -0.15f; //下
 			}
 		}
 	}
