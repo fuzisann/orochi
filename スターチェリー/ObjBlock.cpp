@@ -13,6 +13,8 @@ using namespace GameL;
 
 bool Hit_wall = false;
 
+
+
 CObjBlock::CObjBlock(int map[50][150])
 {
 	//マップデータコピー
@@ -94,28 +96,30 @@ void CObjBlock::Action()
 		m_scroll -= hero->GetVX(); //主人公が本来動くべき分の値をm_scrollに加える
 
 	}*/
-
-	//左のスクロールライン
+	if (Hit_wall == false)
 	{
-		hero->SetX(0);				//主人公はラインを超えないようにする
-		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
+		//左のスクロールライン
+		{
+			hero->SetX(80);				//主人公はラインを超えないようにする
+			m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
+		}
+		//右のスクロールライン
+		{
+			hero->SetX(250);			//主人公はラインを超えないようにする
+			m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
+		}
 	}
-	//右のスクロールライン
-	{
-		hero->SetX(300);			//主人公はラインを超えないようにする
-		m_scrollx -= hero->GetVX();	//主人公が本来動くべき分の値をm_scrollに加える
-	}
-	//上のスクロールライン
-	{
-		hero->SetY(0);				//主人公はラインを超えないようにする
-		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
-	}
-	//下のスクロールライン
-	{
-		hero->SetY(400);			//主人公はラインを超えないようにする
-		m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
-	}
-
+		//上のスクロールライン
+		{
+			hero->SetY(0);				//主人公はラインを超えないようにする
+			m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
+		}
+		//下のスクロールライン
+		{
+			hero->SetY(375);			//主人公はラインを超えないようにする
+			m_scrolly -= hero->GetVY();	//主人公が本来動くべき分の値をm_scrollに加える
+		}
+	
 
 	for (int i = 0; i < 50; i++)
 	{
@@ -345,7 +349,8 @@ void CObjBlock::BlockHit(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y + (-scrolly) < by  + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
+				 && (*y + (-scrolly) + 64.0f > by) && (*y + (-scrolly) < by + 32.0f))
 				{
 					//上下左右判定
 
@@ -375,11 +380,29 @@ void CObjBlock::BlockHit(
 							*right = true;//オブジェクトの左の部分が衝突している
 							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.5f;//反発
+							Hit_wall = false;
 
+							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
 							{
-								*x = bx + 32.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x= bx + 29.0f + (scrollx);//ブロックの位置-主人公の幅
 								*vx = 0.0f;//くっつくため反発なし
+								*vy = 0.0f;
+								Hit_wall = true;
+
+								//右キー入力で離れる
+								if (Input::GetVKey(VK_RIGHT) == true)
+								{
+									*vx = 0.5f;//反発
+									Hit_wall = false;
+								}
+
+								if (Input::GetVKey(VK_UP) == true)
+								{
+									Hit_wall = false;
+									*vx = 0.5f;//反発
+									*vy = -3.0f;
+								}
 							}
 
 						}
@@ -389,14 +412,6 @@ void CObjBlock::BlockHit(
 							*down = true;//主人公の下の部分が衝突している
 							*y = by - 64.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
-							/*if (m_map[i][j] == 6)
-							{
-								block2 = 1;
-							}
-							else
-							{
-								block2 = 0;
-							}*/
 						}
 						if (r > 135 && r < 225)
 						{
@@ -404,12 +419,30 @@ void CObjBlock::BlockHit(
 							*left = true;//主人公の右の部分が衝突している
 							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -0.5f;//反発
+							Hit_wall = false;
 
+							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
 							{
-								*x = bx - 62.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x = bx - 61.0f + (scrollx);//ブロックの位置-主人公の幅
 								*vx = 0.0f;//くっつくため反発なし
+								*vy = 0.0f;//くっつくため反発なし
 								Hit_wall = true;
+
+								//左キー入力で離れる
+								if (Input::GetVKey(VK_LEFT) == true)
+								{
+									Hit_wall = false;
+									*vx = -0.5f;//反発
+								}
+
+								if (Input::GetVKey(VK_UP) == true)
+								{
+									Hit_wall = false;
+									*vx = -0.5f;//反発
+									*vy = -3.0f;
+								}
+
 							}
 						}
 						if (r > 225 && r < 315)
@@ -421,6 +454,19 @@ void CObjBlock::BlockHit(
 							if (*vy < 0)
 							{
 								*vy = 0.0f;
+							}
+
+							//マップに2があればくっつく
+							if (m_map[i][j] == 2)
+							{
+								*y = by + 29.0f + (scrolly);//ブロックの位置+主人公の幅
+								*vy = 0.0f;//くっつくため反発なし
+
+								//下キー入力で離れる
+								if (Input::GetVKey(VK_DOWN) == true)
+								{
+									*vy = 0.5f;//反発
+								}
 							}
 						}
 					}

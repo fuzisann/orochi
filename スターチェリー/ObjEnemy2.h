@@ -47,6 +47,12 @@ class CObjEnemy2 : public CObj
 		//移動の向き制御用
 		bool m_move;
 
+		bool m_del;			//削除チェック
+		bool m_eff_flag;	//エフェクト用フラグ
+
+		int m_time_dead;	//死亡用
+		bool  m_inputf;	//動き制御用
+
 		//踏んでいるblockの種類を確認用
 		//int m_block_type;
 		int s;

@@ -66,6 +66,8 @@ private:
 
 	int m_time_d;	//ダメージ無敵時間用
 	int m_sword_delay;	//剣攻撃間隔用
+
+	int m_time_dead;	//死亡用
 	
 	//blockとの衝突状態確認用
 	bool m_hit_up;
@@ -81,6 +83,13 @@ private:
 	int m_y;
 	bool m_key_flag; //キーフラグ
 	bool m_gate_on;		//ゲートオンオフ切り替え用
+
+	int m_ani;			//死亡アニメーション用
+	int m_ani_time_d;	//死亡アニメーション間隔タイム
+	bool m_del;			//削除チェック
+	bool m_eff_flag;	//エフェクト用フラグ
+
+	bool  m_inputf;	//キー入力制御用
 
 	wchar_t str[256];
 };

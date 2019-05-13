@@ -62,6 +62,7 @@ void CObjChangeSwitch::Action()
 		//Ž©g‚ðíœ
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+		m_delete = true;
 	}
 
 

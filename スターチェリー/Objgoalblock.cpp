@@ -82,6 +82,6 @@ void CObjgoalblock::Draw()
 	dst.m_right =ALL_BLOCK_SIZE  + m_px + block->GetScrollX();
 	dst.m_bottom =ALL_BLOCK_SIZE + m_py + block->GetScrollY();
 
-	Draw::Draw(5, &src, &dst, c, 0.0f);
+	//Draw::Draw(5, &src, &dst, c, 0.0f);
 
 }

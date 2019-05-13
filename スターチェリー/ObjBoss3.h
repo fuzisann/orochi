@@ -30,10 +30,11 @@ private:
 	int m_ani_frame;  //描画フレーム
 	int m_dotime;
 
-	int m_enemy_hp;		//敵の体力
+	int m_boss_hp;		//敵の体力
 	int m_damage;
 
 	int m_time_d;	//ダメージ時のカラー変更用タイム
+	int m_time_die;	//死亡時用タイム
 
 	float m_speed_power; //スピードパワー
 	float m_ani_max_time;//アニメーション動画間隔最大値

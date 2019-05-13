@@ -29,8 +29,10 @@ void CObjBoss3::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_enemy_hp = 10;     //敵のヒットポイント(最大10)
+	m_boss_hp = 10;     //敵のヒットポイント(最大10)
 	m_damage = 3;
+
+	m_time_die = 0;
 
 	m_move = false;		//true=右 false=左
 
@@ -160,7 +162,7 @@ void CObjBoss3::Action()
 			m_vx -= 15;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
-		m_enemy_hp -= 1;	//敵の体力を減らす
+		m_boss_hp -= 1;	//敵の体力を減らす
 	}
 
 	if (m_time_d > 0)
@@ -172,13 +174,25 @@ void CObjBoss3::Action()
 		}
 	}
 
-	if (m_enemy_hp <= 0)
+	if (m_boss_hp <= 0)
 	{
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		block->Setwall(true);
+		m_time_die = 30;
 		this->SetStatus(false);		//画像の削除
 		Hits::DeleteHitBox(this);	//ヒットボックスの削除
+		Scene::SetScene(new CSceneClear());
 	}
+
+	/*if (m_time_die > 0)
+	{
+		m_time_die--;
+		if (m_time_die <= 0)
+		{
+			Scene::SetScene(new CSceneClear());
+			m_time_die = 0;
+		}
+	}*/
 
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
@@ -197,6 +211,7 @@ void CObjBoss3::Draw()
 
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
+	float a[4] = { 10.0f,0.6f,0.6f,0.7f };
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
@@ -218,6 +233,10 @@ void CObjBoss3::Draw()
 	dst.m_bottom = 100.0f + m_py - 50 + pb->GetScrollY();
 
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-	Draw::Draw(12, &src, &dst, c, 0.0f);
-
+	if (m_time_d > 0) {
+		Draw::Draw(9, &src, &dst, a, 0.0f);
+	}
+	else {
+		Draw::Draw(9, &src, &dst, c, 0.0f);
+	}
 }

@@ -10,6 +10,8 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern bool m_start_boss;
+
 CObjBoss2::CObjBoss2(float x, float y)
 {
 	m_px = x;
@@ -29,16 +31,22 @@ void CObjBoss2::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_enemy_hp = 5;     //敵のヒットポイント(最大5)
+	m_boss_hp = 5;     //敵のヒットポイント(最大5)
 	m_damage = 2;
 
+	m_time_die = 0;
+
 	m_move = false;		//true=右 false=左
+
+	m_del = false;
 
 	//blockとの追突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
 	m_hit_left = false;
 	m_hit_right = false;
+
+	m_inputf = true;	// true = 入力可	false = 入力不可
 
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, m_px, m_py, 150, 75, ELEMENT_ENEMY, OBJ_BOSS_SECOND, 1);
@@ -73,9 +81,14 @@ void CObjBoss2::Action()
 		;
 	}*/
 
-	//通常速度
-	m_speed_power = 0.5f;
-	m_ani_max_time = 4;
+	m_speed_power = 0.0f;		//スピードを０にする
+
+	if (m_start_boss == false)
+	{
+		//通常速度
+		m_speed_power = 0.5f;
+		m_ani_max_time = 4;
+	}
 
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
@@ -87,18 +100,23 @@ void CObjBoss2::Action()
 		m_move = false;
 	}
 
-	//方向
-	if (m_move == false)
+	//inputフラグがオンの時に移動を可能にする
+	if (m_inputf == true)
 	{
-		m_vx += m_speed_power;
-		m_posture = 1.0f;
-		m_ani_time += 1;
-	}
-	else if (m_move == true)
-	{
-		m_vx -= m_speed_power;
-		m_posture = 0.0f;
-		m_ani_time += 1;
+
+		//方向
+		if (m_move == false)
+		{
+			m_vx += m_speed_power;
+			m_posture = 1.0f;
+			m_ani_time += 1;
+		}
+		else if (m_move == true)
+		{
+			m_vx -= m_speed_power;
+			m_posture = 0.0f;
+			m_ani_time += 1;
+		}
 	}
 	/*else
 	{
@@ -133,7 +151,7 @@ void CObjBoss2::Action()
 			m_vx -= 15;
 		}
 		m_time_d = 30;	//敵の無敵時間をセット
-		m_enemy_hp -= 1;	//敵の体力を減らす
+		m_boss_hp -= 1;	//敵の体力を減らす
 	}
 
 	if (m_time_d > 0)
@@ -145,19 +163,53 @@ void CObjBoss2::Action()
 		}
 	}
 
-	if (m_enemy_hp <= 0)
+	//HPが0以下の時に消滅処理に移行する
+	if (m_del == false && m_boss_hp <= 0)
 	{
 		CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 		block->Setwall(true);
-		this->SetStatus(false);		//画像の削除
-		Hits::DeleteHitBox(this);	//ヒットボックスの削除
+		m_time_die = 30;
+		m_inputf = false;	//動きを制御
+		m_del = true;
+		m_time_dead = 80;	//死亡時間をセット
 	}
+
+	/*if (m_time_die > 0)
+	{
+		m_time_die--;
+		if (m_time_die <= 0)
+		{
+			Scene::SetScene(new CSceneClear());
+			m_time_die = 0;
+		}
+	}*/
 
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
 	hit->SetPos(m_px + block->GetScrollX(), m_py -32 + block->GetScrollY());
+
+	if (m_del == true)
+	{
+		hit->SetInvincibility(true);	//無敵にする
+		m_eff_flag = true;			//画像切り替え用フラグ
+		m_speed_power = 0.0f;			//動きを止める
+
+	}
+
+	if (m_time_dead > 0)
+	{
+		m_time_dead--;
+		if (m_time_dead <= 0)
+		{
+			this->SetStatus(false);		//画像の削除
+			Hits::DeleteHitBox(this);	//ヒットボックスの削除
+			m_time_dead = 0;
+			m_start_boss = true;
+			Scene::SetScene(new CSceneClear());
+		}
+	}
 
 }
 //ドロー
@@ -170,16 +222,10 @@ void CObjBoss2::Draw()
 
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
+	float a[4] = { 10.0f,0.6f,0.6f,0.7f };
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
-
-
-	//切り取り位置の設定
-	src.m_top = 0.0f;
-	src.m_left = 0.0f + AniData[m_ani_frame] * 150;
-	src.m_right = 150.0f + AniData[m_ani_frame] * 150;
-	src.m_bottom = 100.0f;
 
 	//ブロック情報を持ってくる
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
@@ -189,9 +235,34 @@ void CObjBoss2::Draw()
 	dst.m_left = (150.0f * m_posture) + m_px + pb->GetScrollX();
 	dst.m_right = (150 - 150.0f *m_posture) + m_px + pb->GetScrollX();
 	dst.m_bottom = 100.0f + m_py - 32 + pb->GetScrollY();
-			
-	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-	Draw::Draw(12, &src, &dst, c, 0.0f);
 
+	//敵の状態で描画を変更
+	if (m_del == true)
+	{
+		//切り取り位置の設定
+		src.m_top = 20.0f;
+		src.m_left = 820.0f;
+		src.m_right = 1020.0f;
+		src.m_bottom = 110.0f;
+
+		if (m_eff_flag == true)
+			Draw::Draw(15, &src, &dst, c, 0.0f);
+	}
+	else
+	{
+		//切り取り位置の設定
+		src.m_top = 0.0f;
+		src.m_left = 0.0f + AniData[m_ani_frame] * 150;
+		src.m_right = 150.0f + AniData[m_ani_frame] * 150;
+		src.m_bottom = 100.0f;
+
+		//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
+		if (m_time_d > 0) {
+			Draw::Draw(12, &src, &dst, a, 0.0f);
+		}
+		else {
+			Draw::Draw(12, &src, &dst, c, 0.0f);
+		}
+	}
 	
 }
