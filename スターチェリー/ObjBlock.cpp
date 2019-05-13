@@ -418,10 +418,10 @@ void CObjBlock::BlockHit(
 							*up = true;//主人公の上の部分が衝突している
 							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
 	
-							/*if (*vy < 0)
+							if (*vy < 0)
 							{
 								*vy = 0.0f;
-							}*/
+							}
 						}
 					}
 				}
