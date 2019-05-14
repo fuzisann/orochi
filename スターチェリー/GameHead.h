@@ -82,6 +82,7 @@ extern int block2;
 #include "CObjHero.h"
 #include "ObjBlock.h"
 #include "ObjBackground.h"
+#include "ObjStageClear.h"
 #include "ObjClear.h"
 #include "Objgoalblock.h"
 #include "ObjOver.h"
@@ -107,6 +108,7 @@ extern int block2;
 //ゲームシーンクラスヘッダ------------------------
 #include "SceneMain.h"
 #include "SceneClear.h"
+#include "SceneStageClear.h"
 #include "SceneOver.h"
 #include "SceneTitle.h"
 

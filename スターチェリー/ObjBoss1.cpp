@@ -101,10 +101,10 @@ void CObjBoss1::Action()
 		}
 	}*/
 	//落下
-	/*if (m_py > 1000.0f)
+	if (m_py > 1000.0f)
 	{
 		;
-	}*/
+	}
 
 	m_speed_power = 0.0f;		//スピードを０にする
 	//m_vx = 0.0f;

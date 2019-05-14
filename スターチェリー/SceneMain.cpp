@@ -45,7 +45,7 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"新ステージ1仮.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"Stage1  完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
@@ -53,7 +53,7 @@ void CSceneMain::InitScene()
 	}
 	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"stage3 完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"新ステージ3.csv", &size);//外部データ読み込み
 	}
 	/*else if (g_map_chenge == 3)
 	{
@@ -92,12 +92,7 @@ void CSceneMain::InitScene()
 		//背景画像読み込み
 		Draw::LoadImage(L"１ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
-		Draw::LoadImage(L"ブロック1.png", 2, TEX_SIZE_512);
-		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
-
-		//チェンジスイッチ＆ゲート画像読み込みテスト
-		//Draw::LoadImage(L"雲ブロック.png", 6, TEX_SIZE_512);
-		//Draw::LoadImage(L"氷ブロック.png", 7, TEX_SIZE_512);
+		Draw::LoadImage(L"ステージ1ブロック.png", 2, TEX_SIZE_512);
 
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
@@ -120,7 +115,6 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"２ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
 		Draw::LoadImage(L"ステージ2ブロック.png", 2, TEX_SIZE_512);
-		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
@@ -133,12 +127,6 @@ void CSceneMain::InitScene()
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
-		/*//背景画像読み込み
-		Draw::LoadImage(L"map.jpg", 3, TEX_SIZE_1024);
-		//マップ2　ブロック画像読み込み
-		Draw::LoadImage(L"brock5.png", 1, TEX_SIZE_512);
-		//針罠読み込み
-		Draw::LoadImage(L"blockobj2.png", 4, TEX_SIZE_512);*/
 	}
 	else if (g_map_chenge == 2)
 	{
@@ -146,7 +134,6 @@ void CSceneMain::InitScene()
 		Draw::LoadImage(L"３ステージ背景.png", 3, TEX_SIZE_1024);
 		//ブロック画像読み込み
 		Draw::LoadImage(L"ステージ3ブロック.png", 2, TEX_SIZE_512);
-		Draw::LoadImage(L"ひっつくブロック.png", 4, TEX_SIZE_512);
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
@@ -157,42 +144,10 @@ void CSceneMain::InitScene()
 		//Draw::LoadImage(L"あんこう(死亡用).png", 16, TEX_SIZE_512);
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
-		/*//背景画像読み込み
-		Draw::LoadImage(L"氷の洞窟2.jpg", 3, TEX_SIZE_1024);
-		//マップ7　ブロック画像読み込み
-		Draw::LoadImage(L"氷ブロック.png", 1, TEX_SIZE_512);
-		//マップ7　ブロック画像読み込み
-		Draw::LoadImage(L"氷ブロック2.png", 6, TEX_SIZE_512);
-		//氷柱罠読み込み
-		Draw::LoadImage(L"氷柱ブロック.png",7, TEX_SIZE_512);*/
 	}
-	/*else if (g_map_chenge == 3) 
-	{
-		//背景画像読み込み
-		Draw::LoadImage(L"雲の上ステージ.jpg", 3, TEX_SIZE_1024);
-		//マップ9　ブロック画像読み込み
-		Draw::LoadImage(L"雲ブロック.png", 1, TEX_SIZE_512);
-		//マップ9　ブロック画像読み込み
-		Draw::LoadImage(L"雲ブロック.png", 9, TEX_SIZE_512);
-	}
-	else if (g_map_chenge == 4)
-	{
-		//マップ10  背景画像読み込み
-		Draw::LoadImage(L"ラストステージ.gif", 3, TEX_SIZE_1024);
-		//マップ10　ブロック画像読み込み
-		Draw::LoadImage(L"ラストステージブロック.png", 1, TEX_SIZE_512);
-		//マップ10　ブロック画像読み込み
-		Draw::LoadImage(L"氷ブロック2.png", 6, TEX_SIZE_512);
-		//マップ10  氷柱罠読み込み
-		Draw::LoadImage(L"氷柱ブロック.png", 7, TEX_SIZE_512);
-		//マップ10　ブロック画像読み込み
-		Draw::LoadImage(L"ひび割れブロック.png", 8, TEX_SIZE_512);
-		//マップ10　ブロック画像読み込み
-		Draw::LoadImage(L"落ちる石ブロック.png", 9, TEX_SIZE_512);
-	}*/
-	
-	//ゴール
-	Draw::LoadImage(L"efe.png", 5, TEX_SIZE_512);
+
+	//竜宮城画像(1ステージ目ゴール)
+	Draw::LoadImage(L"竜宮城1.png", 5, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero(map);   //主人公オブジェクト作成
@@ -238,23 +193,6 @@ void CSceneMain::InitScene()
 		//ボリューム1.5
 		float v = Audio::VolumeMaster(-0.2);
 	}
-	/*else if (g_map_chenge == 3)
-	{
-		//音楽読み込み
-		Audio::LoadAudio(0, L"map9BGM.wav", BACK_MUSIC);
-		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
-	}
-	else if (g_map_chenge == 4)
-	{
-		//音楽読み込み
-		Audio::LoadAudio(0, L"ラストステージ.wav", BACK_MUSIC);
-		//ボリューム1.5
-		float v = Audio::VolumeMaster(1.5);
-	}
-	Audio::LoadAudio(1, L"jump01.wav", EFFECT);
-	//ボリューム1.5
-	float v = Audio::VolumeMaster(1.0);*/
 
 	Audio::LoadAudio(1, L"剣攻撃音.wav", EFFECT);
 	Audio::LoadAudio(2, L"ジャンプ音.wav", EFFECT);
@@ -263,8 +201,6 @@ void CSceneMain::InitScene()
 
 	//音楽スタート
 	Audio::Start(0);
-
-
 }
 
 

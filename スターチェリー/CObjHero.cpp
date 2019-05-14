@@ -38,7 +38,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 1;     //主人公の最大HP(最大10)
+	m_hero_hp = 100;     //主人公の最大HP(最大10)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -115,7 +115,7 @@ void CObjHero::Action()
 			if (m_hit_down == true && m_time == 0)
 			{
 				m_vy = -17;	//初期値：-13
-				g_py += m_vy;
+				//g_py += m_vy;
 
 				Audio::Start(2);
 

@@ -12,30 +12,30 @@
 using namespace GameL;
 
 //使用ヘッダー
-#include "SceneClear.h"
+#include "SceneStageClear.h"
 #include "GameHead.h"
 
 //コンストラクタ
-CSceneClear::CSceneClear()
+CSceneStageClear::CSceneStageClear()
 {
 
 }
 
 //デストラクタ
-CSceneClear::~CSceneClear()
+CSceneStageClear::~CSceneStageClear()
 {
 
 }
 
 //初期化メソッド
-void CSceneClear::InitScene()
+void CSceneStageClear::InitScene()
 {
 
 	//出力させる文字のグラフィックを作成
-	Draw::LoadImage(L"GAMECLEAR.png", 4, TEX_SIZE_256);
+	Draw::LoadImage(L"ゲームクリア.png", 4, TEX_SIZE_256);
 
 	//背景オブジェクト作成
-	CObjStageClear* nk = new CObjStageClear();
+	CObjStageClear* nk= new CObjStageClear();
 	Objs::InsertObj(nk, OBJ_CLEAR, 4);
 
 	//音楽読み込み
@@ -48,7 +48,7 @@ void CSceneClear::InitScene()
 	Audio::Start(0);
 }
 //実行中メソッド
-void CSceneClear::Scene()
+void CSceneStageClear::Scene()
 {
 
 }

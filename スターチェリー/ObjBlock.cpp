@@ -394,9 +394,10 @@ void CObjBlock::BlockHit(
 							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
 							{
-								*x= bx + 29.0f + (scrollx);//ブロックの位置-主人公の幅
-								*vx = 0.0f;//くっつくため反発なし
-								*vy = 0.0f;
+								*x= bx + 31.0f + (scrollx);//ブロックの位置-主人公の幅
+								if (*vy > 0.0f)
+									*vy = 0.0f;//くっつくため反発なし
+								*vx = 0.0f;
 								Hit_wall = true;
 
 								//右キー入力で離れる
@@ -435,7 +436,9 @@ void CObjBlock::BlockHit(
 							{
 								*x = bx - 61.0f + (scrollx);//ブロックの位置-主人公の幅
 								*vx = 0.0f;//くっつくため反発なし
-								*vy = 0.0f;//くっつくため反発なし
+							
+								if(*vy>0.0f)
+									*vy = 0.0f;//くっつくため反発なし
 								Hit_wall = true;
 
 								//左キー入力で離れる

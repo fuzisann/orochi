@@ -35,12 +35,12 @@ using namespace GameL;
 #define CLICK_RESET_FONT_SIZE (16)
 
 
-//オブジェクト:ゲームクリア
-class CObjClear : public CObj
+//オブジェクト:ステージクリア
+class CObjStageClear : public CObj
 {
 public:
-	CObjClear() {};
-	~CObjClear() {};
+	CObjStageClear() {};
+	~CObjStageClear() {};
 	void Init();    //イニシャライズ
 	void Action();  //アクション
 	void Draw();    //ドロー

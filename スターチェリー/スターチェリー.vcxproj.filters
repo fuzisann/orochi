@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\GameClear">
-      <UniqueIdentifier>{25615bd1-bb91-4852-81f3-bb85ea19a68f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameOver">
       <UniqueIdentifier>{c2ca1a7e-29c7-4be6-b72d-1ba55cacfaf4}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,12 @@
     </Filter>
     <Filter Include="ソース ファイル\Main\UI関係">
       <UniqueIdentifier>{d39d994a-230a-4640-9d04-9bbf9585e6e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\StageClear">
+      <UniqueIdentifier>{25615bd1-bb91-4852-81f3-bb85ea19a68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameClear">
+      <UniqueIdentifier>{c45cdba9-e820-41cc-acdb-40103cb2c723}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,9 +99,6 @@
     <ClCompile Include="ObjBlock.cpp">
       <Filter>ソース ファイル\Main\Block関係</Filter>
     </ClCompile>
-    <ClCompile Include="ObjClear.cpp">
-      <Filter>ソース ファイル\GameClear</Filter>
-    </ClCompile>
     <ClCompile Include="ObjEnemy1.cpp">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
@@ -122,9 +122,6 @@
     </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneClear.cpp">
-      <Filter>ソース ファイル\GameClear</Filter>
     </ClCompile>
     <ClCompile Include="SceneOver.cpp">
       <Filter>ソース ファイル\GameOver</Filter>
@@ -164,6 +161,18 @@
     </ClCompile>
     <ClCompile Include="ObjEnemy3.cpp">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjStageClear.cpp">
+      <Filter>ソース ファイル\StageClear</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneStageClear.cpp">
+      <Filter>ソース ファイル\StageClear</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneClear.cpp">
+      <Filter>ソース ファイル\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjClear.cpp">
+      <Filter>ソース ファイル\GameClear</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +230,6 @@
     <ClInclude Include="ObjBlock.h">
       <Filter>ソース ファイル\Main\Block関係</Filter>
     </ClInclude>
-    <ClInclude Include="ObjClear.h">
-      <Filter>ソース ファイル\GameClear</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy1.h">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
@@ -247,9 +253,6 @@
     </ClInclude>
     <ClInclude Include="SceneMain.h">
       <Filter>ソース ファイル\Main</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneClear.h">
-      <Filter>ソース ファイル\GameClear</Filter>
     </ClInclude>
     <ClInclude Include="SceneOver.h">
       <Filter>ソース ファイル\GameOver</Filter>
@@ -289,6 +292,18 @@
     </ClInclude>
     <ClInclude Include="ObjEnemy3.h">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjStageClear.h">
+      <Filter>ソース ファイル\StageClear</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneStageClear.h">
+      <Filter>ソース ファイル\StageClear</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneClear.h">
+      <Filter>ソース ファイル\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjClear.h">
+      <Filter>ソース ファイル\GameClear</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

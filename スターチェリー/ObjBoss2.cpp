@@ -59,6 +59,9 @@ void CObjBoss2::Action()
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
+	//自由落下運動
+	m_vy += 9.8 / (16.0f);
+
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
 
@@ -76,10 +79,10 @@ void CObjBoss2::Action()
 	m_py += m_vy;
 
 	//落下
-	/*if (m_py > 1000.0f)
+	if (m_py > 1000.0f)
 	{
 		;
-	}*/
+	}
 
 	m_speed_power = 0.0f;		//スピードを０にする
 
@@ -207,7 +210,7 @@ void CObjBoss2::Action()
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
 			m_start_boss = true;
-			Scene::SetScene(new CSceneClear());
+			Scene::SetScene(new CSceneStageClear());
 		}
 	}
 
