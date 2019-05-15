@@ -14,7 +14,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-int g_map_chenge = 2;//マップ変更
+int g_map_chenge = 0;//マップ変更
 int block2 = 0;
 
 //イニシャライズ

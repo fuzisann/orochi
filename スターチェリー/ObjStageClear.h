@@ -10,13 +10,13 @@ using namespace GameL;
 #define GAME_CLEAR_Y (200)
 #define GAME_CLEAR_FONT_SIZE (84)
 
-#define NEXT_STAGE_YES_X (190)
-#define NEXT_STAGE_YES_Y (380)
-#define NEXT_STAGE_YES_FONT_SIZE (62)
+#define NEXT_STAGE_YES_X (400)
+#define NEXT_STAGE_YES_Y (275)
+#define NEXT_STAGE_YES_FONT_SIZE (45)
 
-#define NEXT_STAGE_NO_X (260)
-#define NEXT_STAGE_NO_Y (480)
-#define NEXT_STAGE_NO_FONT_SIZE (50)
+#define NEXT_STAGE_NO_X (520)
+#define NEXT_STAGE_NO_Y (350)
+#define NEXT_STAGE_NO_FONT_SIZE (40)
 
 #define STR_MAX (256)
 #define SCORE_INIT (1)
@@ -46,9 +46,7 @@ public:
 	void Draw();    //ドロー
 private:
 	bool m_key_flag;//キーフラグ
-	float m_mou_x;  //マウスの位置X
-	float m_mou_y;  //マウスの位置Y
-	bool m_mou_r;   //マウスの右ボタン
-	bool m_mou_l;   //マウスの左ボタン
+	float m_and;		//透明度処理用
+	bool m_andf;		//透明度処理用フラグ
 	int choose;
 };

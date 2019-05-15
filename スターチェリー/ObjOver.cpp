@@ -57,8 +57,8 @@ void CObjOver::Action()
 			if (m_key_flag == true)
 			{
 				m_andf = true;
-				g_px = 64.0f;
-				g_py = 500.0f;
+				//g_px = 64.0f;
+				//g_py = 500.0f;
 				m_key_flag = false;
 				Audio::Start(1);
 			}

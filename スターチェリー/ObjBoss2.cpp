@@ -3,6 +3,7 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include "GameL\Audio.h"
 
 #include"GameHead.h"
 #include"ObjBoss2.h"
@@ -153,6 +154,7 @@ void CObjBoss2::Action()
 			//m_vy = -10;
 			m_vx -= 15;
 		}
+		Audio::Start(4);	//ダメージ音
 		m_time_d = 30;	//敵の無敵時間をセット
 		m_boss_hp -= 1;	//敵の体力を減らす
 	}

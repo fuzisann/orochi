@@ -3,6 +3,7 @@
 #include"GameL\WinInputs.h"
 #include"GameL\SceneManager.h"
 #include"GameL\HitBoxManager.h"
+#include "GameL\Audio.h"
 
 #include"GameHead.h"
 #include"ObjBoss3.h"
@@ -85,9 +86,14 @@ void CObjBoss3::Action()
 		;
 	}
 
-	//通常速度
-	m_speed_power = 0.5f;
-	m_ani_max_time = 4;
+	m_speed_power = 0.0f;		//スピードを０にする
+
+	if (m_start_boss == false)
+	{
+		//通常速度
+		m_speed_power = 0.5f;
+		m_ani_max_time = 4;
+	}
 
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
@@ -171,6 +177,7 @@ void CObjBoss3::Action()
 			m_vy = -10;
 			m_vx -= 15;
 		}
+		Audio::Start(4);	//ダメージ音
 		m_time_d = 30;	//敵の無敵時間をセット
 		m_boss_hp -= 1;	//敵の体力を減らす
 	}

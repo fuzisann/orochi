@@ -5,6 +5,7 @@
 #include "GameL\DrawTexture.h"
 #include"GameL\UserData.h"
 #include"SceneMain.h"
+#include"GameL\Audio.h"
 
 #include "GameHead.h"
 #include "ObjStageClear.h"
@@ -15,7 +16,9 @@ using namespace GameL;
 //イニシャライズ
 void CObjStageClear::Init()
 {
-	choose = 0;
+	m_key_flag = false;
+	m_and = 1.0f;
+	m_andf = false;
 }
 
 //アクション
@@ -23,42 +26,30 @@ void CObjStageClear::Action()
 {
 	Save::Seve();//UserDataの情報フォルダ「UserData」を作成する;
 
-	if (Input::GetVKey(VK_UP) == true)
+	if (Input::GetVKey(VK_RETURN) == true)
 	{
-		choose = 0;
-	}
-	if (Input::GetVKey(VK_DOWN) == true)
-	{
-		choose = 1;
-	}
-
-	if (choose == 0)
-	{
-		if (Input::GetVKey(VK_RETURN) == true)
+		if (m_key_flag == true)
 		{
-
-			if (m_key_flag == true)
-			{
-				g_px = 64.0f;
-				g_py = 500.0f;
-
-				g_map_chenge += 1;
-				Scene::SetScene(new CSceneMain());
-				m_key_flag = false;
-			}
-		}
-		else
-		{
-			m_key_flag = true;
-		}
-	}
-	if (choose == 1)
-	{
-		if (Input::GetVKey(VK_RETURN) == true)
-		{
-			Scene::SetScene(new CSceneTitle());
-			g_map_chenge = 0;//マップ変更
+			m_andf = true;
+			g_map_chenge += 1;
+			Audio::Start(1);
 			m_key_flag = false;
+		}
+	}
+	else
+	{
+
+		m_key_flag = true;
+	}
+
+	if (m_andf == true)
+	{
+		m_and -= 0.03f;
+		if (m_and <= 0.0f)
+		{
+			m_and = 0.0f;
+			m_andf = false;
+			Scene::SetScene(new CSceneMain());
 		}
 	}
 }
@@ -96,12 +87,5 @@ void CObjStageClear::Draw()
 
 	//Font::StrDraw(L"ステージクリア", GAME_CLEAR_X, GAME_CLEAR_Y, GAME_CLEAR_FONT_SIZE, p);
 
-	if (choose == 0)
-		Font::StrDraw(L"◆次のステージ", NEXT_STAGE_YES_X -40, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, p);
-	else
-		Font::StrDraw(L"次のステージ", NEXT_STAGE_YES_X, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, p);
-	if (choose == 1)
-		Font::StrDraw(L"◆タイトルへ", NEXT_STAGE_NO_X - 40, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);
-	else
-		Font::StrDraw(L"タイトルへ", NEXT_STAGE_NO_X, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);
+	Font::StrDraw(L"◆次のステージへ", NEXT_STAGE_YES_X, NEXT_STAGE_YES_Y, NEXT_STAGE_YES_FONT_SIZE, r);
 }

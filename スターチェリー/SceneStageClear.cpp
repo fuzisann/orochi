@@ -30,16 +30,23 @@ CSceneStageClear::~CSceneStageClear()
 //初期化メソッド
 void CSceneStageClear::InitScene()
 {
-
-	//出力させる文字のグラフィックを作成
-	Draw::LoadImage(L"ゲームクリア.png", 4, TEX_SIZE_256);
+	//出力させるグラフィックを作成
+	if (g_map_chenge == 0)
+	{
+		Draw::LoadImage(L"ゲームクリア.png", 4, TEX_SIZE_256);
+	}
+	else if (g_map_chenge == 1)
+	{
+		Draw::LoadImage(L"ステージクリア2.png", 4, TEX_SIZE_256);
+	}
 
 	//背景オブジェクト作成
 	CObjStageClear* nk= new CObjStageClear();
-	Objs::InsertObj(nk, OBJ_CLEAR, 4);
+	Objs::InsertObj(nk, OBJ_STAGE_CLEAR, 4);
 
 	//音楽読み込み
 	Audio::LoadAudio(0, L"ゲームクリアBGM候補.wav", BACK_MUSIC);
+	Audio::LoadAudio(1, L"決定音.wav", EFFECT);
 
 	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(-0.1);

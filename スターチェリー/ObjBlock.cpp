@@ -12,8 +12,7 @@
 using namespace GameL;
 
 bool Hit_wall = false;
-
-
+bool m_up = false;
 
 CObjBlock::CObjBlock(int map[50][150])
 {
@@ -342,6 +341,8 @@ void CObjBlock::BlockHit(
 	//上る壁に触れた時の描画変更初期化
 	Hit_wall = false;
 
+	m_up = false;
+
 	//m_mapの全要素にアクセス
 	for (int i = 0; i < 50; i++)
 	{
@@ -400,6 +401,8 @@ void CObjBlock::BlockHit(
 								*vx = 0.0f;
 								Hit_wall = true;
 
+								Audio::Start(5);
+
 								//右キー入力で離れる
 								if (Input::GetVKey(VK_RIGHT) == true)
 								{
@@ -441,6 +444,8 @@ void CObjBlock::BlockHit(
 									*vy = 0.0f;//くっつくため反発なし
 								Hit_wall = true;
 
+								Audio::Start(5);
+
 								//左キー入力で離れる
 								if (Input::GetVKey(VK_LEFT) == true)
 								{
@@ -462,7 +467,9 @@ void CObjBlock::BlockHit(
 							//下
 							*up = true;//主人公の上の部分が衝突している
 							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
-	
+							m_up = false;
+
+							//*vx = 0.0f;
 							if (*vy < 0)
 							{
 								*vy = 0.0f;
@@ -474,10 +481,14 @@ void CObjBlock::BlockHit(
 								*y = by + 29.0f + (scrolly);//ブロックの位置+主人公の幅
 								*vy = 0.0f;//くっつくため反発なし
 
+								m_up = true;
+								Audio::Start(5);
+
 								//下キー入力で離れる
 								if (Input::GetVKey(VK_DOWN) == true)
 								{
 									*vy = 0.5f;//反発
+									m_up = false;
 								}
 							}
 						}

@@ -8,6 +8,7 @@
 
 #include "GameHead.h"
 #include "ObjClear.h"
+#include "GameL\Audio.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -15,7 +16,9 @@ using namespace GameL;
 //イニシャライズ
 void CObjClear::Init()
 {
-	choose = 0;
+	m_key_flag = false;
+	m_and = 1.0f;
+	m_andf = false;
 }
 
 //アクション
@@ -25,9 +28,28 @@ void CObjClear::Action()
 
 	if (Input::GetVKey(VK_RETURN) == true)
 	{
-			Scene::SetScene(new CSceneTitle());
+		if (m_key_flag == true)
+		{
+			m_andf = true;
 			g_map_chenge = 0;//マップ変更
+			Audio::Start(1);
 			m_key_flag = false;
+		}
+	}
+	else
+	{
+		m_key_flag = true;
+	}
+
+	if (m_andf == true)
+	{
+		m_and -= 0.03f;
+		if (m_and <= 0.0f)
+		{
+			m_and = 0.0f;
+			m_andf = false;
+			Scene::SetScene(new CSceneTitle());
+		}
 	}
 }
 //ドロー
@@ -62,9 +84,5 @@ void CObjClear::Draw()
 
 	float p[4] = { 1,1,1,1 };
 
-	//Font::StrDraw(L"ステージクリア", GAME_CLEAR_X, GAME_CLEAR_Y, GAME_CLEAR_FONT_SIZE, p);
-
-	Font::StrDraw(L"◆タイトルへ", NEXT_STAGE_NO_X - 40, 255, NEXT_STAGE_NO_FONT_SIZE, p);
-	/*else
-		Font::StrDraw(L"タイトルへ", NEXT_STAGE_NO_X, NEXT_STAGE_NO_Y, NEXT_STAGE_NO_FONT_SIZE, p);*/
+	Font::StrDraw(L"◆タイトルへ", 500 - 40, 270, 50, r);
 }

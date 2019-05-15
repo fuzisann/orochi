@@ -79,4 +79,5 @@ private:
 	int m_ani_time;
 	int m_ani_frame;
 	int m_ani_max_time;
+	int m_up;
 };

@@ -35,11 +35,12 @@ void CSceneClear::InitScene()
 	Draw::LoadImage(L"GAMECLEAR.png", 4, TEX_SIZE_256);
 
 	//背景オブジェクト作成
-	CObjStageClear* nk = new CObjStageClear();
+	CObjClear* nk = new CObjClear();
 	Objs::InsertObj(nk, OBJ_CLEAR, 4);
 
 	//音楽読み込み
 	Audio::LoadAudio(0, L"ゲームクリアBGM候補.wav", BACK_MUSIC);
+	Audio::LoadAudio(1, L"決定音.wav", EFFECT);
 
 	//ボリュームを1.0に戻す
 	float v = Audio::VolumeMaster(-0.1);

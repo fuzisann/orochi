@@ -177,27 +177,30 @@ void CSceneMain::InitScene()
 		//音楽読み込み
 		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(-0.3);
+		//float f = Audio::VolumeMaster(-0.3);
 	}
 	else if (g_map_chenge == 1)
 	{
 		//音楽読み込み
 		Audio::LoadAudio(0, L"ステージ2BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float f = Audio::VolumeMaster(-0.2);
+		//float f = Audio::VolumeMaster(-0.3);
 	}
 	else if (g_map_chenge == 2)
 	{
 		//音楽読み込み
 		Audio::LoadAudio(0, L"ステージ3BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
-		float v = Audio::VolumeMaster(-0.2);
+		//float v = Audio::VolumeMaster(-0.1);
 	}
 
 	Audio::LoadAudio(1, L"剣攻撃音.wav", EFFECT);
 	Audio::LoadAudio(2, L"ジャンプ音.wav", EFFECT);
 	Audio::LoadAudio(3, L"ダメージ音(主人公).wav", EFFECT);
 	Audio::LoadAudio(4, L"ダメージ音(敵).wav", EFFECT);
+	Audio::LoadAudio(5, L"ひっつく音.wav", EFFECT);
+
+	float f = Audio::VolumeMaster(-0.2);
 
 	//音楽スタート
 	Audio::Start(0);

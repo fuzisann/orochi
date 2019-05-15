@@ -218,6 +218,7 @@ void CObjBoss1::Action()
 		m_inputf = false;	//動きを制御
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
+		m_start_boss = true;
 	}
 
 	/*if (m_time_die > 0)
@@ -252,7 +253,6 @@ void CObjBoss1::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
-			m_start_boss = true;
 		}
 	}
 

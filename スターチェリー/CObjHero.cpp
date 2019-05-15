@@ -17,8 +17,7 @@ using namespace GameL;
 float g_px;//= 64.0f;
 float g_py;//= 450.0f;
 extern bool Hit_wall;
-
-
+extern bool m_up;
 
 //イニシャライズ
 void CObjHero::Init()
@@ -51,6 +50,8 @@ void CObjHero::Init()
 	m_swordwidth = 0.0f; //ソード幅
 
 	m_inputf = true;	// true = 入力可	false = 入力不可
+
+	m_up = false;
 
 	//当たり判定用のHitBoxを作成
 	Hits::SetHitBox(this, g_px, g_py,64,64, ELEMENT_PLAYER, COBJ_HERO, 1);
@@ -110,25 +111,27 @@ void CObjHero::Action()
 		}
 
 		//ジャンプ
-		if (Input::GetVKey(VK_UP) == true)
+		if (m_up == false)
 		{
-			if (m_hit_down == true && m_time == 0)
+			if (Input::GetVKey(VK_UP) == true)
 			{
-				m_vy = -17;	//初期値：-13
-				//g_py += m_vy;
+				if (m_hit_down == true && m_time == 0)
+				{
+					m_vy = -17;	//初期値：-13
+					//g_py += m_vy;
 
-				Audio::Start(2);
+					Audio::Start(2);
 
+				}
 			}
-
 		}
+		
 		if (m_time > 0) {
 			m_time--;
 			if (m_time <= 0) {
 				m_time = 0;
 			}
 		}
-
 
 		/*if (m_ani_frame == 1)
 		{
