@@ -71,6 +71,7 @@ struct UserData
 
 //ゲーム内で使用されるグローバル変数・定数・列挙--
 extern int g_map_chenge;//マップ変更
+extern int g_m_chenge;//BGM変更
 extern int block2;
 
 //------------------------------------------------

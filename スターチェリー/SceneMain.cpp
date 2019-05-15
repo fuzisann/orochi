@@ -13,6 +13,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+extern bool m_m_change;
 
 //使用ヘッダー
 #include"SceneMain.h"
@@ -178,6 +179,7 @@ void CSceneMain::InitScene()
 		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
 		//ボリューム1.5
 		//float f = Audio::VolumeMaster(-0.3);
+
 	}
 	else if (g_map_chenge == 1)
 	{
@@ -200,9 +202,10 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(4, L"ダメージ音(敵).wav", EFFECT);
 	Audio::LoadAudio(5, L"ひっつく音.wav", EFFECT);
 
+	Audio::LoadAudio(6, L"ボス戦BGM候補.wav", SOUND_TYPE::BACK_MUSIC);
+
 	float f = Audio::VolumeMaster(-0.2);
 
-	//音楽スタート
 	Audio::Start(0);
 }
 
@@ -210,5 +213,15 @@ void CSceneMain::InitScene()
 //実行中メソッド
 void CSceneMain::Scene()
 {
+	//チェンジスイッチの情報を取得
+	CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
 
+	if (m_m_change == false)
+	{
+		//メイン音楽ストップ
+		Audio::Stop(0);
+		//ボス音楽スタート
+		Audio::Start(6);
+		m_m_change == true;
+	}
 }

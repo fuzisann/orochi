@@ -16,6 +16,7 @@ using namespace GameL;
 bool m_delete = true;
 bool m_change = true;
 bool m_start_boss = true;
+bool m_m_change = true;
 
 
 CObjChangeSwitch::CObjChangeSwitch(float x, float y)
@@ -52,6 +53,7 @@ void CObjChangeSwitch::Action()
 		m_change = false;
 		m_delete = false;
 		m_start_boss = false;
+		m_m_change = false;
 		//hit->SetInvincibility(true);	//–³“GƒIƒ“
 		//m_time = 100;
 	}

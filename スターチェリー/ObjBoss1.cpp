@@ -12,6 +12,7 @@
 using namespace GameL;
 
 extern bool m_start_boss;
+extern bool m_m_change;
 
 CObjBoss1::CObjBoss1(float x, float y)
 {
@@ -40,6 +41,8 @@ void CObjBoss1::Init()
 	m_change = true;
 
 	m_del = false;
+
+	//m_m_change = false;
 
 	//blockとの追突状態確認用
 	m_hit_up = false;
@@ -218,7 +221,6 @@ void CObjBoss1::Action()
 		m_inputf = false;	//動きを制御
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
-		m_start_boss = true;
 	}
 
 	/*if (m_time_die > 0)
@@ -253,6 +255,7 @@ void CObjBoss1::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
+			m_m_change = true;
 		}
 	}
 
