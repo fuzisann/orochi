@@ -33,7 +33,7 @@ void CSceneStageClear::InitScene()
 	//出力させるグラフィックを作成
 	if (g_map_chenge == 0)
 	{
-		Draw::LoadImage(L"ゲームクリア.png", 4, TEX_SIZE_256);
+		Draw::LoadImage(L"ステージクリア1.png", 4, TEX_SIZE_256);
 	}
 	else if (g_map_chenge == 1)
 	{
