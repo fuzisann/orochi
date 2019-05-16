@@ -365,8 +365,8 @@ void CObjBlock::BlockHit(
 					//上下左右判定
 
 					//vectorの作成
-					float rvx = (*x + (-scrollx)) - bx;
-					float rvy = (*y + (-scrolly)) - by;
+					float rvx = (*x + (-scrollx)) - bx+16;
+					float rvy = (*y + (-scrolly)) - by+16;
 
 					//長さを求める
 					float len = sqrt(rvx*rvx + rvy*rvy);
@@ -381,7 +381,7 @@ void CObjBlock::BlockHit(
 						r = 360.0f - abs(r);
 
 					//lenがある一定の長さのより短い場合判定に入る
-					if (len < 88.0f)
+					if (len < 55.0f)
 					{
 						//角度で上下左右を判定
 						if ((r < 45 && r>0) || r > 315)
@@ -467,7 +467,7 @@ void CObjBlock::BlockHit(
 							//下
 							*up = true;//主人公の上の部分が衝突している
 							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
-							m_up = false;
+							//m_up = false;
 
 							//*vx = 0.0f;
 							if (*vy < 0)
@@ -481,15 +481,22 @@ void CObjBlock::BlockHit(
 								*y = by + 29.0f + (scrolly);//ブロックの位置+主人公の幅
 								*vy = 0.0f;//くっつくため反発なし
 
-								m_up = true;
+								//m_up = true;
 								Audio::Start(5);
 
 								//下キー入力で離れる
 								if (Input::GetVKey(VK_DOWN) == true)
 								{
 									*vy = 0.5f;//反発
-									m_up = false;
+									//m_up = false;
 								}
+
+								/*if (Input::GetVKey(VK_UP) == true)
+								{
+									Hit_wall = false;
+									*vx = -0.5f;//反発
+									*vy = -3.0f;
+								}*/
 							}
 						}
 					}

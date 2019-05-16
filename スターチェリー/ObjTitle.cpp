@@ -97,7 +97,7 @@ void CObjTitle::Action()
 		{
 			m_and = 0.0f;
 			m_andf = false;
-			Scene::SetScene(new CSceneOperation());
+			Scene::SetScene(new CSceneOP());
 		}
 	}
 

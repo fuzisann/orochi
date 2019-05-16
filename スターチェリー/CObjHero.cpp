@@ -461,10 +461,10 @@ void CObjHero::Draw()
 		if (Hit_wall == true) //ã‚é•Ç‚ÉålŒö‚ª“–‚½‚Á‚½
 		{
 			//Œ•‚ğ‚Á‚Ä‚¢‚È‚¢‚ÌålŒö‚ª•`‚©‚ê‚Ä‚¢‚éŠ‚ğØ‚èæ‚é
-			src.m_top = 70.0f;
-			src.m_left = 66.0f;
-			src.m_right = 121.0f;
-			src.m_bottom = 123.0f;
+			src.m_top = 64.0f;
+			src.m_left = 64.0f;
+			src.m_right = 128.0f;
+			src.m_bottom = 128.0f;
 
 		}
 		else //‚»‚êˆÈŠO‚Ì
