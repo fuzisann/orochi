@@ -119,7 +119,7 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		Draw::LoadImage(L"あんこう.png", 10, TEX_SIZE_512);
+		Draw::LoadImage(L"あんこう完成.png", 10, TEX_SIZE_512);
 		Draw::LoadImage(L"リュウグウノツカイ　完成版.png", 12, TEX_SIZE_512);
 		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
@@ -138,8 +138,8 @@ void CSceneMain::InitScene()
 		//敵画像読み込み
 		Draw::LoadImage(L"あじ完成版.png", 8, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ完成版.png", 9, TEX_SIZE_512);
-		//Draw::LoadImage(L"あんこう.png", 10, TEX_SIZE_512);
-		Draw::LoadImage(L"乙姫.png", 12, TEX_SIZE_512);
+		Draw::LoadImage(L"あんこう完成.png", 10, TEX_SIZE_512);
+		Draw::LoadImage(L"乙姫サメ.png", 12, TEX_SIZE_512);
 		Draw::LoadImage(L"アジ(死亡用).png", 13, TEX_SIZE_512);
 		Draw::LoadImage(L"イワシ(死亡用).png", 14, TEX_SIZE_512);
 		//Draw::LoadImage(L"あんこう(死亡用).png", 16, TEX_SIZE_512);
@@ -147,7 +147,7 @@ void CSceneMain::InitScene()
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
 	}
 
-	//竜宮城画像(1ステージ目ゴール)
+	//竜宮城画像(1ステージ目ゴール用)
 	Draw::LoadImage(L"竜宮城1.png", 5, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
@@ -176,7 +176,7 @@ void CSceneMain::InitScene()
 	if (g_map_chenge == 0)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"ステージ1BGM候補.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ1BGM.wav", BACK_MUSIC);
 		//ボリューム1.5
 		//float f = Audio::VolumeMaster(-0.3);
 
@@ -184,14 +184,14 @@ void CSceneMain::InitScene()
 	else if (g_map_chenge == 1)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"ステージ2BGM候補.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ2BGM.wav", BACK_MUSIC);
 		//ボリューム1.5
 		//float f = Audio::VolumeMaster(-0.3);
 	}
 	else if (g_map_chenge == 2)
 	{
 		//音楽読み込み
-		Audio::LoadAudio(0, L"ステージ3BGM候補.wav", BACK_MUSIC);
+		Audio::LoadAudio(0, L"ステージ3BGM.wav", BACK_MUSIC);
 		//ボリューム1.5
 		//float v = Audio::VolumeMaster(-0.1);
 	}
@@ -202,7 +202,7 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(4, L"ダメージ音(敵).wav", EFFECT);
 	Audio::LoadAudio(5, L"ひっつく音.wav", EFFECT);
 
-	Audio::LoadAudio(6, L"ボス戦BGM候補.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(6, L"ボス戦BGM.wav",BACK_MUSIC);
 
 	float f = Audio::VolumeMaster(-0.2);
 
@@ -222,6 +222,6 @@ void CSceneMain::Scene()
 		Audio::Stop(0);
 		//ボス音楽スタート
 		Audio::Start(6);
-		m_m_change == true;
+		m_m_change = true;
 	}
 }

@@ -36,8 +36,15 @@ public:
 		float*vx, float*vy, int*bt
 	);
 
-	//ブロックの当たり判定(敵)
+	//ブロックの当たり判定(アジ・イワシ)
 	void BlockHitEne(
+		float*x, float*y, bool scroll_on,
+		bool*up, bool*down, bool*left, bool*right,
+		float*vx, float*vy, int*bt
+	);
+
+	//ブロックの当たり判定(あんこう)
+	void BlockHitEne2(
 		float*x, float*y, bool scroll_on,
 		bool*up, bool*down, bool*left, bool*right,
 		float*vx, float*vy, int*bt

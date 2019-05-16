@@ -255,7 +255,8 @@ void CObjBoss1::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
-			m_m_change = true;
+			m_start_boss = true;
+			//m_m_change = true;
 		}
 	}
 

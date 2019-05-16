@@ -17,6 +17,7 @@ enum OBJ_NAME
 	OBJ_OVER,
 	OBJ_TIME,
 	OBJ_GOAL_BLOCK,
+	OBJ_OPERATION,
 
 	OBJ_ENEMY,
 	OBJ_ENEMY_FIRST,
@@ -89,6 +90,7 @@ extern int block2;
 #include "Objgoalblock.h"
 #include "ObjOver.h"
 #include "ObjTitle.h"
+#include "ObjOperation.h"
 #include "ObjEnemy1.h"
 #include "ObjEnemy2.h"
 #include "ObjEnemy3.h"
@@ -103,7 +105,6 @@ extern int block2;
 #include "ObjChangeSwitch.h"
 #include "ObjChangeGate1.h"
 #include "ObjChangeGate2.h"
-#include "CObjHeroGauge.h"
 
 //------------------------------------------------
 
@@ -113,6 +114,7 @@ extern int block2;
 #include "SceneStageClear.h"
 #include "SceneOver.h"
 #include "SceneTitle.h"
+#include "SceneOperation.h"
 
 //-----------------------------------------------
 

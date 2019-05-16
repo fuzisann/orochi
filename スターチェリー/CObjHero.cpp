@@ -37,7 +37,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 100;     //主人公の最大HP(最大10)
+	m_hero_hp = 15;     //主人公の最大HP(最大15)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -437,9 +437,7 @@ void CObjHero::Draw()
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
-	
-	swprintf_s(str, L"%d", m_hero_hp);
-	Font::StrDraw(str, 150, 100, 30, c);
+
 	
 	//表示位置の設定
 	dst.m_top = 0.0f + g_py;

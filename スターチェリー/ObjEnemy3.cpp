@@ -8,8 +8,6 @@
 #include"GameHead.h"
 #include"ObjEnemy3.h"
 
-
-
 //使用するネームスペース
 using namespace GameL;
 
@@ -58,7 +56,6 @@ void CObjEnemy3::Action()
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
-
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
 
@@ -66,7 +63,7 @@ void CObjEnemy3::Action()
 	int d;
 	//ブロックとの当たり判定実行
 	CObjBlock*pb = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	pb->BlockHitEne(&m_px, &m_py, false,
+	pb->BlockHitEne2(&m_px, &m_py, false,
 		&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
 		&d
 	);
@@ -74,7 +71,6 @@ void CObjEnemy3::Action()
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
-
 
 	//通常速度
 	m_speed_power = 0.2f;
@@ -186,7 +182,6 @@ void CObjEnemy3::Action()
 			m_time_dead = 0;
 		}
 	}
-
 }
 //ドロー
 void CObjEnemy3::Draw()
@@ -208,7 +203,7 @@ void CObjEnemy3::Draw()
 
 	//表示位置の設定
 	dst.m_top = 0.0f + m_py + pb->GetScrollY();
-	dst.m_left = (0.0f * m_posture) + m_px + pb->GetScrollX();
+	dst.m_left = (100.0f * m_posture) + m_px + pb->GetScrollX();
 	dst.m_right = (100 - 100.0f *m_posture) + m_px + pb->GetScrollX();
 	dst.m_bottom = 100.0f + m_py + pb->GetScrollY();
 
@@ -217,8 +212,8 @@ void CObjEnemy3::Draw()
 	{
 		//切り取り位置の設定
 		src.m_top = 0.0f;
-		src.m_left = 310.0f;
-		src.m_right = 410.0f;
+		src.m_left = 400.0f;
+		src.m_right = 500.0f;
 		src.m_bottom = 100.0f;
 
 		if (m_eff_flag == true)

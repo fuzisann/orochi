@@ -267,10 +267,10 @@ void CObjBoss3::Draw()
 	{
 
 		//Ø‚èæ‚èˆÊ’u‚Ìİ’è
-		src.m_top = 0.0f;
-		src.m_left = 0.0f;
-		src.m_right = 200.0f;
-		src.m_bottom = 100.0f;
+		src.m_top = 100.0f;
+		src.m_left = 420.0f;
+		src.m_right = 615.0f;
+		src.m_bottom = 200.0f;
 
 		if (m_eff_flag == true)
 			Draw::Draw(12, &src, &dst, c, 0.0f);

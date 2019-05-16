@@ -44,7 +44,7 @@ void CObjMain::Draw()
 
 	Draw::Draw(17, &src, &dst, c, 0.0f);
 	
-	/*swprintf_s(HP, L"HP %d", hero_hp);
-	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, GAME_HP_FONT_SIZE, c);//HP‚ð•\Ž¦*/
+	swprintf_s(HP, L"HP %d/%d", hero_hp, 15);
+	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, 35, c);//HP‚ð•\Ž¦
 
 }

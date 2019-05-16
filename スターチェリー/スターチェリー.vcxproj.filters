@@ -37,14 +37,14 @@
     <Filter Include="ソース ファイル\Main\仕掛け関係">
       <UniqueIdentifier>{297a2250-4e2b-45c5-b067-743bbfc752bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Main\UI関係">
-      <UniqueIdentifier>{d39d994a-230a-4640-9d04-9bbf9585e6e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\StageClear">
       <UniqueIdentifier>{25615bd1-bb91-4852-81f3-bb85ea19a68f}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\GameClear">
       <UniqueIdentifier>{c45cdba9-e820-41cc-acdb-40103cb2c723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\操作説明">
+      <UniqueIdentifier>{1fb90982-d090-4838-aed9-730a4813916c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +156,6 @@
     <ClCompile Include="ObjSwitch.cpp">
       <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClCompile>
-    <ClCompile Include="CObjHeroGauge.cpp">
-      <Filter>ソース ファイル\Main\UI関係</Filter>
-    </ClCompile>
     <ClCompile Include="ObjEnemy3.cpp">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
@@ -173,6 +170,12 @@
     </ClCompile>
     <ClCompile Include="ObjClear.cpp">
       <Filter>ソース ファイル\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOperation.cpp">
+      <Filter>ソース ファイル\操作説明</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjOperation.cpp">
+      <Filter>ソース ファイル\操作説明</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -287,9 +290,6 @@
     <ClInclude Include="ObjSwitch.h">
       <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClInclude>
-    <ClInclude Include="CObjHeroGauge.h">
-      <Filter>ソース ファイル\Main\UI関係</Filter>
-    </ClInclude>
     <ClInclude Include="ObjEnemy3.h">
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
@@ -304,6 +304,12 @@
     </ClInclude>
     <ClInclude Include="ObjClear.h">
       <Filter>ソース ファイル\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneOperation.h">
+      <Filter>ソース ファイル\操作説明</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjOperation.h">
+      <Filter>ソース ファイル\操作説明</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

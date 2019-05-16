@@ -56,8 +56,6 @@ void CObjEnemy2::Action()
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
-	
-
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
 
@@ -73,7 +71,6 @@ void CObjEnemy2::Action()
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
-
 
 	//通常速度
 	m_speed_power = 0.5f;

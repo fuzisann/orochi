@@ -134,6 +134,7 @@
     <ClCompile Include="ObjChangeGate2.cpp" />
     <ClCompile Include="ObjChangeSwitch.cpp" />
     <ClCompile Include="ObjClear.cpp" />
+    <ClCompile Include="ObjOperation.cpp" />
     <ClCompile Include="ObjStageClear.cpp" />
     <ClCompile Include="ObjEnemy1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -144,12 +145,12 @@
     <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
     <ClCompile Include="CObjHeroSword.cpp" />
-    <ClCompile Include="CObjHeroGauge.cpp" />
     <ClCompile Include="ObjMain.cpp" />
     <ClCompile Include="ObjOver.cpp" />
     <ClCompile Include="ObjSwitch.cpp" />
     <ClCompile Include="ObjTitle.cpp" />
     <ClCompile Include="SceneClear.cpp" />
+    <ClCompile Include="SceneOperation.cpp" />
     <ClCompile Include="SceneStageClear.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="SceneOver.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="ObjChangeGate2.h" />
     <ClInclude Include="ObjChangeSwitch.h" />
     <ClInclude Include="ObjClear.h" />
+    <ClInclude Include="ObjOperation.h" />
     <ClInclude Include="ObjStageClear.h" />
     <ClInclude Include="ObjEnemy1.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -191,12 +193,12 @@
     <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
     <ClInclude Include="CObjHeroSword.h" />
-    <ClInclude Include="CObjHeroGauge.h" />
     <ClInclude Include="ObjMain.h" />
     <ClInclude Include="ObjOver.h" />
     <ClInclude Include="ObjSwitch.h" />
     <ClInclude Include="ObjTitle.h" />
     <ClInclude Include="SceneClear.h" />
+    <ClInclude Include="SceneOperation.h" />
     <ClInclude Include="SceneStageClear.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneOver.h" />
