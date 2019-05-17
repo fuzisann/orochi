@@ -49,6 +49,9 @@
     <Filter Include="ソース ファイル\あらすじ">
       <UniqueIdentifier>{8bc25767-7b77-4d97-bd1e-e153041cd7a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\エンディング">
+      <UniqueIdentifier>{7a7d881a-87da-4be1-bfa1-bc4230ac5be1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -185,6 +188,12 @@
     </ClCompile>
     <ClCompile Include="SceneOP.cpp">
       <Filter>ソース ファイル\あらすじ</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneED.cpp">
+      <Filter>ソース ファイル\エンディング</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjED.cpp">
+      <Filter>ソース ファイル\エンディング</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -325,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="SceneOP.h">
       <Filter>ソース ファイル\あらすじ</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneED.h">
+      <Filter>ソース ファイル\エンディング</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjED.h">
+      <Filter>ソース ファイル\エンディング</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

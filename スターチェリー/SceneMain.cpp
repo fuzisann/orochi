@@ -46,7 +46,7 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"Stage1  完成.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage1 (完成).csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
@@ -86,7 +86,7 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
-	Draw::LoadImage(L"主人公３.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公3.png", 0, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
 	{
@@ -148,6 +148,8 @@ void CSceneMain::InitScene()
 
 	//竜宮城画像(1ステージ目ゴール用)
 	Draw::LoadImage(L"竜宮城1.png", 5, TEX_SIZE_512);
+
+	Draw::LoadImage(L"主人公体力.png", 20, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero(map);   //主人公オブジェクト作成

@@ -134,6 +134,7 @@
     <ClCompile Include="ObjChangeGate2.cpp" />
     <ClCompile Include="ObjChangeSwitch.cpp" />
     <ClCompile Include="ObjClear.cpp" />
+    <ClCompile Include="ObjED.cpp" />
     <ClCompile Include="ObjOP.cpp" />
     <ClCompile Include="ObjOperation.cpp" />
     <ClCompile Include="ObjStageClear.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="ObjSwitch.cpp" />
     <ClCompile Include="ObjTitle.cpp" />
     <ClCompile Include="SceneClear.cpp" />
+    <ClCompile Include="SceneED.cpp" />
     <ClCompile Include="SceneOP.cpp" />
     <ClCompile Include="SceneOperation.cpp" />
     <ClCompile Include="SceneStageClear.cpp" />
@@ -184,6 +186,7 @@
     <ClInclude Include="ObjChangeGate2.h" />
     <ClInclude Include="ObjChangeSwitch.h" />
     <ClInclude Include="ObjClear.h" />
+    <ClInclude Include="ObjED.h" />
     <ClInclude Include="ObjOP.h" />
     <ClInclude Include="ObjOperation.h" />
     <ClInclude Include="ObjStageClear.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="ObjSwitch.h" />
     <ClInclude Include="ObjTitle.h" />
     <ClInclude Include="SceneClear.h" />
+    <ClInclude Include="SceneED.h" />
     <ClInclude Include="SceneOP.h" />
     <ClInclude Include="SceneOperation.h" />
     <ClInclude Include="SceneStageClear.h" />

@@ -59,17 +59,16 @@ void CObjOP::Draw()
 		m_y -= 0.6f;
 	}
 	Font::StrDraw(L"～あらすじ～", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 400, 40, p);
-	Font::StrDraw(L"ある日、突然サメが竜宮城を乗っ取るため、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 500, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"攻めてきました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 550, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"そのサメを恐れた竜宮城の魚たちは、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 600, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"竜宮城から逃げ出してしまいました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 650, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"ある日、突然サメが竜宮城を乗っ取るために攻めてきました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 500, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"そのサメを恐れた竜宮城の魚たちは、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 550, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"竜宮城から逃げ出してしまいました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 600, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"慌てて竜宮城から逃げ出してきた魚たちを見て、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 700, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"主人公は竜宮城で何かが起きている事を感知し、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 750, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城に向かうのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 800, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"竜宮城に向かった主人公は、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 850, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"竜宮城から逃げ遅れた魚たちがサメに操られている光景や、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 900, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"サメが竜宮城で暴れている光景を目にしたのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"※Enterキーで次へ進む※", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1100, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"竜宮城に向かった主人公は、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 900, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"竜宮城から逃げ遅れた魚たちがサメに操られている光景や、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"サメが竜宮城で暴れている光景を目にしたのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1000, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"※Enterキーで次へ進む※", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1150, GAME_CLEAR_FONT_SIZE, p);
 
 	if (Input::GetVKey(VK_RETURN) == true)
 	{

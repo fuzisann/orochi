@@ -36,6 +36,7 @@ enum OBJ_NAME
 	OBJ_CHANGEGATE,
 
 	OBJ_OP,
+	OBJ_ED,
 };
 //------------------------------------------------
 
@@ -93,6 +94,7 @@ extern int block2;
 #include "ObjOver.h"
 #include "ObjTitle.h"
 #include "ObjOP.h"
+#include "ObjED.h"
 #include "ObjOperation.h"
 #include "ObjEnemy1.h"
 #include "ObjEnemy2.h"
@@ -118,6 +120,7 @@ extern int block2;
 #include "SceneOver.h"
 #include "SceneTitle.h"
 #include "SceneOP.h"
+#include "SceneED.h"
 #include "SceneOperation.h"
 
 //-----------------------------------------------

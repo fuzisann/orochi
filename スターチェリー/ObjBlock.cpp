@@ -437,7 +437,7 @@ void CObjBlock::BlockHit(
 							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
 							{
-								*x = bx - 61.0f + (scrollx);//ブロックの位置-主人公の幅
+								*x = bx - 63.0f + (scrollx);//ブロックの位置-主人公の幅
 								*vx = 0.0f;//くっつくため反発なし
 							
 								if(*vy>0.0f)

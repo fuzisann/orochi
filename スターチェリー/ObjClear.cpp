@@ -48,7 +48,7 @@ void CObjClear::Action()
 		{
 			m_and = 0.0f;
 			m_andf = false;
-			Scene::SetScene(new CSceneTitle());
+			Scene::SetScene(new CSceneED());
 		}
 	}
 }
@@ -84,5 +84,5 @@ void CObjClear::Draw()
 
 	float p[4] = { 1,1,1,1 };
 
-	Font::StrDraw(L"Ÿƒ^ƒCƒgƒ‹‚Ö", 500 - 40, 270, 50, r);
+	Font::StrDraw(L"ŸŸ‚Ö", 500 - 40, 270, 50, r);
 }

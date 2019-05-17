@@ -18,6 +18,7 @@ float g_px;//= 64.0f;
 float g_py;//= 450.0f;
 extern bool Hit_wall;
 extern bool m_up;
+extern bool m_start_boss;
 
 //イニシャライズ
 void CObjHero::Init()
@@ -417,6 +418,7 @@ void CObjHero::Action()
 		{
 			Scene::SetScene(new CSceneOver());
 			m_time_dead = 0;
+			m_start_boss = true;
 		}
 	}
 }
@@ -463,7 +465,7 @@ void CObjHero::Draw()
 			//剣を持っていない時の主人公が描かれている所を切り取る
 			src.m_top = 64.0f;
 			src.m_left = 64.0f;
-			src.m_right = 128.0f;
+			src.m_right = 113.0f;
 			src.m_bottom = 128.0f;
 
 		}

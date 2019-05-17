@@ -35,6 +35,8 @@ void CObjBoss3::Init()
 	m_boss_hp = 10;     //敵のヒットポイント(最大10)
 	m_damage = 3;
 
+	m_time = 0;
+
 	m_time_die = 0;
 
 	m_move = false;		//true=右 false=左
@@ -93,6 +95,23 @@ void CObjBoss3::Action()
 		//通常速度
 		m_speed_power = 0.5f;
 		m_ani_max_time = 4;
+
+		//突進
+		if (m_time >= 0)
+		{
+			m_time++;
+
+			if (m_time >= 80)
+			{
+				m_speed_power = 0.0f;
+
+				if (m_time >= 120)
+				{
+					m_speed_power = 50.0f;
+					m_time = 0;
+				}
+			}
+		}
 	}
 
 	//ブロック衝突で向き変更
@@ -138,29 +157,6 @@ void CObjBoss3::Action()
 	{
 		m_ani_frame = 0;
 	}
-
-	//突進行動
-	if (m_do_f == true)
-	{
-		m_dotime++;
-		if (m_dotime > 40)
-		{
-			m_vx *= 5;
-			m_vy *= 5;
-			if (m_dotime == 100)
-			{
-				m_do_f = false;
-				m_dotime = 0;
-			}
-		}
-		else
-		{
-			m_vx = 0;
-			m_vy = 0;
-		}
-	}
-
-
 
 	//攻撃を受けたら体力を減らす
 	//主人公とATTACK系統との当たり判定
