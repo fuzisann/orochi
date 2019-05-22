@@ -480,7 +480,7 @@ void CObjHero::Draw()
 		}
 		else if (Hit_wall_r == true)
 		{
-			//Œ•‚ğ‚Á‚Ä‚¢‚é‚ÌålŒö‚ª•`‚©‚ê‚Ä‚¢‚éŠ‚ğØ‚èæ‚é
+			//‰ñ“]‚µ‚Ä‚¢‚é‚ÌålŒö‚ª•`‚©‚ê‚Ä‚¢‚éŠ‚ğØ‚èæ‚é
 			src.m_top = 0.0f;
 			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 			src.m_right = 64.0f + AniData[m_ani_frame] * 64;
