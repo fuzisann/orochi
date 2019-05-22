@@ -53,8 +53,8 @@ void CObjEnemy3::Init()
 void CObjEnemy3::Action()
 {
 	//摩擦
-	m_vx += -(m_vx * 0.098);
-	//m_vy += -(m_vy * 0.098);
+	m_vx += -(m_vx * 0.098f);
+	m_vy += -(m_vy * 0.098f);
 
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
@@ -77,11 +77,11 @@ void CObjEnemy3::Action()
 	m_ani_max_time = 4;
 
 	//ブロック衝突で向き変更
-	if (m_hit_left == true)
+	if (m_hit_down == true)
 	{
 		m_move = true;
 	}
-	if (m_hit_right == true)
+	if (m_hit_up == true)
 	{
 		m_move = false;
 	}
@@ -92,13 +92,13 @@ void CObjEnemy3::Action()
 		//方向
 		if (m_move == false)
 		{
-			m_vx += m_speed_power;
+			m_vy += m_speed_power;
 			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
 		else if (m_move == true)
 		{
-			m_vx -= m_speed_power;
+			m_vy -= m_speed_power;
 			m_posture = 0.0f;
 			m_ani_time += 1;
 		}
@@ -124,17 +124,6 @@ void CObjEnemy3::Action()
 	//主人公とATTACK系統との当たり判定
 	if (hit->CheckElementHit(ELEMENT_ATTACK) == true)
 	{
-		//ノックバック処理
-		if (m_posture == 0.0f)
-		{
-			//m_vy = -10;
-			m_vx += 15;
-		}
-		if (m_posture == 1.0f)
-		{
-			//m_vy = -10;
-			m_vx -= 15;
-		}
 		Audio::Start(4);	//ダメージ音
 		m_time_d = 30;	//敵の無敵時間をセット
 		m_enemy_hp -= 1;	//敵の体力を減らす

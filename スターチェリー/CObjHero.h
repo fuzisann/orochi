@@ -89,7 +89,8 @@ private:
 	bool m_del;			//削除チェック
 	bool m_eff_flag;	//エフェクト用フラグ
 
-	bool  m_inputf;	//キー入力制御用
+	bool  m_inputf;	//死亡用キー入力制御
+	bool  m_inputw;	//攻撃キー入力制御用
 
 	wchar_t str[256];
 };

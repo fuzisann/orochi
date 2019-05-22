@@ -12,6 +12,7 @@
 using namespace GameL;
 
 bool Hit_wall = false;
+bool Hit_wall_r = false;
 bool m_up = false;
 
 CObjBlock::CObjBlock(int map[50][150])
@@ -341,6 +342,8 @@ void CObjBlock::BlockHit(
 	//上る壁に触れた時の描画変更初期化
 	Hit_wall = false;
 
+	Hit_wall_r = false;
+
 	m_up = false;
 
 	//m_mapの全要素にアクセス
@@ -391,6 +394,7 @@ void CObjBlock::BlockHit(
 							*x = bx + 32.0f + (scrollx);//ブロックの位置+主人公の幅
 							*vx = 0.5f;//反発
 							Hit_wall = false;
+							Hit_wall_r = false;
 
 							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
@@ -408,11 +412,13 @@ void CObjBlock::BlockHit(
 								{
 									*vx = 0.5f;//反発
 									Hit_wall = false;
+									Hit_wall_r = false;
 								}
 
 								if (Input::GetVKey(VK_UP) == true)
 								{
 									Hit_wall = false;
+									Hit_wall_r = true;
 									*vx = 0.5f;//反発
 									*vy = -3.0f;
 								}
@@ -433,6 +439,7 @@ void CObjBlock::BlockHit(
 							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -0.5f;//反発
 							Hit_wall = false;
+							Hit_wall_r = false;
 
 							//マップに2があればくっつく
 							if (m_map[i][j] == 2)
@@ -450,12 +457,14 @@ void CObjBlock::BlockHit(
 								if (Input::GetVKey(VK_LEFT) == true)
 								{
 									Hit_wall = false;
+									Hit_wall_r = false;
 									*vx = -0.5f;//反発
 								}
 
 								if (Input::GetVKey(VK_UP) == true)
 								{
 									Hit_wall = false;
+									Hit_wall_r = true;
 									*vx = -0.5f;//反発
 									*vy = -3.0f;
 								}
@@ -551,7 +560,8 @@ void CObjBlock::BlockHitEne(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
+				 && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
 				{
 					//上下左右判定
 
@@ -660,8 +670,8 @@ void CObjBlock::BlockHitEne2(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
-				 && (*y + (-scrolly) + 100.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
+				 && (*y + (-scrolly) + 110.0f > by) && (*y < by + (-scrolly) + 32.0f))
 				{
 					//上下左右判定
 
@@ -698,14 +708,14 @@ void CObjBlock::BlockHitEne2(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 50.0f + (scrolly);//ブロックの位置-主人公の幅
+							*y = by - 110.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 						}
 						if (r > 135 && r < 225)
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 100.0f + (scrollx);//ブロックの位置-主人公の幅
+							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)

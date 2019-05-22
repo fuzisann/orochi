@@ -4,7 +4,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-//オブジェクト : 敵
+//オブジェクト : 敵(イワシ)
 class CObjEnemy2 : public CObj
 {
 	#define ALL_ENEMY_SIZE (32.0f)

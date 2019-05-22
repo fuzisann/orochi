@@ -67,7 +67,7 @@ void CObjOP::Draw()
 	Font::StrDraw(L"竜宮城に向かうのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 800, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城に向かった主人公は、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 900, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城から逃げ遅れた魚たちがサメに操られている光景や、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"サメが竜宮城で暴れている光景を目にしたのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1000, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"サメが竜宮城で暴れている光景を目にしたのでした…。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1000, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"※Enterキーで次へ進む※", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1150, GAME_CLEAR_FONT_SIZE, p);
 
 	if (Input::GetVKey(VK_RETURN) == true)

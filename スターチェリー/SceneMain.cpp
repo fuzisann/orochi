@@ -50,11 +50,11 @@ void CSceneMain::InitScene()
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"新ステージ2.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"Stage2 (完成).csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"新ステージ3.csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"Stage3 (完成).csv", &size);//外部データ読み込み
 	}
 	/*else if (g_map_chenge == 3)
 	{
@@ -87,6 +87,7 @@ void CSceneMain::InitScene()
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
 	Draw::LoadImage(L"主人公3.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公回転2.png", 1, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
 	{

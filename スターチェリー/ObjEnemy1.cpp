@@ -29,7 +29,7 @@ void CObjEnemy1::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
-	m_speed_power = 0.5f;//通常速度
+	m_speed_power = 0.8f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
 	m_enemy_hp = 3;     //敵のヒットポイント(最大3)(仮)
@@ -77,7 +77,7 @@ void CObjEnemy1::Action()
 
 
 	//通常速度
-	m_speed_power = 0.5f;
+	m_speed_power = 0.8f;
 	m_ani_max_time = 4;
 
 	//ブロック衝突で向き変更

@@ -17,6 +17,7 @@ using namespace GameL;
 float g_px;//= 64.0f;
 float g_py;//= 450.0f;
 extern bool Hit_wall;
+extern bool Hit_wall_r;
 extern bool m_up;
 extern bool m_start_boss;
 
@@ -52,6 +53,8 @@ void CObjHero::Init()
 
 	m_inputf = true;	// true = 入力可	false = 入力不可
 
+	m_inputw = false;	// false = 入力可	true = 入力不可
+
 	m_up = false;
 
 	//当たり判定用のHitBoxを作成
@@ -81,27 +84,31 @@ void CObjHero::Action()
 	//inputフラグがオンの場合入力を可能にする
 	if (m_inputf == true)
 	{
-		//Zキーで近接(剣)攻撃
-		if (Input::GetVKey('Z') == true)
+		if(m_inputw == false)
 		{
-			if (m_sword_delay == 0)
+
+		//Zキーで近接(剣)攻撃
+			if (Input::GetVKey('Z') == true)
 			{
-				//主人公の向きによって攻撃する向きを設定
-				if (m_posture == 0.0f) {
-					m_swordwidth = 70.0f;
+				if (m_sword_delay == 0)
+				{
+					//主人公の向きによって攻撃する向きを設定
+					if (m_posture == 0.0f) {
+						m_swordwidth = 70.0f;
+					}
+					else if (m_posture == 1.0f) {
+						m_swordwidth = -30.0f;
+					}
+
+					//剣で攻撃
+					CObjHeroSword* objsb = new CObjHeroSword(m_px + m_swordwidth, m_py + 32.0f);//剣オブジェクト(戦闘)作成
+					Objs::InsertObj(objsb, OBJ_SWORD, 100);		//作った剣オブジェクトをオブジェクトマネージャーに登録
+
+					//斬撃音
+					Audio::Start(1);
+
+					m_sword_delay = 20;
 				}
-				else if (m_posture == 1.0f) {
-					m_swordwidth = -30.0f;
-				}
-
-				//剣で攻撃
-				CObjHeroSword* objsb = new CObjHeroSword(m_px + m_swordwidth, m_py + 32.0f);//剣オブジェクト(戦闘)作成
-				Objs::InsertObj(objsb, OBJ_SWORD, 100);		//作った剣オブジェクトをオブジェクトマネージャーに登録
-
-				//斬撃音
-				Audio::Start(1);
-
-				m_sword_delay = 20;
 			}
 		}
 		if (m_sword_delay > 0)
@@ -254,12 +261,12 @@ void CObjHero::Action()
 			if (r > 90 && r < 270)
 			{
 				m_vy =  -5;		//右
-				m_vx += 10;
+				m_vx += 6;
 			}
 			else
 			{
 				m_vy =   -5;		//左
-				m_vx -=  10;
+				m_vx -=  6;
 			}
 
 			Audio::Start(3);	//ダメージ音
@@ -465,9 +472,22 @@ void CObjHero::Draw()
 			//剣を持っていない時の主人公が描かれている所を切り取る
 			src.m_top = 64.0f;
 			src.m_left = 64.0f;
-			src.m_right = 113.0f;
+			src.m_right = 128.0f;
 			src.m_bottom = 128.0f;
 
+			m_inputw = true;
+
+		}
+		else if (Hit_wall_r == true)
+		{
+			//剣を持っている時の主人公が描かれている所を切り取る
+			src.m_top = 0.0f;
+			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
+			src.m_right = 64.0f + AniData[m_ani_frame] * 64;
+			src.m_bottom = 64.0f;
+			m_inputw = true;
+
+			Draw::Draw(1, &src, &dst, c, 0.0f);
 		}
 		else //それ以外の時
 		{
@@ -476,6 +496,7 @@ void CObjHero::Draw()
 			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
 			src.m_right = 64.0f + AniData[m_ani_frame] * 64;
 			src.m_bottom = 64.0f;
+			m_inputw = false;
 
 		}
 
