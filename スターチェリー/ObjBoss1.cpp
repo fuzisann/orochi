@@ -18,6 +18,10 @@ CObjBoss1::CObjBoss1(float x, float y)
 {
 	m_px = x;
 	m_py = y;
+
+	//srand(time(NULL));  //ランダム
+
+	m_time = 100;
 }
 
 //イニシャライズ
@@ -59,6 +63,10 @@ void CObjBoss1::Init()
 //アクション
 void CObjBoss1::Action()
 {
+	//主人公の情報を持ってくる
+	/*CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
+	m_hero_position = hero->GetX();*/
+
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
@@ -82,27 +90,23 @@ void CObjBoss1::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
+	//主人公の位置を取得
+	/*C0bjHero*hero = (C0bjHero*)Objs::GetObj(COBJ_HERO);
+	float hx = hero->GetX();*/
 
-	//突進行動
-	/*if (m_do_f == true)
+	m_time--;
+
+	if (m_time <= 0)
 	{
-		m_dotime++;
-		if (m_dotime > 40)
-		{
-			m_vx *= 5;
-			m_vy *= 5;
-			if (m_dotime == 100)
-			{
-				m_do_f = false;
-				m_dotime = 0;
-			}
-		}
-		else
-		{
-			m_vx = 0;
-			m_vy = 0;
-		}
-	}*/
+
+		//オブジェクト作成
+		CObjBubble* obje = new CObjBubble(m_x - 10, m_y);
+		Objs::InsertObj(obje, OBJ_BUBBLE, 9);
+
+		m_time = 130;
+		//m_time +=150;
+	}
+
 	//落下
 	if (m_py > 1000.0f)
 	{
@@ -115,13 +119,11 @@ void CObjBoss1::Action()
 
 	if (m_start_boss == false)
 	{
+		//通常速度
 		m_speed_power = 0.5f;
 		m_ani_time = 4;
 	}
-
-	//通常速度
 	
-
 	/*if (m_change == true) {
 		m_change = false;
 	}
@@ -147,7 +149,6 @@ void CObjBoss1::Action()
 	{
 		m_move = false;
 	}
-
 
 	//inputフラグがオンの時に移動を可能にする
 	if (m_inputf == true)
@@ -257,6 +258,8 @@ void CObjBoss1::Action()
 			m_time_dead = 0;
 			m_start_boss = true;
 			//m_m_change = true;
+			Audio::Stop(6);
+			Audio::Start(0);
 		}
 	}
 

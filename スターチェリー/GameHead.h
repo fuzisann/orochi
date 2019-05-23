@@ -34,6 +34,7 @@ enum OBJ_NAME
 	OBJ_SWITCH,
 	OBJ_CHANGESWITCH,
 	OBJ_CHANGEGATE,
+	OBJ_BUBBLE,
 
 	OBJ_OP,
 	OBJ_ED,
@@ -77,6 +78,8 @@ struct UserData
 extern int g_map_chenge;//マップ変更
 extern int g_m_chenge;//BGM変更
 extern int block2;
+extern bool check;
+extern bool m_c;
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------
@@ -110,6 +113,7 @@ extern int block2;
 #include "ObjChangeSwitch.h"
 #include "ObjChangeGate1.h"
 #include "ObjChangeGate2.h"
+#include "ObjBubble.h"
 
 //------------------------------------------------
 

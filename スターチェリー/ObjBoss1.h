@@ -61,6 +61,9 @@ class CObjBoss1 : public CObj
 		int m_y;
 		bool m_do_f;//突進フラグ
 
+		float m_subtract;		//追尾用1
+		float m_hero_position;	//追尾用2
+
 		bool m_change;	//スイッチのオンオフ
 		bool m_delete;
 };

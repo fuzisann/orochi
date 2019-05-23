@@ -71,6 +71,7 @@ void CObjED::Draw()
 	Font::StrDraw(L"乙姫様専属の付き人として竜宮城で暮らすようになりました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1050, GAME_CLEAR_FONT_SIZE, p);
 	
 	Font::StrDraw(L"ＥＮＤ", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1200, GAME_CLEAR_FONT_SIZE, p);
+
 	Font::StrDraw(L"※Enterキーでタイトルへ※", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1300, GAME_CLEAR_FONT_SIZE, p);
 
 	if (Input::GetVKey(VK_RETURN) == true)

@@ -101,13 +101,13 @@ void CObjBoss3::Action()
 		{
 			m_time++;
 
-			if (m_time >= 80)
+			if (m_time >= 120)
 			{
 				m_speed_power = 0.0f;
 
-				if (m_time >= 120)
+				if (m_time >= 160)
 				{
-					m_speed_power = 50.0f;
+					m_speed_power = 100.0f;
 					m_time = 0;
 				}
 			}
@@ -281,6 +281,12 @@ void CObjBoss3::Draw()
 
 		//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
 		if (m_time_d > 0) {
+			//切り取り位置の設定
+			src.m_top = 100.0f;
+			src.m_left = 200.0f;
+			src.m_right = 400.0f;
+			src.m_bottom = 200.0f;
+
 			Draw::Draw(12, &src, &dst, a, 0.0f);
 		}
 		else {

@@ -24,7 +24,7 @@ void CObjgoalblock::Init()
 	m_ani_max_time =15;  //アニメーション間隔幅*/
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 77, 85, ELEMENT_FIELD, OBJ_GOAL_BLOCK, 1);
+	Hits::SetHitBox(this, m_px, m_py, 20, 85, ELEMENT_FIELD, OBJ_GOAL_BLOCK, 1);
 
 }
 
@@ -53,7 +53,7 @@ void CObjgoalblock::Action()
 
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//HitBoxの位置を変更	
-	hit->SetPos(m_px + 165 +block->GetScrollX(),m_py + 269 + block->GetScrollY());
+	hit->SetPos(m_px + 220 + block->GetScrollX(),m_py + 269 + block->GetScrollY());
 }
 //ドロー
 void CObjgoalblock::Draw()

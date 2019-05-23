@@ -14,8 +14,10 @@
 //使用するネームスペース
 using namespace GameL;
 
-int g_map_chenge = 2;//マップ変更
+int g_map_chenge = 0;//マップ変更
 int block2 = 0;
+bool check = false;
+bool m_c = true;
 
 //イニシャライズ
 void CObjTitle::Init()
@@ -98,6 +100,7 @@ void CObjTitle::Action()
 			m_and = 0.0f;
 			m_andf = false;
 			Scene::SetScene(new CSceneOP());
+			//Scene::SetScene(new CSceneClear());
 		}
 	}
 

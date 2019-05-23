@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ObjBubble.cpp" />
     <ClCompile Include="CObjHero.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="CObjStick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ObjBubble.h" />
     <ClInclude Include="CObjHero.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />

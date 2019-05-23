@@ -46,7 +46,7 @@ void CObjEnemy2::Init()
 	m_inputf = true;	// true = 入力可	false = 入力不可
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY_SECOND, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 31, ELEMENT_ENEMY, OBJ_ENEMY_SECOND, 1);
 }
 
 //アクション
@@ -162,7 +162,7 @@ void CObjEnemy2::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
+	hit->SetPos(m_px + block->GetScrollX(), m_py + 10 + block->GetScrollY());
 
 	if (m_del == true)
 	{

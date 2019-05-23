@@ -86,7 +86,7 @@ void CSceneMain::InitScene()
 	Font::SetStrTex(L"0123456789分秒");
 	
 	//外部グラフィックファイルを読み込み0番に登録（576x384ピクセル）
-	Draw::LoadImage(L"主人公3.png", 0, TEX_SIZE_512);
+	Draw::LoadImage(L"主人公3.5.png", 0, TEX_SIZE_512);
 	Draw::LoadImage(L"主人公回転2.png", 1, TEX_SIZE_512);
 
 	if (g_map_chenge == 0)
@@ -110,6 +110,9 @@ void CSceneMain::InitScene()
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
+
+		//あわ画像読み込み
+		Draw::LoadImageW(L"あわ　完成版.png", 18, TEX_SIZE_512);
 	}
 	else if (g_map_chenge == 1)
 	{

@@ -53,6 +53,10 @@ private:
 	int m_ani_time; //アニメーションフレーム動作間隔
 	int m_ani_frame;  //描画フレーム
 
+	int m_ani_time_r; //アニメーションフレーム動作間隔(回転)
+	int m_ani_frame_r;  //描画フレーム(回転)
+	float m_ani_max_time_r;//アニメーション動画間隔最大値(回転)
+
 	int m_hero_hp;	//体力(戦闘)
 	int m_max_hp;	//HPの最大値
 	int Width;      //画像の幅最大値

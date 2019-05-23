@@ -32,6 +32,10 @@ void CObjHero::Init()
 	m_ani_time = 0;
 	m_ani_frame = 0;  //静止フレームを初期化する
 
+	m_ani_time_r = 0;
+	m_ani_frame_r = 0;  //静止フレームを初期化する
+	m_ani_max_time_r = 4;  //アニメーション間隔幅
+
 	m_hit_up = false;
 	m_hit_down = false;
 	m_hit_left = false;
@@ -39,7 +43,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 15;     //主人公の最大HP(最大15)
+	m_hero_hp = 30;     //主人公の最大HP(最大30)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -152,6 +156,12 @@ void CObjHero::Action()
 			m_ani_frame = 0;
 			m_ani_time = 0;
 		}
+		else if (m_ani_frame_r >= 8)
+		{
+			m_ani_frame_r = 0;
+			m_ani_time_r = 0;
+		}
+
 		if (Input::GetVKey(VK_RIGHT) == true)
 		{
 			m_vx += m_speed_power;
@@ -164,11 +174,24 @@ void CObjHero::Action()
 			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
-
 		else
 		{
 			m_ani_frame = 0;   //キー入力が無い場合静止フレームにする
 			m_ani_time = 0;
+		}
+
+		if (Input::GetVKey(VK_UP) == true && Input::GetVKey(VK_RIGHT) == true)
+		{
+			m_ani_time_r += 1;
+		}
+		else if (Input::GetVKey(VK_UP) == true && Input::GetVKey(VK_LEFT) == true)
+		{
+			m_ani_time_r += 1;
+		}
+		else
+		{
+			m_ani_frame_r = 0;   //キー入力が無い場合静止フレームにする
+			m_ani_time_r = 0;
 		}
 	}
 
@@ -182,37 +205,16 @@ void CObjHero::Action()
 			m_ani_frame = 0;
 		}
 
-	//主人公機が領域外行かない処理
-	/*if (g_px + 64.0f > 800.0f)
-	{
-		g_px = 800.0f - 64.0f;
+		if (m_ani_time_r > m_ani_max_time_r)
+		{
+			m_ani_frame_r += 1;
+			m_ani_time_r = 0;
+		}
+		if (m_ani_frame_r == 8)
+		{
+			m_ani_frame_r = 0;
+		}
 
-	}*/
-	/*
-	CObjBlock*b = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	//左のスクロールライン
-	{
-		g_px = 0;
-		b->SetScrollX(b->GetScrollX());
-	}
-
-	//右のスクロールライン
-	{
-		g_px = 300;
-		b->SetScrollX(b->GetScrollX());
-	}
-	//上のスクロールライン
-	{
-		g_py = 0;
-		b->SetScrollY(b->GetScrollY());
-	}
-
-	//下のスクロールライン
-	{
-		g_py = 380;
-		b->SetScrollY(b->GetScrollY());
-	}
-	*/
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	m_vy += -(m_vy * 0.098);
@@ -311,62 +313,10 @@ void CObjHero::Action()
 				m_hero_hp -= m_damage;
 			}
 
-			
-
 			//敵の攻撃によってHPが0以下になった場合
 			if (m_hero_hp <= 0)
 				m_hero_hp = 0;	//HPを0にする
 
-
-			//if (r > 135 && r < 225 || r < 135)
-			/*if (r > 90 && r < 270)
-			{
-			m_vy = -5;		//右
-			m_vx += 25;
-			}
-			//if ((r < 45 && r >= 0) || r > 315 || (r > 45 || r < 90 ))
-			else
-			{
-			m_vy = -5;		//左
-			m_vx -= 25;
-			}*/
-
-			/*//敵と当たっているか確認
-			if (hit->CheckObjNameHit(OBJ_ENEMY) != nullptr)
-			{
-			//主人公と敵がどの角度で当たっているかを確認
-			HIT_DATA** hit_data;
-			hit_data = hit->SearchObjNameHit(OBJ_ENEMY);
-
-			//敵の左右に当たったら
-			float r = hit_data[0]->r;
-			if ((r < 45 && r >= 0) || r > 315)
-			{
-			m_vx = -5.0f;//左に移動させる
-			}
-			if (r > 135 && r < 225)
-			{
-			m_vy = -5.0f;//右に移動させる
-			}
-			if (r >= 225 && r > 315)
-			{
-			//敵の移動方向を主人公の位置に加算
-			m_vx += ((CObjEnemy1*)hit_data[0]->o)->GetVX();
-			//頭に乗せる処理
-			if (m_vy < -1.0f)
-			{
-			//ジャンプしてる場合は下記の影響を出ないようにする
-			}
-			else
-			{
-			//主人公が敵の頭に乗っているので、Yvecは0にして落下させない
-			//また、地面に当たっている判定にする
-			m_vy = 0.0f;
-			m_hit_down = true;
-			}
-
-			}
-			}*/
 		}
 
 	}
@@ -439,6 +389,11 @@ void CObjHero::Draw()
 		0,1,2,3,0,
 	};
 
+	int AniData_r[9] =
+	{
+		0,1,2,3,4,5,6,7,0,
+	};
+
 	//描写カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
 	float a[4] = { 10.0f,0.6f,0.6f,0.7f };
@@ -478,16 +433,15 @@ void CObjHero::Draw()
 			m_inputw = true;
 
 		}
-		else if (Hit_wall_r == true)
+		else if (Input::GetVKey(VK_UP) == true && Input::GetVKey(VK_LEFT) == true
+			 || Input::GetVKey(VK_UP) == true && Input::GetVKey(VK_RIGHT) == true)
 		{
 			//回転している時の主人公が描かれている所を切り取る
-			src.m_top = 0.0f;
-			src.m_left = 0.0f + AniData[m_ani_frame] * 64;
-			src.m_right = 64.0f + AniData[m_ani_frame] * 64;
-			src.m_bottom = 64.0f;
+			src.m_top = 128.0f;
+			src.m_left = 0.0f + AniData_r[m_ani_frame_r] * 64;
+			src.m_right = 64.0f + AniData_r[m_ani_frame_r] * 64;
+			src.m_bottom = 192.0f;
 			m_inputw = true;
-
-			Draw::Draw(1, &src, &dst, c, 0.0f);
 		}
 		else //それ以外の時
 		{

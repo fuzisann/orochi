@@ -48,7 +48,7 @@ void CObjEnemy1::Init()
 	m_inputf = true;	// true = 入力可	false = 入力不可
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 50, 50, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
+	Hits::SetHitBox(this, m_px, m_py, 50, 30, ELEMENT_ENEMY, OBJ_ENEMY_FIRST, 1);
 }
 
 //アクション
@@ -89,6 +89,8 @@ void CObjEnemy1::Action()
 	{
 		m_move = false;
 	}
+
+
 
 	//inputフラグがオンの時に移動を可能にする
 	if (m_inputf == true)
@@ -166,7 +168,7 @@ void CObjEnemy1::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
+	hit->SetPos(m_px + block->GetScrollX(), m_py + 7 + block->GetScrollY());
 
 	if (m_del == true)
 	{

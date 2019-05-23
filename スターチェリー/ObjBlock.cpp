@@ -362,8 +362,8 @@ void CObjBlock::BlockHit(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
-				 && (*y + (-scrolly) + 64.0f > by) && (*y + (-scrolly) < by + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f)	//左右
+				 && (*y + (-scrolly) + 64.0f > by) && (*y + (-scrolly) < by + 32.0f))	//上下
 				{
 					//上下左右判定
 
@@ -560,8 +560,9 @@ void CObjBlock::BlockHitEne(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
-				 && (*y + (-scrolly) + 64.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				//上
+				if ((*x + (-scrollx) + 50.0f > bx) && (*x + (-scrollx) < bx + 32.0f)	//左右
+				 && (*y + (-scrolly) + 50.0f > by) && (*y < by + (-scrolly) + 32.0f))	//上下
 				{
 					//上下左右判定
 
@@ -605,7 +606,7 @@ void CObjBlock::BlockHitEne(
 						{
 							//左
 							*left = true;//主人公の右の部分が衝突している
-							*x = bx - 64.0f + (scrollx);//ブロックの位置-主人公の幅
+							*x = bx - 50.0f + (scrollx);//ブロックの位置-主人公の幅
 							*vx = -(*vx)*0.0f;//-VX*反発係数
 						}
 						if (r > 225 && r < 315)
@@ -670,8 +671,8 @@ void CObjBlock::BlockHitEne2(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f) 
-				 && (*y + (-scrolly) + 110.0f > by) && (*y < by + (-scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 64.0f > bx) && (*x + (-scrollx) < bx + 32.0f)	//左右
+				 && (*y + (-scrolly) + 100.0f > by) && (*y < by + (-scrolly) + 22.0f))	//上下
 				{
 					//上下左右判定
 
@@ -708,7 +709,7 @@ void CObjBlock::BlockHitEne2(
 						{
 							//上
 							*down = true;//主人公の下の部分が衝突している
-							*y = by - 110.0f + (scrolly);//ブロックの位置-主人公の幅
+							*y = by - 100.0f + (scrolly);//ブロックの位置-主人公の幅
 							*vy = 0.0f;
 						}
 						if (r > 135 && r < 225)
@@ -722,7 +723,7 @@ void CObjBlock::BlockHitEne2(
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
+							*y = by + 22.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							if (*vy < 0)
 							{
@@ -780,7 +781,8 @@ void CObjBlock::BlockHitBoss1(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 100.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y +(scrolly)+ 50.0f > by) && (*y < by + (scrolly) + 32.0f))
+				if ((*x + (-scrollx) + 100.0f > bx) && (*x + (-scrollx) < bx + 32.0f)	//左右
+				    && (*y +(scrolly) + 50.0f > by) && (*y < by + (scrolly) + 32.0f))	//上下
 				{
 					//上下左右判定
 
@@ -891,7 +893,8 @@ void CObjBlock::BlockHitBoss2(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 150.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (scrolly)+ 50.0f > by) && (*y < by + (scrolly)+ 32.0f))
+				if ((*x + (-scrollx) + 150.0f > bx) && (*x + (-scrollx) < bx + 32.0f)   //左右
+				   && (*y + (scrolly) + 50.0f > by) && (*y < by + (scrolly)+ 32.0f))	//上下
 				{
 					//上下左右判定
 
@@ -913,7 +916,7 @@ void CObjBlock::BlockHitBoss2(
 
 
 					//lenがある一定の長さのより短い場合判定に入る
-					if (len < 88.0f)
+					if (len < 160.0f)
 					{
 						//角度で上下左右を判定
 						if ((r < 45 && r>0) || r > 315)
@@ -1002,7 +1005,8 @@ void CObjBlock::BlockHitBoss3(
 				float scrolly = scroll_on ? m_scrolly : 0;
 
 				//オブジェクトとブロックの当たり判定
-				if ((*x + (-scrollx) + 200.0f > bx) && (*x + (-scrollx) < bx + 32.0f) && (*y + (scrolly)+ 50.0f > by) && (*y < by + (scrolly)+ 32.0f))
+				if ((*x + (-scrollx) + 200.0f > bx) && (*x + (-scrollx) < bx + 32.0f)	//左右
+				   && (*y + (scrolly) + 50.0f > by) && (*y < by + (scrolly)+ 32.0f))	//上下
 				{
 					//上下左右判定
 
@@ -1024,7 +1028,7 @@ void CObjBlock::BlockHitBoss3(
 
 
 					//lenがある一定の長さのより短い場合判定に入る
-					if (len < 88.0f)
+					if (len < 210.0f)
 					{
 						//角度で上下左右を判定
 						if ((r < 45 && r>0) || r > 315)

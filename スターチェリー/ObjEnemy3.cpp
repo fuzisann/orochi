@@ -27,11 +27,11 @@ void CObjEnemy3::Init()
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
-	m_speed_power = 0.2f;//通常速度
+	m_speed_power = 0.15f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_enemy_hp = 2;     //敵のヒットポイント(最大2)(仮)
-	m_damage = 1;
+	m_enemy_hp = 2;     //敵のヒットポイント(最大2)
+	m_damage = 2;
 
 	m_move = false;		//true=右 false=左
 
@@ -46,7 +46,7 @@ void CObjEnemy3::Init()
 	m_inputf = true;	// true = 入力可	false = 入力不可
 
 	//当たり判定用のHitBoxを作成
-	Hits::SetHitBox(this, m_px, m_py, 100, 100, ELEMENT_ENEMY, OBJ_ENEMY_THIRD, 1);
+	Hits::SetHitBox(this, m_px, m_py, 100, 80, ELEMENT_ENEMY, OBJ_ENEMY_THIRD, 1);
 }
 
 //アクション
@@ -73,7 +73,7 @@ void CObjEnemy3::Action()
 	m_py += m_vy;
 
 	//通常速度
-	m_speed_power = 0.2f;
+	m_speed_power = 0.15f;
 	m_ani_max_time = 4;
 
 	//ブロック衝突で向き変更
@@ -151,7 +151,7 @@ void CObjEnemy3::Action()
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置の変更
-	hit->SetPos(m_px + block->GetScrollX(), m_py + block->GetScrollY());
+	hit->SetPos(m_px + block->GetScrollX(), m_py + 11 + block->GetScrollY());
 
 	if (m_del == true)
 	{
