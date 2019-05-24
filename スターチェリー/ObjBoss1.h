@@ -23,6 +23,8 @@ class CObjBoss1 : public CObj
 		float m_py;
 		float m_vx;      //移動ベクトル
 		float m_vy;
+		float m_vxb;      //移動ベクトル
+		float m_vyb;
 		float m_posture; //姿勢
 
 		int m_ani_time; //アニメーションフレーム動作間隔

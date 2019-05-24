@@ -4,6 +4,7 @@
 #include "GameHead.h"
 #include "ObjBubble.h"
 #include "ObjBlock.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -19,88 +20,89 @@ void CObjBubble::Init()
 {
 	m_vx    = -1.0f;
 	m_vy    =  0.0f;
-	m_event = 0;
-	time2   = 0;
+
+	m_damage = 2;
+
+	//移動ベクトルの正規化
+	UnitVec(&m_vx, &m_vy);
+
 	//当たり判定用hitBox作成
-	Hits::SetHitBox(this, m_px, m_py, 15, 15, ELEMENT_ENEMY, OBJ_BUBBLE, 1);
+	Hits::SetHitBox(this, m_x, m_y, 35, 35, ELEMENT_ENEMY, OBJ_BUBBLE, 1);
 }
 
 //アクション
 void CObjBubble::Action()
 {
+	//主人公と泡で角度を取る
+	CObjHero* obj = (CObjHero*)Objs::GetObj(COBJ_HERO);
 
-	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	//ベクトルの長さを求める
-	float r = 0.0f;
-	r = m_vx*m_vx + m_vy*m_vy;
-	r = sqrt(r);
+	//主人公が存在する場合、誘導角度の計算する
+	if (obj != nullptr)
+	{
+		float x = obj->GetX() - m_x;
+		float y = obj->GetY() - m_y;
+		float ar = GetAtan2Angle(x, -y);
 
-	//長さが0かどうか調べる
-	if (r == 0.0f)
-	{
-		;//0なら何もしない
-	}
-	else
-	{
-		//正規化を行う
-		m_vx = 1.0f / r*m_vx;
-		m_vy = 1.0f / r*m_vy;
-	}
-	check = false;
+		//弾丸の現在の向いている角度を取る
+		float br = GetAtan2Angle(m_vx, -m_vy);
 
-	//イベント1　矢が発射
-	if (m_event == 1)
-	{
-		//速度付ける。
-		m_vx = -5.5f;
-		m_vy = 0.0f;
-	}
-
-	//イベント0　矢がひょっこりでる。
-	/*if (m_event == 0)
-	{
-		//速度付ける。
-		m_vx = 0.0f;
-		m_vy = 0.0f;
-		time2 += 1.0f;
-		m_c = false;
-		if (time2 >= 100)
+		//主人公機と敵機角度があまりにもかけ離れたら
+		if (ar - br > 20)
 		{
-			m_event = 1;
-			time2 = 0;
+			//移動方向を主人公機の方向にする
+			m_vx = cos(3.14 / 180 * ar);
+			m_vy = -sin(3.14 / 180 * ar);
 		}
-	}*/
+
+		float r = 3.14 / 180.0f;	//角度１°
+		if (ar < br)
+		{
+			//移動方向にに+1°加える
+			m_vx = m_vx * cos(r) - m_vy * sin(r);
+			m_vy = m_vy * cos(r) + m_vx * sin(r);
+		}
+		else
+		{
+			//移動方向にに-1°加える
+			m_vx = m_vx * cos(-r) - m_vy * sin(-r);
+			m_vy = m_vy * cos(-r) + m_vx * sin(-r);
+		}
+		UnitVec(&m_vx, &m_vy);
+
+	}
 
 	//移動ベクトルを座標に加算する
-	m_x += m_vx;
-	m_y += m_vy;
+	m_x += m_vx * 5.0f;
+	m_y += m_vy * 5.0f;
 
 	//HitBoxの内容を更新
 	CHitBox*hit = Hits::GetHitBox(this);
-	hit->SetPos(m_x, m_y+16);
+	hit->SetPos(m_x, m_y);
+
+	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
 	//HitBoxの位置を変更	
-	hit->SetPos(m_x + block->GetScrollX(), m_y+8 + block->GetScrollY());
+	hit->SetPos(m_x + block->GetScrollX(), m_y + block->GetScrollY());
 
 	//ブロックに当たると削除
-	/*if (m_hit_right == true || m_hit_left == true
+	if (m_hit_right == true || m_hit_left == true
 	 || m_hit_up == true || m_hit_down == true)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
-	}*/
+	}
 
 
 	//画面外に出たら弓矢を破棄する処理
-	/*if (m_x + block->GetScrollX() > 800.0f ||
-		m_x + block->GetScrollX() < -45.0f)
+	if (m_x + block->GetScrollX() > 800.0f || m_x + block->GetScrollX() < -45.0f
+		&& m_y + block->GetScrollY() > 600.0f || m_y + block->GetScrollY() < 45.0f)
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
-	}*/
+	}
 
 	//敵と当ったているか確認
-	if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
+	/*if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
 	{
 		//主人公が敵とどの角度当ったているかを確認
 		HIT_DATA**hit_data;           //当たった時の細かな情報を入れるための構造体
@@ -122,16 +124,22 @@ void CObjBubble::Action()
 				Hits::DeleteHitBox(this);
 			}
 		}
+	}*/
+
+	//主人公機オブジェクトと接触したら誘導弾丸削除
+	if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
+	{
+		hit->SetInvincibility(true);//当たり判定無効
+		this->SetStatus(false);
+		Hits::DeleteHitBox(this);
 	}
 
-	//ブロックとの当たり判定実行
-	/*Objwall* pd = (Objwall*)Objs::GetObj(OBJ_WALL);
-	if (pd != nullptr)
+	//完全に領域外に出たら破棄する
+	/*bool Check = CheckWindow(m_x, m_y, -32.0f, -32.0f, 800.0f, 600.0f);
+	if (Check == false)
 	{
-		pd->wallHit(&m_x, &m_y, false,
-			&m_hit_up, &m_hit_down, &m_hit_left, &m_hit_right, &m_vx, &m_vy,
-			&m_block_type
-		);
+		this->SetStatus(false);		//自身に削除命令を出す。
+		Hits::DeleteHitBox(this);	//敵機弾丸が所有するHitBoxに削除する。
 	}*/
 }
 
@@ -139,7 +147,7 @@ void CObjBubble::Action()
 void CObjBubble::Draw()
 {
 	//描写カラー情報
-	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	RECT_F src;//描写元切り取り位置
 	RECT_F dst;//描写先表示位置
@@ -147,16 +155,30 @@ void CObjBubble::Draw()
 	//切り取り位置の設定
 	src.m_top    = 0.0f;
 	src.m_left   = 0.0f;
-	src.m_right  = 15.0f;
-	src.m_bottom = 15.0f;
+	src.m_right  = 35.0f;
+	src.m_bottom = 35.0f;
 
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+
 	//表示位置の設定
 	dst.m_top    =  0.0f   +m_y + block->GetScrollY();
 	dst.m_left   =  0.0f   +m_x + block->GetScrollX();
-	dst.m_right  = 15.0f   +m_x + block->GetScrollX();
-	dst.m_bottom = 15.0f   +m_y + block->GetScrollY();
+	dst.m_right  = 35.0f   +m_x + block->GetScrollX();
+	dst.m_bottom = 35.0f   +m_y + block->GetScrollY();
+
+	float r = 0.0f;
+	//主人公機と誘導弾丸で角度を取る
+	CObjHero* obj = (CObjHero*)Objs::GetObj(COBJ_HERO);
+
+	//主人公機が存在する場合、誘導角度の計算する
+	if (obj != nullptr)
+	{
+		float x = obj->GetX() - m_x;
+		float y = obj->GetY() - m_y;
+		r = GetAtan2Angle(x, -y);
+
+	}
 
 	//0番目に登録したグラフィックをsrc・dst・ｃの情報を元に描写
-	Draw::Draw(18, &src, &dst, c, 0.0f);
+	Draw::Draw(21, &src, &dst, c, 0.0f);
 }

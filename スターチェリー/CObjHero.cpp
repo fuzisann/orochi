@@ -10,6 +10,7 @@
 #include"GameHead.h"
 #include"CObjHero.h"
 #include"GameL\Audio.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -20,6 +21,31 @@ extern bool Hit_wall;
 extern bool Hit_wall_r;
 extern bool m_up;
 extern bool m_start_boss;
+
+
+//位置情報X変更用
+/*void CObjHero::SetX(float x)
+{
+	m_x = x;
+}
+
+//位置情報Y変更用
+void CObjHero::SetY(float y)
+{
+	m_y = y;
+}*/
+
+//位置情報X取得用
+/*float CObjHero::GetX()
+{
+	return m_x;
+}
+
+//位置情報Y取得用
+float CObjHero::GetY()
+{
+	return m_y;
+}*/
 
 //イニシャライズ
 void CObjHero::Init()
@@ -215,6 +241,9 @@ void CObjHero::Action()
 			m_ani_frame_r = 0;
 		}
 
+		//移動ベクトルの正規化
+		//UnitVec(&m_vx, &m_vy);
+
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	m_vy += -(m_vy * 0.098);
@@ -310,6 +339,12 @@ void CObjHero::Action()
 			{
 				CObjBoss3* boss3 = (CObjBoss3*)Objs::GetObj(OBJ_BOSS_THIRD);
 				m_damage = boss3->GetDMG();
+				m_hero_hp -= m_damage;
+			}
+			if (hit->CheckObjNameHit(OBJ_BUBBLE) != nullptr)
+			{
+				CObjBubble* bubble = (CObjBubble*)Objs::GetObj(OBJ_BUBBLE);
+				m_damage = bubble->GetDMG();
 				m_hero_hp -= m_damage;
 			}
 

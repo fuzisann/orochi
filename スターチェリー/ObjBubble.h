@@ -13,6 +13,9 @@ class CObjBubble :public CObj
 		void Init();	//イニシャライズ
 		void Action();	//アクション
 		void Draw();	//ドロー
+
+		int GetDMG() { return m_damage; }//攻撃力を取得
+
 	private:
 		float m_x ;	//オブジェクトの位置X
 		float m_y ;	//オブジェクトの位置Y
@@ -33,4 +36,6 @@ class CObjBubble :public CObj
 		int m_time; //攻撃タイミング用
 		int m_event;
 		bool m_c;
+
+		int m_damage;
 };

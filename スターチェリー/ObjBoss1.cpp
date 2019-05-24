@@ -7,6 +7,7 @@
 
 #include"GameHead.h"
 #include"ObjBoss1.h"
+#include "UtilityModule.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -18,10 +19,6 @@ CObjBoss1::CObjBoss1(float x, float y)
 {
 	m_px = x;
 	m_py = y;
-
-	//srand(time(NULL));  //ランダム
-
-	m_time = 100;
 }
 
 //イニシャライズ
@@ -29,6 +26,9 @@ void CObjBoss1::Init()
 {
 	m_vx = 0.0f;    //移動ベクトル
 	m_vy = 0.0f;
+
+	m_time = 0;
+
 	m_posture = 0.0f; //右向き0.0f,左向き1,0f
 
 	m_ani_time = 0;
@@ -63,9 +63,6 @@ void CObjBoss1::Init()
 //アクション
 void CObjBoss1::Action()
 {
-	//主人公の情報を持ってくる
-	/*CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
-	m_hero_position = hero->GetX();*/
 
 	//摩擦
 	m_vx += -(m_vx * 0.098);
@@ -90,23 +87,6 @@ void CObjBoss1::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//主人公の位置を取得
-	/*C0bjHero*hero = (C0bjHero*)Objs::GetObj(COBJ_HERO);
-	float hx = hero->GetX();*/
-
-	m_time--;
-
-	if (m_time <= 0)
-	{
-
-		//オブジェクト作成
-		CObjBubble* obje = new CObjBubble(m_x - 10, m_y);
-		Objs::InsertObj(obje, OBJ_BUBBLE, 9);
-
-		m_time = 130;
-		//m_time +=150;
-	}
-
 	//落下
 	if (m_py > 1000.0f)
 	{
@@ -122,6 +102,16 @@ void CObjBoss1::Action()
 		//通常速度
 		m_speed_power = 0.5f;
 		m_ani_time = 4;
+
+		m_time++;
+
+		if (m_time > 50)
+		{
+			m_time = 0;
+			//オブジェクト作成
+			CObjBubble* objbu = new CObjBubble(m_px, m_py);
+			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+		}
 	}
 	
 	/*if (m_change == true) {
