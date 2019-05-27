@@ -161,6 +161,7 @@
     <ClCompile Include="SceneOver.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="CObjStick.cpp" />
+    <ClCompile Include="UtilityModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObjBubble.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="SceneOver.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="CObjStick.h" />
+    <ClInclude Include="UtilityModule.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameL\DirectXTex.inl" />

@@ -29,6 +29,9 @@ public:
 	int GetBT() { return m_block_type; }
 	int GetHP() { return m_hero_hp; }	//主人公のHPを取得
 
+	float GetScrollX() { return m_scrollx; }
+	float GetScrollY() { return m_scrolly; }
+
 	void SetX(float x) { g_px = x; }
 	void SetY(float y) { g_py = y; }
 	void SetVY(float vy) { m_vy = vy; }
@@ -78,6 +81,9 @@ private:
 	bool m_hit_down;
 	bool m_hit_left;
 	bool m_hit_right;
+
+	float m_scrollx;		//左右スクロール用
+	float m_scrolly;
 
 	//踏んでいるblockの種類を確認用
 	int m_block_type;

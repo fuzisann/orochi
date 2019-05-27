@@ -198,6 +198,9 @@
     <ClCompile Include="ObjBubble.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="UtilityModule.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -345,6 +348,9 @@
       <Filter>ソース ファイル\エンディング</Filter>
     </ClInclude>
     <ClInclude Include="ObjBubble.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilityModule.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

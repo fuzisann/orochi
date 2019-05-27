@@ -18,7 +18,7 @@ extern bool m_m_change;
 //使用ヘッダー
 #include"SceneMain.h"
 #include"GameHead.h"
-#include"ObjArrow.h"
+#include"ObjBubble.h"
 
 
 //コンストラクタ
@@ -56,14 +56,6 @@ void CSceneMain::InitScene()
 	{
 		p = Save::ExternalDataOpen(L"Stage3 (完成).csv", &size);//外部データ読み込み
 	}
-	/*else if (g_map_chenge == 3)
-	{
-		p = Save::ExternalDataOpen(L"map9-6.csv", &size);//外部データ読み込み
-	}
-	else if (g_map_chenge == 4)
-	{
-		p = Save::ExternalDataOpen(L"map10-4.csv", &size);//外部データ読み込み
-	}*/
 
 	int map[50][150];
 	int count = 1;
@@ -110,9 +102,6 @@ void CSceneMain::InitScene()
 
 		//剣画像読み込み
 		Draw::LoadImageW(L"剣.png", 16, TEX_SIZE_512);
-
-		//あわ画像読み込み
-		Draw::LoadImageW(L"あわ　完成版.png", 18, TEX_SIZE_512);
 	}
 	else if (g_map_chenge == 1)
 	{
@@ -155,6 +144,9 @@ void CSceneMain::InitScene()
 
 	Draw::LoadImage(L"主人公体力.png", 20, TEX_SIZE_512);
 
+	//あわ画像読み込み
+	Draw::LoadImage(L"あわ完成版2.png", 21, TEX_SIZE_512);
+
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero(map);   //主人公オブジェクト作成
 	Objs::InsertObj(obj, COBJ_HERO, 30);//作った主人公オブジェクトをオブジェクトマネージャーに登録
@@ -168,8 +160,8 @@ void CSceneMain::InitScene()
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 
 	//敵オブジェクト作成
-	/*CObjEnemy1* obje1 = new CObjEnemy1();
-	Objs::InsertObj(obje1, OBJ_ENEMY_FIRST, 10);*/
+	/*CObjBoss1* objb1 = new CObjBoss1();
+	Objs::InsertObj(objb1, OBJ_BOSS_FIRST, 10);*/
 
 	/*CObjEnemy2* obje2 = new CObjEnemy2();
 	Objs::InsertObj(obje2, OBJ_ENEMY_SECOND, 10);*/

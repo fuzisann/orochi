@@ -26,6 +26,8 @@ void CObjBoss2::Init()
 	m_vy = 0.0f;
 	m_posture = 0.0f; //右向き0.0f,左向き1,0f
 
+	m_time = 0;
+
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
@@ -56,6 +58,16 @@ void CObjBoss2::Init()
 //アクション
 void CObjBoss2::Action()
 {
+	m_time++;
+
+	if (m_time > 50)
+	{
+		m_time = 0;
+		//オブジェクト作成
+		CObjBubble* objbu = new CObjBubble(m_px, m_py);
+		Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+	}
+
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
