@@ -96,7 +96,7 @@ void CObjBoss1::Action()
 
 	m_time--;
 
-	if (m_time <= 0)
+	if (m_time <= 0 && check == false)
 	{
 
 		//オブジェクト作成
