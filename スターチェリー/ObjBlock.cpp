@@ -75,27 +75,12 @@ void CObjBlock::Action()
 	//敵の位置を取得
 	CObjEnemy1*enemy1 = (CObjEnemy1*)Objs::GetObj(OBJ_ENEMY_FIRST);
 	CObjEnemy2*enemy2 = (CObjEnemy2*)Objs::GetObj(OBJ_ENEMY_SECOND);
+	CObjEnemy3*enemy3 = (CObjEnemy3*)Objs::GetObj(OBJ_ENEMY_THIRD);
 
 	CObjBoss1*boss1 = (CObjBoss1*)Objs::GetObj(OBJ_BOSS_FIRST);
 	CObjBoss2*boss2 = (CObjBoss2*)Objs::GetObj(OBJ_BOSS_SECOND);
+	CObjBoss3*boss3 = (CObjBoss3*)Objs::GetObj(OBJ_BOSS_THIRD);
 
-	/*float hx = hero->GetX();
-	float hy = hero->GetY();*/
-	////後方スクロールライン
-	/*if (hx < 80)
-	{
-		hero->SetX(80);           //主人公はラインを超えないようにする
-		m_scroll -= hero->GetVX(); //主人公が本来動くべき分の値をm_scrollに加える
-
-	}
-
-	//前方スクロールライン
-	if (hx > 300)
-	{
-		hero->SetX(300);           //主人公はラインを超えないようにする
-		m_scroll -= hero->GetVX(); //主人公が本来動くべき分の値をm_scrollに加える
-
-	}*/
 	if (Hit_wall == false)
 	{
 		//左のスクロールライン
@@ -146,22 +131,13 @@ void CObjBlock::Action()
 				m_map[i][j] = 0;
 			}
 
-			//ゴールブロック出現
+			//竜宮城(ステージ1ゴール)出現
 			if (m_map[i][j] == 5)
 			{
 				CObjgoalblock* ends = new CObjgoalblock(j*ALL_BLOCK_SIZE, i*ALL_BLOCK_SIZE);
 				Objs::InsertObj(ends, OBJ_GOAL_BLOCK, 11);
 				m_map[i][j] = 0;
 			}
-
-			//歯車出現
-			if (m_map[i][j] == 6)
-			{
-				CObjgear* gears = new CObjgear(j*ALL_BLOCK_SIZE, i*ALL_BLOCK_SIZE);
-				Objs::InsertObj(gears, OBJ_GEAR, 11);
-				m_map[i][j] = 0;
-			}
-
 			
 			//ボス出現
 			if (m_map[i][j] == 7)
@@ -223,17 +199,6 @@ void CObjBlock::Action()
 				//出現場所の値を0にする
 				m_map[i][j] = 0;
 			}
-			/*if (m_map[i][j] == 12)
-			{
-				
-				//12があればChangeGate2を出現
-				CObjChangeGate2* objds = new CObjChangeGate2(j * ALL_BLOCK_SIZE, i * ALL_BLOCK_SIZE);
-				Objs::InsertObj(objds, OBJ_CHANGEGATE, 11);
-				
-				//出現場所の値を0にする
-				m_map[i][j] = 0;
-			}*/
-			
 		}
 	}
 }
@@ -894,7 +859,7 @@ void CObjBlock::BlockHitBoss2(
 
 				//オブジェクトとブロックの当たり判定
 				if ((*x + (-scrollx) + 150.0f > bx) && (*x + (-scrollx) < bx + 32.0f)   //左右
-				   && (*y + (scrolly) + 50.0f > by) && (*y < by + (scrolly)+ 32.0f))	//上下
+				   && (*y + (scrolly) + 50.0f > by) && (*y < by + (scrolly)+ 82.0f))	//上下
 				{
 					//上下左右判定
 
@@ -946,7 +911,7 @@ void CObjBlock::BlockHitBoss2(
 						{
 							//下
 							*up = true;//主人公の上の部分が衝突している
-							*y = by + 32.0f + (scrolly);//ブロックの位置+主人公の幅
+							*y = by + 82.0f + (scrolly);//ブロックの位置+主人公の幅
 
 							/*if (*vy < 0)
 							{

@@ -46,15 +46,15 @@ void CSceneMain::InitScene()
 
 	if (g_map_chenge == 0)
 	{
-		p = Save::ExternalDataOpen(L"stage1 (完成).csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage1 真完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 1)
 	{
-		p = Save::ExternalDataOpen(L"Stage2 (完成).csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage2 真完成.csv", &size);//外部データ読み込み
 	}
 	else if (g_map_chenge == 2)
 	{
-		p = Save::ExternalDataOpen(L"Stage3 (完成).csv", &size);//外部データ読み込み
+		p = Save::ExternalDataOpen(L"stage3 真完成.csv", &size);//外部データ読み込み
 	}
 
 	int map[50][150];

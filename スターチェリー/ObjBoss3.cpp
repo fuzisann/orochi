@@ -36,6 +36,7 @@ void CObjBoss3::Init()
 	m_damage = 3;
 
 	m_time = 0;
+	m_time_b = 0;
 
 	m_time_die = 0;
 
@@ -81,13 +82,6 @@ void CObjBoss3::Action()
 	//位置の更新
 	m_px += m_vx;
 	m_py += m_vy;
-
-	//落下
-	if (m_py > 1000.0f)
-	{
-		;
-	}
-
 	m_speed_power = 0.0f;		//スピードを０にする
 
 	if (m_start_boss == false)
@@ -96,21 +90,31 @@ void CObjBoss3::Action()
 		m_speed_power = 0.5f;
 		m_ani_max_time = 4;
 
+		m_time_b++;
+
 		//突進
 		if (m_time >= 0)
 		{
 			m_time++;
 
-			if (m_time >= 120)
+			if (m_time >= 60)
 			{
 				m_speed_power = 0.0f;
 
-				if (m_time >= 160)
+				if (m_time >= 100)
 				{
 					m_speed_power = 100.0f;
 					m_time = 0;
 				}
 			}
+		}
+
+		if (m_time_b > 50)
+		{
+			m_time_b = 0;
+			//オブジェクト作成
+			CObjBubble* objbu = new CObjBubble(m_px, m_py);
+			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
 		}
 	}
 
@@ -141,11 +145,6 @@ void CObjBoss3::Action()
 			m_ani_time += 1;
 		}
 	}
-	/*else
-	{
-		m_ani_frame = 1;  //静止フレーム
-		m_ani_time = 0;
-	}*/
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -197,16 +196,6 @@ void CObjBoss3::Action()
 		m_time_dead = 80;	//死亡時間をセット
 	}
 
-	/*if (m_time_die > 0)
-	{
-		m_time_die--;
-		if (m_time_die <= 0)
-		{
-			Scene::SetScene(new CSceneClear());
-			m_time_die = 0;
-		}
-	}*/
-
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
@@ -218,7 +207,7 @@ void CObjBoss3::Action()
 		hit->SetInvincibility(true);	//無敵にする
 		m_eff_flag = true;			//画像切り替え用フラグ
 		m_speed_power = 0.0f;			//動きを止める
-
+		m_start_boss = true;
 	}
 
 	if (m_time_dead > 0)
@@ -229,7 +218,6 @@ void CObjBoss3::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
-			m_start_boss = true;
 			Scene::SetScene(new CSceneClear());
 		}
 	}

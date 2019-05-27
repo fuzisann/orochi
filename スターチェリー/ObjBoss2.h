@@ -34,6 +34,7 @@ private:
 
 	int m_time_d;	//ダメージ時のカラー変更用タイム
 	int m_time_die;	//死亡時用タイム
+	int m_time_ud;
 
 	float m_speed_power; //スピードパワー
 	float m_ani_max_time;//アニメーション動画間隔最大値

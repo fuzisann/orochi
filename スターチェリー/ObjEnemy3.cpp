@@ -103,11 +103,6 @@ void CObjEnemy3::Action()
 			m_ani_time += 1;
 		}
 	}
-	/*else
-	{
-		m_ani_frame = 1;  //ÃŽ~ƒtƒŒ[ƒ€
-		m_ani_time = 0;
-	}*/
 
 	if (m_ani_time > m_ani_max_time)
 	{

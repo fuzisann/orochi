@@ -22,31 +22,6 @@ extern bool Hit_wall_r;
 extern bool m_up;
 extern bool m_start_boss;
 
-
-//位置情報X変更用
-/*void CObjHero::SetX(float x)
-{
-	m_x = x;
-}
-
-//位置情報Y変更用
-void CObjHero::SetY(float y)
-{
-	m_y = y;
-}*/
-
-//位置情報X取得用
-/*float CObjHero::GetX()
-{
-	return m_x;
-}
-
-//位置情報Y取得用
-float CObjHero::GetY()
-{
-	return m_y;
-}*/
-
 //イニシャライズ
 void CObjHero::Init()
 {
@@ -101,13 +76,6 @@ void CObjHero::Action()
 		m_inputf = false;	//キー入力を制御
 		m_time_dead = 80;	//死亡時間をセット
 	}
-
-	//落下によるゲームオーバー＆リスタート
-	/*if (g_py > 1000.0f)
-	{
-		//場外に出たらリスタート
-		Scene::SetScene(new CSceneOver());
-	}*/
 
 	m_speed_power = 0.5f;
 
@@ -170,12 +138,6 @@ void CObjHero::Action()
 				m_time = 0;
 			}
 		}
-
-		/*if (m_ani_frame == 1)
-		{
-		m_ani_frame = 0;
-		m_ani_time = 0;
-		}*/
 
 		else if (m_ani_frame >= 4)
 		{

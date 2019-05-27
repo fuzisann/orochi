@@ -52,6 +52,9 @@
     <Filter Include="ソース ファイル\エンディング">
       <UniqueIdentifier>{7a7d881a-87da-4be1-bfa1-bc4230ac5be1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Main\泡">
+      <UniqueIdentifier>{d4968c08-b7f3-4106-a59a-10d01efb5dec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -132,12 +135,6 @@
     <ClCompile Include="SceneOver.cpp">
       <Filter>ソース ファイル\GameOver</Filter>
     </ClCompile>
-    <ClCompile Include="CObjStick.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Objgear.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CObjHeroSword.cpp">
       <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClCompile>
@@ -151,9 +148,6 @@
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjChangeGate1.cpp">
-      <Filter>ソース ファイル\Main\仕掛け関係</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjChangeGate2.cpp">
       <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClCompile>
     <ClCompile Include="ObjChangeSwitch.cpp">
@@ -195,11 +189,14 @@
     <ClCompile Include="ObjED.cpp">
       <Filter>ソース ファイル\エンディング</Filter>
     </ClCompile>
-    <ClCompile Include="ObjBubble.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="UtilityModule.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBubble.cpp">
+      <Filter>ソース ファイル\Main\泡</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjStick.cpp">
+      <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,12 +281,6 @@
     <ClInclude Include="SceneOver.h">
       <Filter>ソース ファイル\GameOver</Filter>
     </ClInclude>
-    <ClInclude Include="CObjStick.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Objgear.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CObjHeroSword.h">
       <Filter>ソース ファイル\Main\Hero関係</Filter>
     </ClInclude>
@@ -303,9 +294,6 @@
       <Filter>ソース ファイル\Main\Enemy関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjChangeGate1.h">
-      <Filter>ソース ファイル\Main\仕掛け関係</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjChangeGate2.h">
       <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClInclude>
     <ClInclude Include="ObjChangeSwitch.h">
@@ -347,11 +335,14 @@
     <ClInclude Include="ObjED.h">
       <Filter>ソース ファイル\エンディング</Filter>
     </ClInclude>
-    <ClInclude Include="ObjBubble.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="UtilityModule.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBubble.h">
+      <Filter>ソース ファイル\Main\泡</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjStick.h">
+      <Filter>ソース ファイル\Main\仕掛け関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

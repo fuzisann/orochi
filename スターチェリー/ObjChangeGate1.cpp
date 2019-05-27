@@ -40,10 +40,6 @@ void CObjChangeGate1::Action()
 
 	//チェンジスイッチの情報を取得
 	CObjChangeSwitch* change = (CObjChangeSwitch*)Objs::GetObj(OBJ_CHANGESWITCH);
-	//m_change = change->GetCHANGE();
-
-	/*CObjChangeGate1* change = (CObjChangeGate1*)Objs::GetObj(OBJ_CHANGEGATE);
-	m_change = change->GetCHANGE();*/
 
 	//チェンジフラグがオンの場合
 	if (m_change == false) {
@@ -93,13 +89,6 @@ void CObjChangeGate1::Draw()
 	if (m_change == false) {
 		Draw::Draw(2, &src, &dst, c, 0.0f);
 	}
-
-	/*if (m_change == true) {
-		Draw::Draw(2, &src, &dst, a, 0.0f);
-	}
-	else {
-		Draw::Draw(2, &src, &dst, g, 0.0f);
-	}*/
 }
 
 

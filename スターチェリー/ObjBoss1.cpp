@@ -46,8 +46,6 @@ void CObjBoss1::Init()
 
 	m_del = false;
 
-	//m_m_change = false;
-
 	//blockとの追突状態確認用
 	m_hit_up = false;
 	m_hit_down = false;
@@ -87,23 +85,6 @@ void CObjBoss1::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//主人公の位置を取得
-	/*C0bjHero*hero = (C0bjHero*)Objs::GetObj(COBJ_HERO);
-	float hx = hero->GetX();*/
-
-	m_time--;
-
-	if (m_time <= 0 && check == false)
-	{
-
-		//オブジェクト作成
-		CObjBubble* obje = new CObjBubble(m_x - 10, m_y);
-		Objs::InsertObj(obje, OBJ_BUBBLE, 9);
-
-		m_time = 130;
-		//m_time +=150;
-	}
-
 	//落下
 	if (m_py > 1000.0f)
 	{
@@ -130,22 +111,6 @@ void CObjBoss1::Action()
 			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
 		}
 	}
-	
-	/*if (m_change == true) {
-		m_change = false;
-	}
-	else {
-		m_change = true;
-	}
-
-	if (m_change == false) {
-		
-	}
-	else {
-		m_vx = 0;
-		m_vy = 0;
-	}*/
-	
 
 	//ブロック衝突で向き変更
 	if (m_hit_left == true)
@@ -174,11 +139,6 @@ void CObjBoss1::Action()
 			m_ani_time += 1;
 		}
 	}
-	/*else
-	{
-		m_ani_frame = 1;  //静止フレーム
-		m_ani_time = 0;
-	}*/
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -253,6 +213,7 @@ void CObjBoss1::Action()
 		hit->SetInvincibility(true);	//無敵にする
 		m_eff_flag = true;			//画像切り替え用フラグ
 		m_speed_power = 0.0f;			//動きを止める
+		m_start_boss = true;
 	}
 
 	if (m_time_dead > 0)
@@ -263,7 +224,6 @@ void CObjBoss1::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
-			m_start_boss = true;
 			//m_m_change = true;
 			Audio::Stop(6);
 			Audio::Start(0);

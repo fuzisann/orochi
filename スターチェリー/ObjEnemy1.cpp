@@ -8,8 +8,6 @@
 #include"GameHead.h"
 #include"ObjEnemy1.h"
 
-
-
 //使用するネームスペース
 using namespace GameL;
 
@@ -90,8 +88,6 @@ void CObjEnemy1::Action()
 		m_move = false;
 	}
 
-
-
 	//inputフラグがオンの時に移動を可能にする
 	if (m_inputf == true)
 	{
@@ -109,11 +105,6 @@ void CObjEnemy1::Action()
 			m_ani_time += 1;
 		}
 	}
-	/*else
-	{
-		m_ani_frame = 1;  //静止フレーム
-		m_ani_time = 0;
-	}*/
 
 	if (m_ani_time > m_ani_max_time)
 	{

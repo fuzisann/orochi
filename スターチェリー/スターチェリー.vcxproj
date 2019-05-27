@@ -132,7 +132,6 @@
     <ClCompile Include="ObjBoss2.cpp" />
     <ClCompile Include="ObjBoss3.cpp" />
     <ClCompile Include="ObjChangeGate1.cpp" />
-    <ClCompile Include="ObjChangeGate2.cpp" />
     <ClCompile Include="ObjChangeSwitch.cpp" />
     <ClCompile Include="ObjClear.cpp" />
     <ClCompile Include="ObjED.cpp" />
@@ -145,7 +144,6 @@
     <ClCompile Include="ObjEnemy2.cpp" />
     <ClCompile Include="ObjBoss1.cpp" />
     <ClCompile Include="ObjEnemy3.cpp" />
-    <ClCompile Include="Objgear.cpp" />
     <ClCompile Include="Objgoalblock.cpp" />
     <ClCompile Include="CObjHeroSword.cpp" />
     <ClCompile Include="ObjMain.cpp" />
@@ -186,7 +184,6 @@
     <ClInclude Include="ObjBoss2.h" />
     <ClInclude Include="ObjBoss3.h" />
     <ClInclude Include="ObjChangeGate1.h" />
-    <ClInclude Include="ObjChangeGate2.h" />
     <ClInclude Include="ObjChangeSwitch.h" />
     <ClInclude Include="ObjClear.h" />
     <ClInclude Include="ObjED.h" />
@@ -199,7 +196,6 @@
     <ClInclude Include="ObjEnemy2.h" />
     <ClInclude Include="ObjBoss1.h" />
     <ClInclude Include="ObjEnemy3.h" />
-    <ClInclude Include="Objgear.h" />
     <ClInclude Include="Objgoalblock.h" />
     <ClInclude Include="CObjHeroSword.h" />
     <ClInclude Include="ObjMain.h" />

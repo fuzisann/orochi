@@ -104,7 +104,6 @@ extern bool m_c;
 #include "ObjEnemy3.h"
 #include "ObjMain.h"
 #include "CObjStick.h"
-#include "Objgear.h"
 #include "CObjHeroSword.h"
 #include "ObjBoss1.h"
 #include "ObjBoss2.h"
@@ -112,7 +111,6 @@ extern bool m_c;
 #include "ObjSwitch.h"
 #include "ObjChangeSwitch.h"
 #include "ObjChangeGate1.h"
-#include "ObjChangeGate2.h"
 #include "ObjBubble.h"
 
 //------------------------------------------------

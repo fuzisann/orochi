@@ -28,6 +28,8 @@ void CObjBoss2::Init()
 
 	m_time = 0;
 
+	m_time_ud = 0;
+
 	m_ani_time = 0;
 	m_ani_frame = 1;  //静止フレームを初期化する
 
@@ -58,22 +60,12 @@ void CObjBoss2::Init()
 //アクション
 void CObjBoss2::Action()
 {
-	m_time++;
-
-	if (m_time > 50)
-	{
-		m_time = 0;
-		//オブジェクト作成
-		CObjBubble* objbu = new CObjBubble(m_px, m_py);
-		Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
-	}
-
 	//摩擦
 	m_vx += -(m_vx * 0.098);
 	//m_vy += -(m_vy * 0.098);
 
 	//自由落下運動
-	m_vy += 9.8 / (16.0f);
+	//m_vy += 9.8 / (16.0f);
 
 	//自身のHitBoxを持ってくる
 	CHitBox* hit = Hits::GetHitBox(this);
@@ -91,12 +83,6 @@ void CObjBoss2::Action()
 	m_px += m_vx;
 	m_py += m_vy;
 
-	//落下
-	if (m_py > 1000.0f)
-	{
-		;
-	}
-
 	m_speed_power = 0.0f;		//スピードを０にする
 
 	if (m_start_boss == false)
@@ -104,14 +90,45 @@ void CObjBoss2::Action()
 		//通常速度
 		m_speed_power = 0.5f;
 		m_ani_max_time = 4;
+
+		m_time++;
+
+		if (m_time > 50)
+		{
+			m_time = 0;
+			//オブジェクト作成
+			CObjBubble* objbu = new CObjBubble(m_px, m_py);
+			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+		}
+
+		/*m_time_ud++;
+
+		if (m_time_ud > 100)
+		{
+			m_vy = -20;
+		}
+		if (101 < m_time_ud < 200)
+		{
+			m_vy = 20;
+			m_time_ud = 0;
+		}*/
 	}
 
 	//ブロック衝突で向き変更
-	if (m_hit_left == true)
+	/*if (m_hit_left == true)
 	{
 		m_move = true;
 	}
 	if (m_hit_right == true)
+	{
+		m_move = false;
+	}*/
+
+	if (m_hit_down == true)
+	{
+		m_move = true;
+	}
+	if (m_hit_up == true)
 	{
 		m_move = false;
 	}
@@ -123,22 +140,17 @@ void CObjBoss2::Action()
 		//方向
 		if (m_move == false)
 		{
-			m_vx += m_speed_power;
+			m_vy += m_speed_power;
 			m_posture = 1.0f;
 			m_ani_time += 1;
 		}
 		else if (m_move == true)
 		{
-			m_vx -= m_speed_power;
+			m_vy -= m_speed_power;
 			m_posture = 0.0f;
 			m_ani_time += 1;
 		}
 	}
-	/*else
-	{
-		m_ani_frame = 1;  //静止フレーム
-		m_ani_time = 0;
-	}*/
 
 	if (m_ani_time > m_ani_max_time)
 	{
@@ -159,12 +171,12 @@ void CObjBoss2::Action()
 		if (m_posture == 0.0f)
 		{
 			//m_vy = -10;
-			m_vx += 15;
+			//m_vx += 15;
 		}
 		if (m_posture == 1.0f)
 		{
 			//m_vy = -10;
-			m_vx -= 15;
+			//m_vx -= 15;
 		}
 		Audio::Start(4);	//ダメージ音
 		m_time_d = 30;	//敵の無敵時間をセット
@@ -191,16 +203,6 @@ void CObjBoss2::Action()
 		m_time_dead = 80;	//死亡時間をセット
 	}
 
-	/*if (m_time_die > 0)
-	{
-		m_time_die--;
-		if (m_time_die <= 0)
-		{
-			Scene::SetScene(new CSceneClear());
-			m_time_die = 0;
-		}
-	}*/
-
 	//ブロック情報を持ってくる
 	CObjBlock*block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
@@ -212,7 +214,7 @@ void CObjBoss2::Action()
 		hit->SetInvincibility(true);	//無敵にする
 		m_eff_flag = true;			//画像切り替え用フラグ
 		m_speed_power = 0.0f;			//動きを止める
-
+		m_start_boss = true;
 	}
 
 	if (m_time_dead > 0)
@@ -223,7 +225,6 @@ void CObjBoss2::Action()
 			this->SetStatus(false);		//画像の削除
 			Hits::DeleteHitBox(this);	//ヒットボックスの削除
 			m_time_dead = 0;
-			m_start_boss = true;
 			Scene::SetScene(new CSceneStageClear());
 		}
 	}
