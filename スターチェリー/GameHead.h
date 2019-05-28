@@ -61,6 +61,7 @@ enum HIT_ELEMENTS
 	ELEMENT_ATTACK,
 	ELEMENT_GEAR,
 	ELEMENT_MYSTERY,
+	ELEMENT_BUBBLE,
 };
 //------------------------------------------------
 

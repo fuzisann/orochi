@@ -234,19 +234,22 @@ void CObjHero::Action()
 	int data_base[3] =
 	{
 		ELEMENT_ENEMY,
+		ELEMENT_BUBBLE,
 	};
 	//オブジェクト情報群と当たり判定行い。当たっていればノックバック
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 3; i++)
 	{
+	
+
 		if (hit->CheckElementHit(data_base[i]) == true)
 		{
 			HIT_DATA** hit_date;							//当たった時の細かな情報を入れるための構造体
 			hit_date = hit->SearchElementHit(data_base[i]);	//hit_dateに主人公と当たっている他全てのHitBoxとの情報を入れる
 
 			float r = 0;
-			for (int i = 0; i < 10; i++) {
-				if (hit_date[i] != nullptr) {
-					r = hit_date[i]->r;
+			for (int j = 0; j < 10; j++) {
+				if (hit_date[j] != nullptr) {
+					r = hit_date[j]->r;
 				}
 			}
 			//角度で上下左右を判定

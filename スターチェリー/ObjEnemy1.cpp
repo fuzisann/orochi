@@ -37,6 +37,8 @@ void CObjEnemy1::Init()
 
 	m_del = false;
 
+	m_time_d = 0;
+
 	//block‚Æ‚Ì’Ç“Ëó‘ÔŠm”F—p
 	m_hit_up = false;
 	m_hit_down = false;
