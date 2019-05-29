@@ -99,6 +99,7 @@ void CObjBoss2::Action()
 			//オブジェクト作成
 			CObjBubble* objbu = new CObjBubble(m_px, m_py);
 			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+			Audio::Start(8);	//音
 		}
 	}
 

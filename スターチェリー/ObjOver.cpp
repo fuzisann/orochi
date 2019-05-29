@@ -57,10 +57,17 @@ void CObjOver::Action()
 			if (m_key_flag == true)
 			{
 				m_andf = true;
-				//g_px = 64.0f;
-				//g_py = 500.0f;
 				m_key_flag = false;
 				Audio::Start(1);
+				g_hero_max_hp = 0;
+				if (g_map_chenge == 1)
+				{
+					g_hero_max_hp = 5;
+				}
+				if (g_map_chenge == 2)
+				{
+					g_hero_max_hp = 17;
+				}
 			}
 		}
 		else
@@ -76,6 +83,7 @@ void CObjOver::Action()
 			{
 				m_andf2 = true;
 				g_map_chenge = 0;//マップ変更
+				g_hero_max_hp = 0;
 				Audio::Start(1);
 				m_key_flag = false;
 			}

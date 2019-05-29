@@ -143,7 +143,7 @@ void CObjEnemy3::Action()
 		m_del = true;
 		m_time_dead = 80;	//€–SŠÔ‚ğƒZƒbƒg
 		m_vy += 9.8 / (16.0f);	//©—R—‰º‰^“®
-		g_hero_max_hp += 1;	//“G‚ÌŒ‚”j‚ÌHP/MP‘‰Á
+		g_hero_max_hp += 2;	//“G‚ÌŒ‚”j‚ÌHP/MP‘‰Á
 		hero->SetMAXHP(1);		//HP‚ğ‘‚â‚·
 	}
 

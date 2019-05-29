@@ -198,6 +198,9 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(3, L"ダメージ音(主人公).wav", EFFECT);
 	Audio::LoadAudio(4, L"ダメージ音(敵).wav", EFFECT);
 	Audio::LoadAudio(5, L"ひっつく音.wav", EFFECT);
+	Audio::LoadAudio(7, L"泡.wav", EFFECT);
+	Audio::LoadAudio(8, L"泡 敵.wav", EFFECT);
+	Audio::LoadAudio(9, L"泡 ダメージ.wav", EFFECT);
 
 	Audio::LoadAudio(6, L"ボス戦BGM.wav",BACK_MUSIC);
 

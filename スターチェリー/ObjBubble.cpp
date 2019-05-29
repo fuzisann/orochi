@@ -6,6 +6,8 @@
 #include "ObjBlock.h"
 #include "UtilityModule.h"
 
+#include "GameL\Audio.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -90,13 +92,14 @@ void CObjBubble::Action()
 	hit->SetPos(m_x + block->GetScrollX(), m_y + block->GetScrollY());
 
 	//ブロックに当たると削除
-	if (m_hit_right == true || m_hit_left == true
+	/*if (m_hit_right == true || m_hit_left == true
 	 || m_hit_up == true || m_hit_down == true)
 	{
+		Audio::Start(5);	//音
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 		return;
-	}
+	}*/
 
 	//画面外に出たら破棄する処理
 	if (m_x + block->GetScrollX() > 800.0f || m_x + block->GetScrollX() < -45.0f
@@ -107,9 +110,10 @@ void CObjBubble::Action()
 		return;
 	}
 
-	//主人公機オブジェクトと接触したら誘導弾丸削除
+	//主人公オブジェクトと接触したら誘導弾丸削除
 	if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
 	{
+		Audio::Start(9);	//音
 		hit->SetInvincibility(true);//当たり判定無効
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
@@ -119,6 +123,7 @@ void CObjBubble::Action()
 	//剣が当たったら泡削除
 	if (hit->CheckElementHit(ELEMENT_ATTACK) == true)
 	{
+		Audio::Start(7);	//音
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
 		return;
