@@ -6,6 +6,8 @@
 #include "ObjBlock.h"
 #include "UtilityModule.h"
 
+#include "GameL\Audio.h"
+
 //使用するネームスペース
 using namespace GameL;
 
@@ -21,13 +23,13 @@ void CObjBubble::Init()
 	m_vx    = -1.0f;
 	m_vy    =  0.0f;
 
-	m_damage = 2;
+	m_damage = 1;
 
 	//移動ベクトルの正規化
 	UnitVec(&m_vx, &m_vy);
 
 	//当たり判定用hitBox作成
-	Hits::SetHitBox(this, m_x, m_y, 35, 35, ELEMENT_ENEMY, OBJ_BUBBLE, 1);
+	Hits::SetHitBox(this, m_x, m_y, 35, 35, ELEMENT_BUBBLE, OBJ_BUBBLE, 1);
 }
 
 //アクション
@@ -90,13 +92,14 @@ void CObjBubble::Action()
 	hit->SetPos(m_x + block->GetScrollX(), m_y + block->GetScrollY());
 
 	//ブロックに当たると削除
-	if (m_hit_right == true || m_hit_left == true
+	/*if (m_hit_right == true || m_hit_left == true
 	 || m_hit_up == true || m_hit_down == true)
 	{
+		Audio::Start(5);	//音
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
-	}
-
+		return;
+	}*/
 
 	//画面外に出たら破棄する処理
 	if (m_x + block->GetScrollX() > 800.0f || m_x + block->GetScrollX() < -45.0f
@@ -104,46 +107,26 @@ void CObjBubble::Action()
 	{
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+		return;
 	}
 
-	//敵と当ったているか確認
-	/*if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
-	{
-		//主人公が敵とどの角度当ったているかを確認
-		HIT_DATA**hit_data;           //当たった時の細かな情報を入れるための構造体
-		hit_data = hit->SearchObjNameHit(COBJ_HERO);//hit_dataに主人公と当たっている他全てのHitBoxとの情報を入れる
-
-		for (int i = 0; i < hit->GetCount(); i++)
-		{
-			//敵の左右に当たったら
-			float r = 0;
-			for (int i = 0; i < 10; i++)
-			{
-				if (hit_data[i] != nullptr) {
-					r = hit_data[i]->r;
-				}
-			}
-			if (m_c==true)
-			{
-				this->SetStatus(false);
-				Hits::DeleteHitBox(this);
-			}
-		}
-	}*/
-
-	//主人公機オブジェクトと接触したら誘導弾丸削除
+	//主人公オブジェクトと接触したら誘導弾丸削除
 	if (hit->CheckObjNameHit(COBJ_HERO) != nullptr)
 	{
+		Audio::Start(9);	//音
 		hit->SetInvincibility(true);//当たり判定無効
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+		return;
 	}
 
 	//剣が当たったら泡削除
 	if (hit->CheckElementHit(ELEMENT_ATTACK) == true)
 	{
+		Audio::Start(7);	//音
 		this->SetStatus(false);
 		Hits::DeleteHitBox(this);
+		return;
 	}
 
 	//完全に領域外に出たら破棄する

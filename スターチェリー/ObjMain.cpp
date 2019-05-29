@@ -57,7 +57,23 @@ void CObjMain::Draw()
 	dst.m_bottom = 36.0f;
 	Draw::Draw(20, &src, &dst, c, 0.0f);
 	
+	//HPÇï\é¶
+	
 	swprintf_s(HP, L"HPÅ@Å~%d", hero_hp, 15);
-	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, 37, c);//HPÇï\é¶
+	Font::StrDraw(HP, GAME_HP_POS_X, GAME_HP_POS_Y, 37, c);
+	if (hero_hp < 10)
+	{
+		swprintf_s(HP, L"/", hero_hp, 15);
+		Font::StrDraw(HP, 129, GAME_HP_POS_Y, 37, c);
+		swprintf_s(HP, L"%d", 20 + g_hero_max_hp, 15);
+		Font::StrDraw(HP, 144, 10, 27, c);
+	}
+	else
+	{
+		swprintf_s(HP, L"/", hero_hp, 15);
+		Font::StrDraw(HP, 148, GAME_HP_POS_Y, 37, c);
+		swprintf_s(HP, L"%d", 20 + g_hero_max_hp, 15);
+		Font::StrDraw(HP, 163, 10, 27, c);
+	}
 
 }

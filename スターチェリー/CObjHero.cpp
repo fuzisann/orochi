@@ -44,7 +44,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 30;     //主人公の最大HP(最大30)
+	m_hero_hp = 20 + g_hero_max_hp;     //主人公のHP(初期値20)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
@@ -234,19 +234,22 @@ void CObjHero::Action()
 	int data_base[3] =
 	{
 		ELEMENT_ENEMY,
+		ELEMENT_BUBBLE,
 	};
 	//オブジェクト情報群と当たり判定行い。当たっていればノックバック
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 3; i++)
 	{
+	
+
 		if (hit->CheckElementHit(data_base[i]) == true)
 		{
 			HIT_DATA** hit_date;							//当たった時の細かな情報を入れるための構造体
 			hit_date = hit->SearchElementHit(data_base[i]);	//hit_dateに主人公と当たっている他全てのHitBoxとの情報を入れる
 
 			float r = 0;
-			for (int i = 0; i < 10; i++) {
-				if (hit_date[i] != nullptr) {
-					r = hit_date[i]->r;
+			for (int j = 0; j < 10; j++) {
+				if (hit_date[j] != nullptr) {
+					r = hit_date[j]->r;
 				}
 			}
 			//角度で上下左右を判定

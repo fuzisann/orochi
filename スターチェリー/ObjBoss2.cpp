@@ -62,7 +62,7 @@ void CObjBoss2::Action()
 {
 	//摩擦
 	m_vx += -(m_vx * 0.098);
-	//m_vy += -(m_vy * 0.098);
+	m_vy += -(m_vy * 0.098);
 
 	//自由落下運動
 	//m_vy += 9.8 / (16.0f);
@@ -93,25 +93,14 @@ void CObjBoss2::Action()
 
 		m_time++;
 
-		if (m_time > 50)
+		if (m_time > 80)
 		{
 			m_time = 0;
 			//オブジェクト作成
 			CObjBubble* objbu = new CObjBubble(m_px, m_py);
 			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+			Audio::Start(8);	//音
 		}
-
-		/*m_time_ud++;
-
-		if (m_time_ud > 100)
-		{
-			m_vy = -20;
-		}
-		if (101 < m_time_ud < 200)
-		{
-			m_vy = 20;
-			m_time_ud = 0;
-		}*/
 	}
 
 	//ブロック衝突で向き変更
@@ -136,7 +125,6 @@ void CObjBoss2::Action()
 	//inputフラグがオンの時に移動を可能にする
 	if (m_inputf == true)
 	{
-
 		//方向
 		if (m_move == false)
 		{
@@ -201,6 +189,7 @@ void CObjBoss2::Action()
 		m_inputf = false;	//動きを制御
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
+		m_vy += 9.8 / (16.0f);	//自由落下運動
 	}
 
 	//ブロック情報を持ってくる

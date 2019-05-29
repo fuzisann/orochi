@@ -63,9 +63,9 @@ void CObjOP::Draw()
 	Font::StrDraw(L"そのサメを恐れた竜宮城の魚たちは、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 550, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城から逃げ出してしまいました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 600, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"慌てて竜宮城から逃げ出してきた魚たちを見て、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 700, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"主人公は竜宮城で何かが起きている事を感知し、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 750, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"主人公 スターチェリーは竜宮城で何かが起きている事を感知し、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 750, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城に向かうのでした。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 800, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"竜宮城に向かった主人公は、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 900, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"竜宮城に向かったスターチェリーは、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 900, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城から逃げ遅れた魚たちがサメに操られている光景や、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"サメが竜宮城で暴れている光景を目にしたのでした…。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1000, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"※Enterキーで次へ進む※", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1150, GAME_CLEAR_FONT_SIZE, p);

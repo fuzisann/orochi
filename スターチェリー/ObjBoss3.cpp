@@ -115,6 +115,7 @@ void CObjBoss3::Action()
 			//オブジェクト作成
 			CObjBubble* objbu = new CObjBubble(m_px, m_py);
 			Objs::InsertObj(objbu, OBJ_BUBBLE, 100);
+			Audio::Start(8);	//音
 		}
 	}
 
@@ -194,6 +195,7 @@ void CObjBoss3::Action()
 		m_inputf = false;	//動きを制御
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
+		m_vy += 9.8 / (16.0f);	//自由落下運動
 	}
 
 	//ブロック情報を持ってくる
