@@ -32,7 +32,7 @@ void CObjBoss3::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_boss_hp = 10;     //敵のヒットポイント(最大10)
+	m_boss_hp = 12;     //敵のヒットポイント(最大12)
 	m_damage = 3;
 
 	m_time = 0;

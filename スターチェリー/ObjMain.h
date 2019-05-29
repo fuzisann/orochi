@@ -43,6 +43,7 @@ private:
 	float m_py;			//プレイヤーの座標X
 	int m_posture;		//姿勢
 	int hero_hp;	//HP
-	
+	int m_boss_hp;	//HP
+
 	int m_ani_frame;	//描画フレーム
 };

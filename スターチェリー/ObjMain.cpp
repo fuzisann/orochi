@@ -36,9 +36,7 @@ void CObjMain::Draw()
 	RECT_F src;	//描画元切り取り位置
 	RECT_F dst;	//描画先表示位置
 
-
 	wchar_t HP[128];
-
 	
 	//画面上部のメニュー画面
 
@@ -75,5 +73,4 @@ void CObjMain::Draw()
 		swprintf_s(HP, L"%d", 20 + g_hero_max_hp, 15);
 		Font::StrDraw(HP, 163, 10, 27, c);
 	}
-
 }

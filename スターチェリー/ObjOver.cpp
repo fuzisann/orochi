@@ -66,7 +66,7 @@ void CObjOver::Action()
 				}
 				if (g_map_chenge == 2)
 				{
-					g_hero_max_hp = 17;
+					g_hero_max_hp = 20;
 				}
 			}
 		}
