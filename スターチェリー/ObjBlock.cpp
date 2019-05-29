@@ -61,6 +61,8 @@ void CObjBlock::Init()
 	m_ani_frame = 0;
 
 	m_ani_max_time = 15;
+
+	m_time = 0;
 }
 
 
@@ -370,7 +372,12 @@ void CObjBlock::BlockHit(
 								*vx = 0.0f;
 								Hit_wall = true;
 
-								Audio::Start(5);
+								m_time++;
+
+								if (15 > m_time > 0)
+								{
+									Audio::Start(5);
+								}
 
 								//右キー入力で離れる
 								if (Input::GetVKey(VK_RIGHT) == true)
@@ -378,6 +385,7 @@ void CObjBlock::BlockHit(
 									*vx = 0.5f;//反発
 									Hit_wall = false;
 									Hit_wall_r = false;
+									m_time = 0;
 								}
 
 								if (Input::GetVKey(VK_UP) == true)
@@ -386,6 +394,7 @@ void CObjBlock::BlockHit(
 									Hit_wall_r = true;
 									*vx = 0.5f;//反発
 									*vy = -3.0f;
+									m_time = 0;
 								}
 							}
 
@@ -416,7 +425,12 @@ void CObjBlock::BlockHit(
 									*vy = 0.0f;//くっつくため反発なし
 								Hit_wall = true;
 
-								Audio::Start(5);
+								m_time++;
+
+								if (15 > m_time > 0)
+								{
+									Audio::Start(5);
+								}
 
 								//左キー入力で離れる
 								if (Input::GetVKey(VK_LEFT) == true)
@@ -424,6 +438,7 @@ void CObjBlock::BlockHit(
 									Hit_wall = false;
 									Hit_wall_r = false;
 									*vx = -0.5f;//反発
+									m_time = 0;
 								}
 
 								if (Input::GetVKey(VK_UP) == true)
@@ -432,6 +447,7 @@ void CObjBlock::BlockHit(
 									Hit_wall_r = true;
 									*vx = -0.5f;//反発
 									*vy = -3.0f;
+									m_time = 0;
 								}
 
 							}
