@@ -81,6 +81,7 @@ extern int g_m_chenge;//BGM変更
 extern int block2;
 extern bool check;
 extern bool m_c;
+extern int g_hero_max_hp;	//敵の撃破時のHP増加
 
 //------------------------------------------------
 //ゲーム内で使用するクラスヘッダ------------------

@@ -44,7 +44,7 @@ void CObjHero::Init()
 
 	m_block_type = 0;	//踏んでいるブロックの種類
 
-	m_hero_hp = 30;     //主人公の最大HP(最大30)
+	m_hero_hp = 20 + g_hero_max_hp;     //主人公のHP(初期値20)
 
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅

@@ -52,6 +52,9 @@ void CObjEnemy3::Init()
 //アクション
 void CObjEnemy3::Action()
 {
+	//主人公の情報を持ってくる
+	CObjHero* hero = (CObjHero*)Objs::GetObj(COBJ_HERO);
+
 	//摩擦
 	m_vx += -(m_vx * 0.098f);
 	m_vy += -(m_vy * 0.098f);
@@ -140,6 +143,8 @@ void CObjEnemy3::Action()
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
 		m_vy += 9.8 / (16.0f);	//自由落下運動
+		g_hero_max_hp += 1;	//敵の撃破時のHP/MP増加
+		hero->SetMAXHP(1);		//HPを増やす
 	}
 
 	//ブロック情報を持ってくる

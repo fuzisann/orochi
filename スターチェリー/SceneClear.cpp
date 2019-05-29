@@ -32,7 +32,7 @@ void CSceneClear::InitScene()
 {
 
 	//出力させる文字のグラフィックを作成
-	Draw::LoadImage(L"GAMECLEAR.png", 4, TEX_SIZE_256);
+	Draw::LoadImage(L"GAMECLEAR2.png", 4, TEX_SIZE_256);
 
 	//背景オブジェクト作成
 	CObjClear* nk = new CObjClear();

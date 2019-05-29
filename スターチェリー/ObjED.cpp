@@ -28,6 +28,7 @@ void CObjED::Action()
 void CObjED::Draw()
 {
 	//描写カラー情報
+	float c[4] = { 1.0f,1.0f,1.0f,1.0f, };
 	float bl[4] = { 0.7f,0.7f,0.7f,1.0f };
 
 	RECT_F src;//描写元切り取り位置
@@ -58,15 +59,15 @@ void CObjED::Draw()
 	{
 		m_y -= 0.6f;
 	}
-	Font::StrDraw(L"いくつもの苦難を乗り越え見事サメを倒した主人公は、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 400, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"いくつもの苦難を乗り越え見事サメを倒したスターチェリーは、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 400, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"サメの口の中に乙姫様らしき影がある事を知り、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 450, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"サメの口の中から乙姫様を引きずり出しました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 500, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"主人公は安全な場所まで乙姫様を運び、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 600, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"竜宮城の外に主人公は助けを呼びに行きました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 650, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"スターチェリーは安全な場所まで乙姫様を運び、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 600, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"竜宮城の外にスターチェリーは助けを呼びに行きました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 650, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"その後乙姫様は、竜宮城の皆に助けられました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 700, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"暴れていたサメが倒れたことで、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 800, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城で操られていた魚たちが続々と意識を取り戻しました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 850, GAME_CLEAR_FONT_SIZE, p);
-	Font::StrDraw(L"主人公はこの時以来、乙姫様を助けた英雄として、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
+	Font::StrDraw(L"スターチェリーはこの時以来、乙姫様を助けた英雄として、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 950, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"竜宮城に名が知れ渡るようになり、", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1000, GAME_CLEAR_FONT_SIZE, p);
 	Font::StrDraw(L"乙姫様専属の付き人として竜宮城で暮らすようになりました。", GAME_CLEAR_X, GAME_CLEAR_Y + m_y + 1050, GAME_CLEAR_FONT_SIZE, p);
 	

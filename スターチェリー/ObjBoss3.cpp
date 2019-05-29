@@ -194,6 +194,7 @@ void CObjBoss3::Action()
 		m_inputf = false;	//動きを制御
 		m_del = true;
 		m_time_dead = 80;	//死亡時間をセット
+		m_vy += 9.8 / (16.0f);	//自由落下運動
 	}
 
 	//ブロック情報を持ってくる

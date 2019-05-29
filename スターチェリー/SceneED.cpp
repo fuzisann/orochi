@@ -33,7 +33,7 @@ CSceneED::~CSceneED()
 void CSceneED::InitScene()
 {
 	//出力させる文字のグラフィックを作成
-	Draw::LoadImage(L"タイトル.png", 3, TEX_SIZE_1024);
+	Draw::LoadImage(L"エンディング.png", 3, TEX_SIZE_1024);
 
 	//オブジェクト作成
 	CObjED* back = new CObjED();
