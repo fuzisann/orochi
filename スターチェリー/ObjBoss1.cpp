@@ -37,7 +37,7 @@ void CObjBoss1::Init()
 	m_speed_power = 0.5f;//通常速度
 	m_ani_max_time = 4;  //アニメーション間隔幅
 
-	m_boss_hp = 5;     //敵のヒットポイント(最大5)
+	m_boss_hp = 8;     //敵のヒットポイント(最大8)
 	m_damage = 1;
 
 	m_move = true;		//true=右 false=左
@@ -45,6 +45,8 @@ void CObjBoss1::Init()
 	m_change = true;
 
 	m_del = false;
+
+	m_time_d = 0;
 
 	//blockとの追突状態確認用
 	m_hit_up = false;

@@ -52,6 +52,8 @@ private:
 	int m_time_dead;	//死亡用
 	bool  m_inputf;	//動き制御用
 
+	int hero_hp;
+
 	//踏んでいるblockの種類を確認用
 	//int m_block_type;
 	int s;

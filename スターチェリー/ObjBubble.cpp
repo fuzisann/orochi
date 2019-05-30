@@ -23,7 +23,7 @@ void CObjBubble::Init()
 	m_vx    = -1.0f;
 	m_vy    =  0.0f;
 
-	m_damage = 1;
+	m_damage = 2;
 
 	//ˆÚ“®ƒxƒNƒgƒ‹‚Ì³‹K‰»
 	UnitVec(&m_vx, &m_vy);
